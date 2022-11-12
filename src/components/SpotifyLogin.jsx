@@ -2,8 +2,9 @@ import React from "react";
 import generateRandomString from "../helpers/generateRandomString";
 import pkceChallenge from 'pkce-challenge';
 import {ENDPOINTS} from "../constants/endpoints";
-import {Box, Button, Link} from "@chakra-ui/react";
+import {Box, Button, Link, Flex} from "@chakra-ui/react";
 import {useLocation} from "react-router-dom";
+import ProgressSteps from "./ProgressSteps";
 
 const state = generateRandomString(16);
 const { code_verifier, code_challenge } = pkceChallenge(48);
@@ -45,6 +46,11 @@ function SpotifyLogin() {
 
     return (
         <>
+            <Flex justify={'center'} align={'center'}>
+                <Box mt={10} w={'100%'} maxW={500}>
+                    <ProgressSteps/>
+                </Box>
+            </Flex>
             <Box textAlign="center" py={40} px={10}>
                 <Button bg='spotify.green'>
                     <Link href={userAuthentificationUrl}>Log in with Spotify</Link>

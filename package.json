@@ -6,6 +6,7 @@
     "@chakra-ui/react": "^2.3.7",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/lato": "^4.5.10",
     "@fontsource/source-sans-pro": "^4.5.11",
     "@fontsource/space-grotesk": "^4.5.10",
     "@testing-library/jest-dom": "^5.16.5",
