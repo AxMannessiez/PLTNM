@@ -28,14 +28,6 @@ const CustomSteps = {
     baseStyle: (props) => {
         return {
             ...StepsStyleConfig.baseStyle(props),
-            step: {
-                ...StepsStyleConfig.baseStyle(props).step,
-                '&:first-of-type': {
-                    '& div:last-child': {
-                        right: 'calc((97px - 40px) / -2 + 8px)'
-                    }
-                }
-            },
             stepIconContainer: {
                 ...StepsStyleConfig.baseStyle(props).stepIconContainer,
                 background: 'white',
