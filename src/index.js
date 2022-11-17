@@ -3,6 +3,7 @@ import './styles/animation.css';
 import React, { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from "react-query";
+import { CookiesProvider } from 'react-cookie';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
@@ -15,9 +16,11 @@ const root = ReactDOM.createRoot(container);
 root.render(
   <StrictMode>
       <QueryClientProvider client={queryClient}>
-          <ChakraProvider resetCSS={true} theme={theme}>
-            <App />
-          </ChakraProvider>
+          <CookiesProvider>
+              <ChakraProvider resetCSS={true} theme={theme}>
+                <App />
+              </ChakraProvider>
+          </CookiesProvider>
       </QueryClientProvider>
   </StrictMode>
 );

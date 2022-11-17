@@ -1,3 +1,4 @@
+import {useEffect} from "react";
 import {Flex, Button, Center, VStack, Box} from "@chakra-ui/react";
 import {useSteps} from "chakra-ui-steps";
 import {ProgressSteps} from "../components/ProgressSteps";
@@ -5,16 +6,30 @@ import {MusicProviderLogin} from "../components/start-steps/MusicProviderLogin";
 import {ChoosePlaylist} from "../components/start-steps/ChoosePlaylist";
 import {CheckSongs} from "../components/start-steps/CheckSongs";
 import {EndStep} from "../components/start-steps/EndStep";
+import {useParams, useNavigate} from "react-router-dom";
 
 const steps = {
     labels: ["Login", "Selection", "Check"],
     components: [<MusicProviderLogin/>, <ChoosePlaylist/>, <CheckSongs/>]
 };
 
-export const Start = () => {
-    const { nextStep, prevStep, reset, activeStep } = useSteps({
+const Start = (props) => {
+    let { nextStep, prevStep, reset, activeStep } = useSteps({
         initialStep: 0,
     })
+
+    // Step param in route
+    let { stepIdx } = useParams();
+    if (stepIdx !== undefined) {
+        activeStep = (stepIdx > 4) ? 0 : +stepIdx-1;
+    }
+    let navigate = useNavigate();
+    useEffect(() => {
+        if (stepIdx > 4) {
+            navigate('/start');
+        }
+    });
+
     return (
         <VStack as="main" w="100%">
             <Box pt={10} px={10} w="100%" maxW={580}>
@@ -49,4 +64,4 @@ export const Start = () => {
     )
 }
 
-export default Start
+export default Start;

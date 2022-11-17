@@ -8,6 +8,7 @@ function RouterOutlet() {
     return (
         <Routes>
             <Route path="/" element={<Home/>} />
+            <Route path="/start/step-:stepIdx" element={<Start/>} />
             <Route path="/start" element={<Start/>} />
             <Route path="*" element={<NotFound/>} />
             {/* Other routes here... */}

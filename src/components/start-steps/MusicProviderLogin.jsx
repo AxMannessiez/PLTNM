@@ -1,7 +1,10 @@
 import {Box} from "@chakra-ui/react";
+import SpotifyLogin from "../SpotifyLogin";
 
 export function MusicProviderLogin() {
     return (
-        <Box>Log in to Spotify.</Box>
+        <>
+            <SpotifyLogin/>
+        </>
     )
 }
