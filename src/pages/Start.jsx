@@ -1,4 +1,3 @@
-import {useEffect} from "react";
 import {Flex, Button, Center, VStack, Box} from "@chakra-ui/react";
 import {useSteps} from "chakra-ui-steps";
 import {ProgressSteps} from "../components/ProgressSteps";
@@ -6,7 +5,7 @@ import {MusicProviderLogin} from "../components/start-steps/MusicProviderLogin";
 import {ChoosePlaylist} from "../components/start-steps/ChoosePlaylist";
 import {CheckSongs} from "../components/start-steps/CheckSongs";
 import {EndStep} from "../components/start-steps/EndStep";
-import {useParams, useNavigate} from "react-router-dom";
+import {useParams, Navigate} from "react-router-dom";
 
 const steps = {
     labels: ["Login", "Selection", "Check"],
@@ -20,15 +19,11 @@ const Start = (props) => {
 
     // Step param in route
     let { stepIdx } = useParams();
-    if (stepIdx !== undefined) {
-        activeStep = (stepIdx > 4) ? 0 : +stepIdx-1;
+    //TODO Check is number
+    activeStep = (stepIdx > 4) ? 0 : +stepIdx-1;   // Use URL value - 1 for the step
+    if (stepIdx > 4) {
+        return <Navigate to='/start/step-1' replace />;
     }
-    let navigate = useNavigate();
-    useEffect(() => {
-        if (stepIdx > 4) {
-            navigate('/start');
-        }
-    });
 
     return (
         <VStack as="main" w="100%">

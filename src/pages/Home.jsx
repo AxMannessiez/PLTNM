@@ -1,5 +1,5 @@
 import React from "react";
-import SpotifyLogin from "../components/SpotifyLogin";
+import {SpotifyLogin} from "../components/SpotifyLogin";
 
 function Home(){
     return (
