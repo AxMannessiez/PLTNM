@@ -12,6 +12,7 @@ export function AppleMusicLogoCard(props) {
             }}
             nameMargin={props.nameMargin}
             w={props.w}
+            link={props.link}
         />
     )
 }

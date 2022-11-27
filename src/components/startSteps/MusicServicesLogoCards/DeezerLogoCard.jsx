@@ -9,6 +9,7 @@ export function DeezerLogoCard(props) {
             nameMargin={props.nameMargin}
             w={props.w}
             svg={<DeezerIcon/>}
+            link={props.link}
         />
     )
 }

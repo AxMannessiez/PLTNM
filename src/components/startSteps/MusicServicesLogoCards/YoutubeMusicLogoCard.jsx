@@ -12,6 +12,7 @@ export function YoutubeMusicLogoCard(props) {
             }}
             nameMargin={props.nameMargin}
             w={props.w}
+            link={props.link}
         />
     )
 }

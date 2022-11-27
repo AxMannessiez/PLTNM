@@ -22,7 +22,7 @@ function Home(){
             <Center mt={20}>
                 <SimpleGrid columns={3} spacingX={7} spacingY={4} maxW={'600px'}>
                     <SpotifyLogoCard {...cardStyleProps}/>
-                    <AppleMusicLogoCard {...cardStyleProps}/>
+                    <AppleMusicLogoCard {...cardStyleProps} link="https://music.apple.com/subscribe"/>
                     <DeezerLogoCard {...cardStyleProps}/>
                     <YoutubeMusicLogoCard {...cardStyleProps}/>
                     <TidalLogoCard {...cardStyleProps}/>

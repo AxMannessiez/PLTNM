@@ -12,6 +12,7 @@ export function NapsterLogoCard(props) {
             }}
             nameMargin={props.nameMargin}
             w={props.w}
+            link={props.link}
         />
     )
 }

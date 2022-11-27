@@ -13,6 +13,7 @@ export function SoundcloudLogoCard(props) {
             }}
             nameMargin={props.nameMargin}
             w={props.w}
+            link={props.link}
         />
     )
 }

@@ -30,7 +30,9 @@ export function MusicServiceLogoCard(props) {
         <VStack
             key={kebabName + "-login"} w={props.w} spacing={props.nameMargin}
             onMouseEnter={setCardHovered.on} onMouseLeave={setCardHovered.off}
-            transform={cardHovered ? "scale(1.1)" : undefined} transition="transform .2s ease">
+            transform={cardHovered ? "scale(1.1)" : undefined} transition="transform .2s ease"
+            as='a' href={props.link} title={cardHovered ? undefined : props.name + " Login"}
+        >
             <Box w='100%'>
                 <Center
                     bg={props.bg} border={borderAttribute}

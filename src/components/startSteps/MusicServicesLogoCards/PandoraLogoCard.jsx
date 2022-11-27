@@ -9,6 +9,7 @@ export function PandoraLogoCard(props) {
             nameMargin={props.nameMargin}
             w={props.w}
             svg={<PandoraIcon/>}
+            link={props.link}
         />
     )
 }
