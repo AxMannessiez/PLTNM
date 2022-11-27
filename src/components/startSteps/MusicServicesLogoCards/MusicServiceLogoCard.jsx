@@ -1,4 +1,4 @@
-import {Box, VStack, Center, Icon, Heading} from "@chakra-ui/react";
+import {Box, VStack, Center, Icon, Heading, useBoolean} from "@chakra-ui/react";
 
 
 // Used to add a border to light backgrounds
@@ -20,14 +20,22 @@ function getLightnessFromHex(hexColor) {
 
 export function MusicServiceLogoCard(props) {
 
+    const [cardHovered, setCardHovered] = useBoolean()
+
     const kebabName = props.name ? props.name.toLower : undefined;
     const whiteBorder = '1px #E0E0E0 solid';
     let borderAttribute = getLightnessFromHex(props.bg) > 0.8 ? whiteBorder : undefined;
 
     return (
-        <VStack key={kebabName + "-login"} w={props.w} spacing={props.nameMargin}>
+        <VStack
+            key={kebabName + "-login"} w={props.w} spacing={props.nameMargin}
+            onMouseEnter={setCardHovered.on} onMouseLeave={setCardHovered.off}
+            transform={cardHovered ? "scale(1.1)" : undefined} transition="transform .2s ease">
             <Box w='100%'>
-                <Center bg={props.bg} w='100%' h='100%' border={borderAttribute} borderRadius='8% / calc(8% * 1.85)' sx={{aspectRatio: "1.85"}}>
+                <Center
+                    bg={props.bg} border={borderAttribute}
+                    w='100%' h='100%' sx={{aspectRatio: "1.85"}} borderRadius='xl'
+                    boxShadow={cardHovered ? 'xl' : 'base'} transition="box-shadow .1s ease">
                     {
                         props.icon ?
                             <Icon viewBox={props.icon.viewBox} color={props.icon.color} h='unset' w='100%' maxW={props.icon.maxW ? props.icon.maxW : '33%'} maxH='calc(1.85 * 33%)'>
@@ -41,7 +49,12 @@ export function MusicServiceLogoCard(props) {
                     }
                 </Center>
             </Box>
-            <Heading as='h5' size='sm' textAlign='center' fontFamily={'body'} fontWeight={'normal'}>
+            <Heading
+                as='h5' size='xs'
+                textAlign='center' fontFamily={'body'} fontWeight={'normal'}
+                opacity={cardHovered ? 1 : 0} transition="opacity .1s ease"
+                sx={{display: '-webkit-box', WebkitLineClamp: '1', WebkitBoxOrient: 'vertical', overflow: 'hidden'}}
+            >
                 {props.name}
             </Heading>
         </VStack>

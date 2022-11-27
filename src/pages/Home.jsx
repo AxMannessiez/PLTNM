@@ -1,5 +1,4 @@
 import React from "react";
-import {SpotifyLogin} from "../components/SpotifyLogin";
 import {
     AmazonMusicLogoCard,
     AppleMusicLogoCard,
@@ -16,12 +15,12 @@ import {Center, SimpleGrid} from "@chakra-ui/react";
 function Home(){
     const cardStyleProps = {
         w: '150px',
-        nameMargin: 2,
+        nameMargin: 1
     }
     return (
         <>
             <Center mt={20}>
-                <SimpleGrid columns={3} spacingX={5} spacingY={4} maxW={'600px'}>
+                <SimpleGrid columns={3} spacingX={7} spacingY={4} maxW={'600px'}>
                     <SpotifyLogoCard {...cardStyleProps}/>
                     <AppleMusicLogoCard {...cardStyleProps}/>
                     <DeezerLogoCard {...cardStyleProps}/>
