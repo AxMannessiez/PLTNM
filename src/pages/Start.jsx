@@ -19,11 +19,11 @@ const Start = (props) => {
 
     // Step param in route
     let { stepIdx } = useParams();
-    //TODO Check is number
-    activeStep = (stepIdx > 4) ? 0 : +stepIdx-1;   // Use URL value - 1 for the step
-    if (stepIdx > 4) {
+    if (!(stepIdx > 0  && stepIdx < 5)) {
         return <Navigate to='/start/step-1' replace />;
     }
+    activeStep = +stepIdx-1;
+
 
     return (
         <VStack as="main" w="100%">

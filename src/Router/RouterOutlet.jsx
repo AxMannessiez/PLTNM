@@ -9,8 +9,11 @@ function RouterOutlet() {
     return (
         <Routes>
             <Route path="/" element={<Home/>} />
+
             <Route path="/start/step-:stepIdx" element={<Start/>} />
             <Route path="/start" element={<Navigate to={'/start/step-1'} replace/>} />
+            <Route path="/start/:x" element={<Navigate to={'/start/step-1'} replace/>} />
+
             <Route path="/spotify/callback" element={<SpotifyCallback/>} />
             <Route path="*" element={<NotFound/>} />
         </Routes>
