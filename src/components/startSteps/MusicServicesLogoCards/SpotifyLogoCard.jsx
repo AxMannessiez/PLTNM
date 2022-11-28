@@ -1,6 +1,9 @@
 import {MusicServiceLogoCard} from "./MusicServiceLogoCard";
+import {SpotifyAccountApi} from "../../../spotifyApi/SpotifyAccountApi";
 
 export function SpotifyLogoCard(props) {
+    const userAuthentificationUrl = SpotifyAccountApi.getUserAuthentificationUrl();
+
     return (
         <MusicServiceLogoCard
             name="Spotify"
@@ -12,7 +15,7 @@ export function SpotifyLogoCard(props) {
             }}
             nameMargin={props.nameMargin}
             maxW={props.maxW}
-            link={props.link}
+            link={userAuthentificationUrl}
         />
     )
 }

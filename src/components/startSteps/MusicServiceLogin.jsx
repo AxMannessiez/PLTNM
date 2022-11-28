@@ -18,6 +18,8 @@ export function MusicServiceLogin() {
         nameMargin: { base: 0, sm: 1}
     }
 
+    //TODO Add toast message if auth failed
+
     return (
         <>
             <Box as='header' textAlign='center'>
