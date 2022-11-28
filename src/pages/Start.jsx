@@ -1,4 +1,4 @@
-import {Flex, Button, Center, VStack, Box} from "@chakra-ui/react";
+import {Flex, VStack, Box} from "@chakra-ui/react";
 import {useSteps} from "chakra-ui-steps";
 import {ProgressSteps} from "../components/ProgressSteps";
 import {MusicServiceLogin, ChoosePlaylist, CheckSongs, EndStep} from "../components/StartSteps";
