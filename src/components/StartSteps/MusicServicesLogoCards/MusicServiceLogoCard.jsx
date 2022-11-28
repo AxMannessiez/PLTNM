@@ -38,7 +38,7 @@ export function MusicServiceLogoCard(props) {
                     bg={props.bg} border={borderAttribute}
                     w='100%' h='100%'
                     sx={{aspectRatio: "1", borderRadius: "1.3rem", "@media screen and (min-width: 30em)":{aspectRatio: "1.85", borderRadius: "0.75rem"}}}
-                    boxShadow={cardHovered ? 'xl' : 'base'} transition="box-shadow .1s ease, aspect-ratio .4s ease, border-radius .4s ease"
+                    boxShadow={cardHovered ? '0 10px 20px 0px rgba(0 0 0 / 25%)' : 'base'} transition="box-shadow .1s ease-out, aspect-ratio .4s ease, border-radius .4s ease"
                     overflow='hidden'
                 >
                     {
