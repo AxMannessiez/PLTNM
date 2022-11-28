@@ -8,7 +8,7 @@ import {
     TidalLogoCard,
     PandoraLogoCard,
     YoutubeMusicLogoCard, SoundcloudLogoCard
-} from "../components/startSteps/MusicServicesLogoCards";
+} from "../components/StartSteps/MusicServicesLogoCards";
 
 import {Center, SimpleGrid} from "@chakra-ui/react";
 

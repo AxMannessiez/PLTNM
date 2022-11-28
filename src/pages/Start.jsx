@@ -1,10 +1,7 @@
 import {Flex, Button, Center, VStack, Box} from "@chakra-ui/react";
 import {useSteps} from "chakra-ui-steps";
 import {ProgressSteps} from "../components/ProgressSteps";
-import {MusicServiceLogin} from "../components/startSteps/MusicServiceLogin";
-import {ChoosePlaylist} from "../components/startSteps/ChoosePlaylist";
-import {CheckSongs} from "../components/startSteps/CheckSongs";
-import {EndStep} from "../components/startSteps/EndStep";
+import {MusicServiceLogin, ChoosePlaylist, CheckSongs, EndStep} from "../components/StartSteps";
 import {useParams, Navigate} from "react-router-dom";
 
 const steps = {
