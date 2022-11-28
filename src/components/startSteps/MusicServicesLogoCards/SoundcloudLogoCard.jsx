@@ -12,7 +12,7 @@ export function SoundcloudLogoCard(props) {
                 maxW: "44%"
             }}
             nameMargin={props.nameMargin}
-            w={props.w}
+            maxW={props.maxW}
             link={props.link}
         />
     )

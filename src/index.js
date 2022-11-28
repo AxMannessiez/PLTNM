@@ -8,6 +8,12 @@ import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 import theme from "./theme";
 
+import '@fontsource/space-grotesk/300.css'
+import '@fontsource/space-grotesk/400.css'
+import '@fontsource/space-grotesk/500.css'
+import '@fontsource/space-grotesk/600.css'
+import '@fontsource/space-grotesk/700.css'
+
 const queryClient = new QueryClient();
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);

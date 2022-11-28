@@ -18,8 +18,8 @@ const colors = {
 };
 
 const fonts = {
-    heading: `'Source Sans Pro', sans-serif`,
-    body: `'Space Grotesk', sans-serif`,
+    heading: `'Space Grotesk', sans-serif`,
+    body: `'Source Sans Pro', sans-serif`,
     numbers: `'Lato', sans-serif`
 };
 
@@ -73,7 +73,8 @@ const CustomSteps = {
             },
             label: {
                 ...StepsStyleConfig.baseStyle(props).label,
-                'color': colors.pltnm.text,
+                fontFamily: fonts.body,
+                color: colors.pltnm.text,
             }
         };
     },

@@ -28,7 +28,7 @@ export function MusicServiceLogoCard(props) {
 
     return (
         <VStack
-            key={kebabName + "-login"} w={props.w} spacing={props.nameMargin}
+            key={kebabName + "-login"} maxW={props.maxW} spacing={props.nameMargin}
             onMouseEnter={setCardHovered.on} onMouseLeave={setCardHovered.off}
             transform={cardHovered ? "scale(1.1)" : undefined} transition="transform .2s ease"
             as='a' href={props.link} title={cardHovered ? undefined : props.name + " Login"}
@@ -36,26 +36,31 @@ export function MusicServiceLogoCard(props) {
             <Box w='100%'>
                 <Center
                     bg={props.bg} border={borderAttribute}
-                    w='100%' h='100%' sx={{aspectRatio: "1.85"}} borderRadius='xl'
-                    boxShadow={cardHovered ? 'xl' : 'base'} transition="box-shadow .1s ease">
+                    w='100%' h='100%'
+                    sx={{aspectRatio: "1", borderRadius: "1.3rem", "@media screen and (min-width: 30em)":{aspectRatio: "1.85", borderRadius: "0.75rem"}}}
+                    boxShadow={cardHovered ? 'xl' : 'base'} transition="box-shadow .1s ease, aspect-ratio .4s ease, border-radius .4s ease"
+                    overflow='hidden'
+                >
                     {
                         props.icon ?
-                            <Icon viewBox={props.icon.viewBox} color={props.icon.color} h='unset' w='100%' maxW={props.icon.maxW ? props.icon.maxW : '33%'} maxH='calc(1.85 * 33%)'>
+                            <Icon viewBox={props.icon.viewBox} color={props.icon.color} h='unset' w='100%' maxW={props.icon.maxW ? props.icon.maxW : '33%'} maxH='calc(1.85 * 33%)' transform={{base: 'scale(1.85)', sm: 'scale(1)'}} transition="transform .4s ease">
                                 <path
                                     fill='currentColor'
                                     d={props.icon.d}
                                 />
                             </Icon>
                             :
-                            <>{props.svg}</>
+                            <Center h='100%' w='100%' transform={{base: 'scale(1.6)', sm: 'scale(1)'}} transition="transform .4s ease">
+                                {props.svg}
+                            </Center>
                     }
                 </Center>
             </Box>
             <Heading
                 as='h5' size='xs'
-                textAlign='center' fontFamily={'body'} fontWeight={'normal'}
+                textAlign='center' fontFamily='body' fontWeight='normal'
                 opacity={cardHovered ? 1 : 0} transition="opacity .1s ease"
-                sx={{display: '-webkit-box', WebkitLineClamp: '1', WebkitBoxOrient: 'vertical', overflow: 'hidden'}}
+                noOfLines={1}
             >
                 {props.name}
             </Heading>

@@ -12,7 +12,7 @@ export function AmazonMusicLogoCard(props) {
                 maxW: "40%"
             }}
             nameMargin={props.nameMargin}
-            w={props.w}
+            maxW={props.maxW}
             link={props.link}
         />
     )
