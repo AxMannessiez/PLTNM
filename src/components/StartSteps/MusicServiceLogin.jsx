@@ -28,10 +28,10 @@ export function MusicServiceLogin() {
                 <Text lineHeight='shorter' mt={2}>You'll be redirected there to log in and grant us permission to see your playlists!</Text>
             </Box>
             <Center pt={{base: 6, sm: 10}}>
-                <SimpleGrid columns={3} spacingX={{base: 4, sm: 7}} spacingY={{base: 2, sm: 4}}  maxW={{base: '40vh', sm: '550px'}}>
+                <SimpleGrid columns={3} spacingX={{base: 4, sm: 7}} spacingY={{base: 2, sm: 4}}  maxW={{base: '40vh', sm: '35em'}}>
                     <SpotifyLogoCard {...cardStyleProps}/>
                     <AppleMusicLogoCard {...cardStyleProps} link="https://music.apple.com/subscribe"/>
-                    <DeezerLogoCard {...cardStyleProps}/>
+                    <DeezerLogoCard {...cardStyleProps} link="https://www.deezer.com/login"/>
                     <YoutubeMusicLogoCard {...cardStyleProps}/>
                     <TidalLogoCard {...cardStyleProps}/>
                     <PandoraLogoCard {...cardStyleProps}/>
