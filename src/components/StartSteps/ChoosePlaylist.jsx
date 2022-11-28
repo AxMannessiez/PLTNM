@@ -1,9 +1,12 @@
 import {SpotifyAccountApi} from "../../spotifyApi/SpotifyAccountApi";
+import {SpotifyApi} from "../../spotifyApi/SpotifyApi";
 
 import {Box, Heading, Text, SimpleGrid, Input, Spacer, Button} from "@chakra-ui/react";
 import {Card, CardHeader, CardBody, CardFooter} from "@chakra-ui/card";
 import {Select} from "chakra-react-select";
-import {Navigate, useLocation} from "react-router-dom";
+import {Navigate, useLocation, useNavigate} from "react-router-dom";
+import { useQuery } from "react-query";
+
 
 export function ChoosePlaylist() {
     // TODO Check parameters / have token stored
@@ -18,9 +21,22 @@ export function ChoosePlaylist() {
     const spotifyToken = SpotifyAccountApi.getToken();
 
     // Last year playlist
-    const lastYearPlaylist = {
-        name: "Your Top Songs 2021"
+    const spotifyApi = new SpotifyApi(spotifyToken);
+    const spotify2021PlaylistId = "37i9dQZF1EUMDoJuT8yJsl";
+    const { data:lastYearPlaylistData, status:lastYearPlaylistStatus } = useQuery("lastYearPlaylist", x => spotifyApi.getPlaylistTracks(spotify2021PlaylistId));
+
+    // Store the playlist data and move to next step
+    // TODO Clean loading + error
+    const navigate = useNavigate();
+    function saveLastYearPlaylistAndStep3() {
+        if (lastYearPlaylistStatus === 'success') {
+            localStorage.setItem('currentPlaylistData', lastYearPlaylistData);
+            navigate("/start/step-3");
+        } else {
+            alert("Wait loading");
+        }
     }
+
 
     // TODO Fetch possible years / playlists for second card
     const yearOptions = [
@@ -51,7 +67,7 @@ export function ChoosePlaylist() {
                     </CardHeader>
                     <Spacer/>
                     <CardFooter>
-                        <Button bg='pltnm.primary' minW='50%' m='auto'>Go!</Button>
+                        <Button bg='pltnm.primary' minW='50%' m='auto' onClick={saveLastYearPlaylistAndStep3}>Go!</Button>
                     </CardFooter>
                 </Card>
                 <Card align='stretch' textAlign='center' boxShadow='md' borderRadius='lg' p={5} border='1px' borderColor='gray.200'>
@@ -87,7 +103,6 @@ export function ChoosePlaylist() {
                     </CardFooter>
                 </Card>
             </SimpleGrid>
-            <Text sx={{wordBreak: 'break-word'}}>Token : {spotifyToken.accessToken}</Text>
         </>
     )
 }

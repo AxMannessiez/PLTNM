@@ -5,6 +5,7 @@ import qs from 'qs';
 import { v4 as uuid } from 'uuid';
 import axios from 'axios';
 
+//TODO Refresh Token
 
 class SpotifyAccountApi {
 
@@ -50,7 +51,6 @@ class SpotifyAccountApi {
         }
 
         // POST request to get token from Spotify's API
-        // TODO Check use query quand même
         try {
             const response = await axios.post(
                 this.#baseUrl + this.#endpoints.token,
