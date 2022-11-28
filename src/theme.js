@@ -9,7 +9,11 @@ const colors = {
         primary: '#F32346',
         secondary: '#0D1CEB',
         background: '#EBE1D4',
-        text: '#171717'
+        text: '#171717',
+        primaryValues: {
+            300: '#F32346',
+            500: '#F32346'
+        },
     },
     spotify: {
         green: '#1DB954',
