@@ -43,7 +43,7 @@ export function MusicServiceLogoCard(props) {
                 >
                     {
                         props.icon ?
-                            <Icon viewBox={props.icon.viewBox} color={props.icon.color} h='unset' w='100%' maxW={props.icon.maxW ? props.icon.maxW : '33%'} maxH='calc(1.85 * 33%)' transform={{base: 'scale(1.85)', sm: 'scale(1)'}} transition="transform .4s ease">
+                            <Icon viewBox={props.icon.viewBox} color={props.icon.color} h='unset' w='100%' maxW={props.icon.maxW ? props.icon.maxW : '33%'} maxH='calc(1.85 * 33%)' transform={{base: 'scale(1.85)', sm: 'scale(1)'}} transition="transform .4s ease" {...props.icon.otherProps}>
                                 <path
                                     fill='currentColor'
                                     d={props.icon.d}

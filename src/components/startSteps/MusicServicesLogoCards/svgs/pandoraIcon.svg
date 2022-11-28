@@ -1,4 +1,4 @@
-<svg viewBox="0 0 43 50" focusable='false' width='100%' style="max-width:33%; max-height:calc(1.85 * 33%)">
+<svg viewBox="0 0 43 50" focusable='false' width='100%' style="max-width:33%; max-height:calc(1.85 * 33%); margin-left: 3%;">
     <g transform="matrix(0.0827554,0,0,0.0827554,-22.8061,-16.3777)">
         <path d="M547.005,197.905L275.584,197.905L275.584,802.095L437.632,802.095C452.722,802.095 464.953,789.863 464.953,774.773L464.953,658.713L505.526,658.713C703.909,658.713 785.07,546.905 785.07,416.137C785.07,254.728 662.431,197.905 547.005,197.905Z" style="fill:url(#_Linear1);"/>
         <clipPath id="_clip2">
