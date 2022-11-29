@@ -1,8 +1,12 @@
-import {Flex, VStack, Box} from "@chakra-ui/react";
-import {useSteps} from "chakra-ui-steps";
 import {ProgressSteps} from "../components/ProgressSteps";
 import {MusicServiceLogin, ChoosePlaylist, CheckSongs, EndStep} from "../components/StartSteps";
+
+import {Flex, VStack, Box} from "@chakra-ui/react";
+import {useSteps} from "chakra-ui-steps";
 import {useParams, Navigate} from "react-router-dom";
+
+
+// TODO Page Name
 
 const steps = {
     labels: ["Login", "Selection", "Check"],
