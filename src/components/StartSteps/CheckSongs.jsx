@@ -36,7 +36,7 @@ export function CheckSongs() {
                 <Heading as='h2' fontSize='2xl' fontWeight='bold'>Perfect!</Heading>
                 <Heading as='h3' fontSize='xl' fontFamily='body' fontWeight='normal'>You should recognize some of these 🤓</Heading>
             </Box>
-            <Wrap justify='center' pt={5} spacing={5} w='xl'>
+            <Wrap justify='center' pt={5} px={2} spacing={5} maxW='xl'>
                 {
                     samplePlaylistAlbums ?
                     samplePlaylistAlbums.map((album, i) =>

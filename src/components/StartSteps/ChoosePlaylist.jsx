@@ -51,16 +51,14 @@ export function ChoosePlaylist() {
         { value: "id3", label: "My Playlist 2"}
     ];
 
-    // TODO Mobile version
-
     return (
         <>
             <Box as='header' textAlign='center'>
                 <Heading as='h2' fontSize='2xl' fontWeight='bold'>Great!</Heading>
                 <Heading as='h3' fontSize='xl' fontFamily='body' fontWeight='normal'>Now for the playlist:</Heading>
             </Box>
-            <SimpleGrid pt={{base: 4, sm: 6}} spacing={6} columns={3} maxW={'4xl'}>
-                <Card align='stretch' textAlign='center' boxShadow='md' borderRadius='lg' p={5} border='1px' borderColor='gray.200'>
+            <SimpleGrid pt={{base: 4, sm: 6}} spacing={6} columns={{base:1, md:3}} maxW={'4xl'} gridAutoRows='1fr'>
+                <Card align='stretch' textAlign='center' boxShadow='md' borderRadius={{base:'xl', md:'lg'}} p={5} border='1px' borderColor='gray.200'>
                     <CardHeader mb={5}>
                         <Heading as='h4' size='md'>Pick your last year top songs</Heading>
                     </CardHeader>
