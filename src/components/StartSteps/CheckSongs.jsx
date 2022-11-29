@@ -11,7 +11,7 @@ import {
     Image,
     Button,
     SlideFade,
-    Fade
+    HStack
 } from "@chakra-ui/react";
 import _ from 'lodash';
 import {Link} from "react-router-dom";
@@ -41,8 +41,8 @@ export function CheckSongs() {
                     samplePlaylistAlbums ?
                     samplePlaylistAlbums.map((album, i) =>
                         <WrapItem key={album.id}>
-                            <SlideFade in={true} duration={0.5} delay={i*0.15}>
-                                <AspectRatio ratio={1} w='10em' title={album.name} borderRadius='base' border='1px #E0E0E0 solid' boxShadow='md' overflow='hidden'>
+                            <SlideFade in={true} duration={0.5} delay={0.5 + i*0.15}>
+                                <AspectRatio ratio={1} w='10em' title={album.name + ' - ' + album.artists[0].name} borderRadius='base' border='1px #E0E0E0 solid' boxShadow='md' overflow='hidden'>
                                     {
                                         (album.images && album.images[1] && album.images[1].url) ?
                                             <Image src={album.images[1].url} alt={album.name}/>
@@ -60,11 +60,18 @@ export function CheckSongs() {
                 }
             </Wrap>
             <Box pt={5}>
-                <SlideFade in={true} delay={0.8} duration={1.5} offsetY={0}>
-                    <Link to={'/start/step-4'}>
-                        <Button bg='pltnm.primary'>I do!</Button>
-                    </Link>
-                </SlideFade>
+                <HStack>
+                    <SlideFade in={true} delay={0.8} duration={1.5} offsetY={0}>
+                        <Link to={'/start/step-2'}>
+                            <Button variant='outline' borderColor='pltnm.primary' color='pltnm.primary' fontWeight='normal'>I don't, take me back!</Button>
+                        </Link>
+                    </SlideFade>
+                    <SlideFade in={true} delay={1} duration={1.5} offsetY={0}>
+                        <Link to={'/start/step-4'}>
+                            <Button bg='pltnm.primary'>I do!</Button>
+                        </Link>
+                    </SlideFade>
+                </HStack>
             </Box>
         </>
     )

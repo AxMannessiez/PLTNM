@@ -15,7 +15,7 @@ class SpotifyApi {
 
     async getPlaylistTracks(id) {
         const res = await axios.get(
-            `${this.baseUrl}${this.endpoints.playlists}/${id}/tracks?fields=items(track(album(id,images,name),artists(id,name),external_ids,id,name,preview_url))`,
+            `${this.baseUrl}${this.endpoints.playlists}/${id}/tracks?fields=items(track(album(id,images,name,artists),artists(id,name),external_ids,id,name,preview_url))`,
             {
                 headers: {
                     'Authorization': 'Bearer ' + this.authToken,
