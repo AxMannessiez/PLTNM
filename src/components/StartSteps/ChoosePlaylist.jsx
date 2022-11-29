@@ -30,13 +30,12 @@ export function ChoosePlaylist() {
     const navigate = useNavigate();
     function saveLastYearPlaylistAndStep3() {
         if (lastYearPlaylistStatus === 'success') {
-            localStorage.setItem('currentPlaylistData', lastYearPlaylistData);
+            spotifyApi.storeCurrentPlaylistData(lastYearPlaylistData.items);
             navigate("/start/step-3");
         } else {
             alert("Wait loading");
         }
     }
-
 
     // TODO Fetch possible years / playlists for second card
     const yearOptions = [

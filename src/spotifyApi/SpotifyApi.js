@@ -7,10 +7,10 @@ import axios from 'axios';
 
 class SpotifyApi {
 
-    constructor(authToken) {
+    constructor(authToken= null) {
         this.baseUrl = "https://api.spotify.com/v1";
         this.endpoints = endpoints.api;
-        this.authToken = authToken.accessToken;
+        this.authToken = authToken ? authToken.accessToken : null;
     }
 
     async getPlaylistTracks(id) {
@@ -25,6 +25,14 @@ class SpotifyApi {
         );
         return res.data;
     };
+
+    storeCurrentPlaylistData(currentPlaylistData){
+        localStorage.setItem('currentPlaylistData', JSON.stringify(currentPlaylistData));
+    }
+
+    getCurrentPlaylistData(){
+        return JSON.parse(localStorage.getItem('currentPlaylistData'));
+    }
 }
 
 export {SpotifyApi};
