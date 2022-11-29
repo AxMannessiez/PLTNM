@@ -23,17 +23,14 @@ export function ChoosePlaylist() {
     // Last year playlist
     const spotifyApi = new SpotifyApi(spotifyToken);
     const spotify2021PlaylistId = "37i9dQZF1EUMDoJuT8yJsl";
-    const { data:lastYearPlaylistData, status:lastYearPlaylistStatus } = useQuery("lastYearPlaylist", x => spotifyApi.getPlaylistTracks(spotify2021PlaylistId));
+    const { data:lastYearPlaylistData, status:lastYearPlaylistStatus, isLoading:lstYrPlstLoading} = useQuery("lastYearPlaylist", x => spotifyApi.getPlaylistTracks(spotify2021PlaylistId));
 
     // Store the playlist data and move to next step
-    // TODO Clean loading + error
     const navigate = useNavigate();
     function saveLastYearPlaylistAndStep3() {
         if (lastYearPlaylistStatus === 'success') {
             spotifyApi.storeCurrentPlaylistData(lastYearPlaylistData.items);
             navigate("/start/step-3");
-        } else {
-            alert("Wait loading");
         }
     }
 
@@ -64,7 +61,7 @@ export function ChoosePlaylist() {
                     </CardHeader>
                     <Spacer/>
                     <CardFooter>
-                        <Button bg='pltnm.primary' minW='50%' m='auto' onClick={saveLastYearPlaylistAndStep3}>Go!</Button>
+                        <Button bg='pltnm.primary' minW='50%' m='auto' disabled={lstYrPlstLoading} onClick={saveLastYearPlaylistAndStep3}>{lstYrPlstLoading ? "Loading" : "Go!"}</Button>
                     </CardFooter>
                 </Card>
                 <Card align='stretch' textAlign='center' boxShadow='md' borderRadius='lg' p={5} border='1px' borderColor='gray.200'>
