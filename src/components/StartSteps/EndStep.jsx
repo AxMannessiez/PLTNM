@@ -1,7 +1,6 @@
 import {SpotifyApi} from "../../spotifyApi/SpotifyApi";
 
 import {Box, Button, Heading} from "@chakra-ui/react";
-import {Link} from "react-router-dom";
 
 
 export function EndStep() {

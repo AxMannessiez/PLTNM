@@ -1,7 +1,7 @@
 import {endpoints} from "./endpoints";
 
 import axios from 'axios';
-
+import _ from 'lodash';
 
 // TODO Check useQuery
 
@@ -46,13 +46,22 @@ class SpotifyApi {
     }
 
     static #getAndCheckTrackInfos(track){
+        // Check if properties exist else set empty string
         let trackId = track.id ? track.id : '';
         let trackName = track.name ? track.name : '';
-        let artists = track.artists[0].name; //TODO Change
         let albumName = track.album && track.album.name ? track.album.name : '';
         let albumCoverSm = track.album && track.album.images && track.album.images[1] && track.album.images[1].url ? track.album.images[1].url : '';
         let albumCoverMd = track.album && track.album.images && track.album.images[0] && track.album.images[0].url ? track.album.images[0].url : '';
         let trackISRC = track.external_ids && track.external_ids.isrc ? track.external_ids.isrc : '';
+
+        // Regroup artists array into a comma/& separated string
+        let artists = _.map(track.artists, 'name');         // Take only the artists names
+        if (artists.length > 1) {
+            const lastArtist = artists.pop();
+            artists = artists.join(', ') + ' & ' + lastArtist;
+        }
+
+        // Return all variables
         return {trackId, trackName, artists, albumName, albumCoverSm, albumCoverMd, trackISRC};
     }
 }
