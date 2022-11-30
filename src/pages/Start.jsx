@@ -33,9 +33,7 @@ const Start = (props) => {
             </Box>
             <VStack pt={{base: 6, sm: 10}} px={10}>
                 {activeStep >= steps.labels.length ? (
-                    <Flex px={4} py={4} width="100%" flexDirection="column">
-                        <EndStep/>
-                    </Flex>
+                    <EndStep/>
                 ) : (
                     <>
                         {steps.components[activeStep]}

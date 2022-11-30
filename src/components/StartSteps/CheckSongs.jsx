@@ -17,7 +17,8 @@ import _ from 'lodash';
 import {Link} from "react-router-dom";
 
 
-//TODO Add animation
+// TODO Add animation
+// TODO Check parameters / have token stored
 
 export function CheckSongs() {
     const spotifyApi = new SpotifyApi();

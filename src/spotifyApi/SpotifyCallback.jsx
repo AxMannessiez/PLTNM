@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 
 
 // TODO Test error behavior
+// TODO Return to Step 2 with a variable giving the music service
 
 function SpotifyCallback() {
     const {error, code, state} = useUrlParams(["error", "code", "state"]);

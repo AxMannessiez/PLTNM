@@ -33,6 +33,28 @@ class SpotifyApi {
     getCurrentPlaylistData(){
         return JSON.parse(localStorage.getItem('currentPlaylistData'));
     }
+
+    getCurrentPlaylistDataCsvExport(){
+        let csvContent = "data:text/csv;charset=utf-8,";
+        csvContent += "Index;Id;Name;Artists;Album;AlbumCoverSm;AlbumCoverMd;ISRC\n"
+        let currentPlaylistData = this.getCurrentPlaylistData();
+        for (let i = 0; i < currentPlaylistData.length; i++) {
+            let {trackId, trackName, artists, albumName, albumCoverSm, albumCoverMd, trackISRC} = SpotifyApi.#getAndCheckTrackInfos(currentPlaylistData[i].track);
+             csvContent += `${i};${trackId};${trackName};${artists};${albumName};${albumCoverSm};${albumCoverMd};${trackISRC}\n`;
+        }
+        return csvContent;
+    }
+
+    static #getAndCheckTrackInfos(track){
+        let trackId = track.id ? track.id : '';
+        let trackName = track.name ? track.name : '';
+        let artists = track.artists[0].name; //TODO Change
+        let albumName = track.album && track.album.name ? track.album.name : '';
+        let albumCoverSm = track.album && track.album.images && track.album.images[1] && track.album.images[1].url ? track.album.images[1].url : '';
+        let albumCoverMd = track.album && track.album.images && track.album.images[0] && track.album.images[0].url ? track.album.images[0].url : '';
+        let trackISRC = track.external_ids && track.external_ids.isrc ? track.external_ids.isrc : '';
+        return {trackId, trackName, artists, albumName, albumCoverSm, albumCoverMd, trackISRC};
+    }
 }
 
 export {SpotifyApi};
