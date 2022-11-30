@@ -32,11 +32,23 @@ const CustomSteps = {
     baseStyle: (props) => {
         return {
             ...StepsStyleConfig.baseStyle(props),
+            step: {
+                ...StepsStyleConfig.baseStyle(props).step,
+                transition: 'opacity .3s ease',
+                '&:hover': {
+                    cursor: 'default'
+                },
+                '&.clickable:hover': {
+                    cursor: 'pointer',
+                    opacity: 0.8
+                }
+            },
             stepIconContainer: {
                 ...StepsStyleConfig.baseStyle(props).stepIconContainer,
                 background: 'white',
                 borderColor: colors.pltnm.primary,
                 opacity: 0.8,
+                transition: 'opacity .2s ease',
                 '&[aria-current=step]': {
                     background: 'white',
                     borderColor: colors.pltnm.primary,
@@ -54,6 +66,11 @@ const CustomSteps = {
                 },
                 '& span': {
                     fontFamily: fonts.numbers
+                },
+                '&[data-clickable]': {
+                    '&:hover': {
+                        borderColor: colors.pltnm.primary,
+                    }
                 }
             },
             connector: {

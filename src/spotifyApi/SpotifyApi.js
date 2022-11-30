@@ -3,7 +3,6 @@ import {endpoints} from "./endpoints";
 import axios from 'axios';
 import _ from 'lodash';
 
-// TODO Check useQuery
 
 class SpotifyApi {
 

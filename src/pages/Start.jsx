@@ -1,7 +1,7 @@
 import {ProgressSteps} from "../components/ProgressSteps";
 import {MusicServiceLogin, ChoosePlaylist, CheckSongs, EndStep} from "../components/StartSteps";
 
-import {Flex, VStack, Box} from "@chakra-ui/react";
+import {VStack, Box} from "@chakra-ui/react";
 import {useSteps} from "chakra-ui-steps";
 import {useParams, Navigate} from "react-router-dom";
 
@@ -14,7 +14,7 @@ const steps = {
 };
 
 const Start = (props) => {
-    let { nextStep, prevStep, reset, activeStep } = useSteps({
+    let { activeStep, setStep } = useSteps({
         initialStep: 0,
     })
 

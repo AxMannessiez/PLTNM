@@ -1,12 +1,21 @@
 import {Step, Steps} from "chakra-ui-steps"
+import {useNavigate} from "react-router-dom";
 
-//TODO Add clickable Redo
 
 export function ProgressSteps(props) {
+    const { activeStep } = props;
+    const navigate = useNavigate();
+
+    function goBackStep(step) {
+        if (step < activeStep) {
+            navigate('/start/step-' + String(step+1));
+        }
+    }
+
     return (
-        <Steps labelOrientation="vertical" activeStep={props.activeStep} responsive={false}>
-            {props.steps.map((label) => (
-                <Step label={label} key={label}/>
+        <Steps labelOrientation="vertical" activeStep={props.activeStep} onClickStep={(step) => goBackStep(step)} responsive={false}>
+            {props.steps.map((label, index) => (
+                <Step label={label} key={index} className={index < activeStep ? 'clickable' : ''}/>
             ))}
         </Steps>
     )
