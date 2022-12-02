@@ -55,7 +55,7 @@ export function ChoosePlaylist() {
                 <Heading as='h3' fontSize='xl' fontFamily='body' fontWeight='normal'>Now for the playlist:</Heading>
             </Box>
             <SimpleGrid pt={{base: 4, sm: 6}} spacing={6} columns={{base:1, md:3}} maxW={'4xl'} gridAutoRows='1fr'>
-                <Card align='stretch' textAlign='center' boxShadow='md' borderRadius={{base:'xl', md:'lg'}} p={5} border='1px' borderColor='gray.200'>
+                <Card align='stretch' textAlign='center' borderRadius={{base:'xl', md:'lg'}} p={5} border='1px' borderColor='gray.200'>
                     <CardHeader mb={5}>
                         <Heading as='h4' size='md'>Pick your last year top songs</Heading>
                     </CardHeader>
@@ -64,7 +64,7 @@ export function ChoosePlaylist() {
                         <Button bg='pltnm.primary' minW='50%' m='auto' disabled={lstYrPlstLoading} onClick={saveLastYearPlaylistAndStep3}>{lstYrPlstLoading ? "Loading" : "Go!"}</Button>
                     </CardFooter>
                 </Card>
-                <Card align='stretch' textAlign='center' boxShadow='md' borderRadius='lg' p={5} border='1px' borderColor='gray.200'>
+                <Card align='stretch' textAlign='center' borderRadius='lg' p={5} border='1px' borderColor='gray.200'>
                     <CardHeader mb={5}>
                         <Heading as='h4' size='md'>Pick from a previous year top songs</Heading>
                     </CardHeader>
@@ -81,7 +81,7 @@ export function ChoosePlaylist() {
                         <Button bg='pltnm.primary' minW='50%' m='auto'>Go!</Button>
                     </CardFooter>
                 </Card>
-                <Card align='stretch' textAlign='center' boxShadow='md' borderRadius='lg' p={5} border='1px' borderColor='gray.200'>
+                <Card align='stretch' textAlign='center' borderRadius='lg' p={5} border='1px' borderColor='gray.200'>
                     <CardHeader mb={5}>
                         <Heading as='h4' size='md'>Pick from a personal playlist</Heading>
                     </CardHeader>
