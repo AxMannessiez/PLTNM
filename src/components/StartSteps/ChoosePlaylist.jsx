@@ -20,22 +20,25 @@ export function ChoosePlaylist() {
     */
     const spotifyToken = SpotifyAccountApi.getToken();
 
-    // Last year playlist
+    // Most recent year playlist
     const spotifyApi = new SpotifyApi(spotifyToken);
-    const spotify2021PlaylistId = "37i9dQZF1EUMDoJuT8yJsl";
-    const { data:lastYearPlaylistData, status:lastYearPlaylistStatus, isLoading:lstYrPlstLoading} = useQuery("lastYearPlaylist", x => spotifyApi.getPlaylistTracks(spotify2021PlaylistId));
+    //const spotify2021PlaylistId = "37i9dQZF1EUMDoJuT8yJsl";
+    const spotify2022PlaylistId = "37i9dQZF1F0sijgNaJdgit";
+    const spotifyMostRecentYear = "2022";
+    const { data:mostRecentYearPlaylistData, status:mostRecentYearPlaylistStatus, isLoading:lstYrPlstLoading} = useQuery("lastYearPlaylist", x => spotifyApi.getPlaylistTracks(spotify2022PlaylistId));
 
     // Store the playlist data and move to next step
     const navigate = useNavigate();
-    function saveLastYearPlaylistAndStep3() {
-        if (lastYearPlaylistStatus === 'success') {
-            spotifyApi.storeCurrentPlaylistData(lastYearPlaylistData.items);
+    function saveMostRecentYearPlaylistAndStep3() {
+        if (mostRecentYearPlaylistStatus === 'success') {
+            spotifyApi.storeCurrentPlaylistData(mostRecentYearPlaylistData.items);
             navigate("/start/step-3");
         }
     }
 
     // TODO Fetch possible years / playlists for second card
     const yearOptions = [
+        { value: "2021", label: "2021"},
         { value: "2020", label: "2020"},
         { value: "2019", label: "2019"},
         { value: "2018", label: "2018"}
@@ -57,11 +60,11 @@ export function ChoosePlaylist() {
             <SimpleGrid pt={{base: 4, sm: 6}} spacing={6} columns={{base:1, md:3}} maxW={'4xl'} gridAutoRows='1fr'>
                 <Card align='stretch' textAlign='center' borderRadius={{base:'xl', md:'lg'}} p={5} border='1px' borderColor='gray.200'>
                     <CardHeader mb={5}>
-                        <Heading as='h4' size='md'>Pick your last year top songs</Heading>
+                        <Heading as='h4' size='md'>Pick your {spotifyMostRecentYear} top songs</Heading>
                     </CardHeader>
                     <Spacer/>
                     <CardFooter>
-                        <Button bg='pltnm.primary' minW='50%' m='auto' disabled={lstYrPlstLoading} onClick={saveLastYearPlaylistAndStep3}>{lstYrPlstLoading ? "Loading" : "Go!"}</Button>
+                        <Button bg='pltnm.primary' minW='50%' m='auto' disabled={lstYrPlstLoading} onClick={saveMostRecentYearPlaylistAndStep3}>{lstYrPlstLoading ? "Loading" : "Go!"}</Button>
                     </CardFooter>
                 </Card>
                 <Card align='stretch' textAlign='center' borderRadius='lg' p={5} border='1px' borderColor='gray.200'>
