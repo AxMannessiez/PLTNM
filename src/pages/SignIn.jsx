@@ -4,6 +4,7 @@ import {customTheme, containerStyle, buttonStyle} from "../auth/customAuthUIThem
 import {Auth} from '@supabase/auth-ui-react'
 import {VStack, Heading, Text, ScaleFade, Button} from "@chakra-ui/react";
 import {useState, useEffect} from "react";
+import env from "react-dotenv";
 
 // TODO Remove User info example
 // TODO Add logout in header
@@ -43,7 +44,7 @@ export default function SignIn() {
                             providers={['spotify', 'google']}
                             onlyThirdPartyProviders={true}
                             //view = 'sign_in'
-                            redirectTo='http://localhost:3000/signin'
+                            redirectTo={env.REACT_APP_SITE_URL +'/signin'}
                             //localization = {{ lang: 'fr' }}
                             localization={{
                                 //lang: 'fr',
