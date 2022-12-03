@@ -15,7 +15,7 @@ const steps = {
 };
 
 const Start = (props) => {
-    let { activeStep, setStep } = useSteps({
+    let { activeStep } = useSteps({
         initialStep: 0,
     })
 

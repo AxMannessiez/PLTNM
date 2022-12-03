@@ -2,11 +2,11 @@ import {SpotifyAccountApi} from "../../spotifyApi/SpotifyAccountApi";
 import {SpotifyApi} from "../../spotifyApi/SpotifyApi";
 import {PltnmButton} from "../base/PltnmButton";
 
-import {Box, Heading, Text, SimpleGrid, Input, Spacer} from "@chakra-ui/react";
+import {Box, Heading, SimpleGrid, Spacer} from "@chakra-ui/react";
 import {Card, CardHeader, CardBody, CardFooter} from "@chakra-ui/card";
 import {Select} from "chakra-react-select";
-import {Navigate, useLocation, useNavigate} from "react-router-dom";
-import { useQuery } from "react-query";
+import {useNavigate} from "react-router-dom";
+import {useQuery} from "react-query";
 
 
 export function ChoosePlaylist() {

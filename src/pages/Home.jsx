@@ -1,8 +1,7 @@
-import AppHeader from "../components/AppHeader";
 import {PltnmButton} from "../components/base/PltnmButton";
 
 import React from "react";
-import {Container, VStack, Box, Heading, Text, Center} from '@chakra-ui/react';
+import {Container, VStack, Heading, Text, Center} from '@chakra-ui/react';
 import {Link} from "react-router-dom";
 
 

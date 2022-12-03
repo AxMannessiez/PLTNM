@@ -28,7 +28,7 @@ const Container = (props) => {
 
 export default function SignIn() {
     const [mounted, setMounted] = useState(false);
-    useEffect(() => {setMounted(true)});
+    useEffect(() => {setMounted(true)}, []);
 
     return (
         <VStack h='100vh' justify='center' position={'relative'} top={0}>
