@@ -40,7 +40,7 @@ export default function SignIn() {
                         <Auth
                             supabaseClient={supabase}
                             socialLayout='vertical'
-                            providers={['spotify', 'google', 'twitter']}
+                            providers={['spotify', 'google']}
                             onlyThirdPartyProviders={true}
                             //view = 'sign_in'
                             redirectTo='http://localhost:3000/signin'
