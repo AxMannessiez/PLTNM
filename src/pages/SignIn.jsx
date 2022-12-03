@@ -31,7 +31,7 @@ export default function SignIn() {
     useEffect(() => {setMounted(true)}, []);
 
     return (
-        <VStack h='100vh' justify='center' position={'relative'} top={0}>
+        <VStack h='100vh' justify='center'>
             <Heading as='h1' size='lg' fontWeight='700'>Sign In</Heading>
             <Text>We need an account to store your songs!</Text>
             <ScaleFade initialScale={0.95} in={mounted} duration={'1s'}>
