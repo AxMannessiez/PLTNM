@@ -2,7 +2,7 @@ import {Step, Steps} from "chakra-ui-steps"
 import {useNavigate} from "react-router-dom";
 
 
-export function ProgressSteps(props) {
+export default function ProgressSteps(props) {
     const { activeStep } = props;
     const navigate = useNavigate();
 

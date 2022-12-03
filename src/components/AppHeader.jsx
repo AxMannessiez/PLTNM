@@ -1,10 +1,11 @@
 import {
-    Box, Button,
+    Box,
     Flex,
 } from '@chakra-ui/react';
 import PltnmLogo from "./icons/PltnmLogo";
 
-export default function Nav() {
+
+export default function AppHeader() {
     return (
         <>
             <Box bg='pltnm.background' px='1.5em'>

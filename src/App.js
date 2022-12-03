@@ -6,7 +6,6 @@ import AppHeader from "./components/AppHeader";
 function App() {
   return (
     <BrowserRouter>
-        <AppHeader/>
         <RouterOutlet/>
     </BrowserRouter>
   );

@@ -1,4 +1,5 @@
-import {ProgressSteps} from "../components/ProgressSteps";
+import AppHeader from "../components/AppHeader";
+import ProgressSteps from "../components/ProgressSteps";
 import {MusicServiceLogin, ChoosePlaylist, CheckSongs, EndStep} from "../components/StartSteps";
 
 import {VStack, Box} from "@chakra-ui/react";
@@ -27,20 +28,23 @@ const Start = (props) => {
 
 
     return (
-        <VStack as="main" w="100%" pb={20}>
-            <Box pt={{base: 8, sm: 10}} px={10} w="100%" maxW={580}>
-                <ProgressSteps steps={steps.labels} activeStep={activeStep}/>
-            </Box>
-            <VStack pt={{base: 6, sm: 10}} px={10}>
-                {activeStep >= steps.labels.length ? (
-                    <EndStep/>
-                ) : (
-                    <>
-                        {steps.components[activeStep]}
-                    </>
-                )}
+        <>
+            <AppHeader/>
+            <VStack as="main" w="100%" pb={20}>
+                <Box pt={{base: 8, sm: 10}} px={10} w="100%" maxW={580}>
+                    <ProgressSteps steps={steps.labels} activeStep={activeStep}/>
+                </Box>
+                <VStack pt={{base: 6, sm: 10}} px={10}>
+                    {activeStep >= steps.labels.length ? (
+                        <EndStep/>
+                    ) : (
+                        <>
+                            {steps.components[activeStep]}
+                        </>
+                    )}
+                </VStack>
             </VStack>
-        </VStack>
+        </>
     )
 }
 
