@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from "react-router-dom";
-import RouterOutlet from "./Router/RouterOutlet";
-import AppHeader from "./components/AppHeader";
+import RouterOutlet from "./router/RouterOutlet";
 
 function App() {
   return (

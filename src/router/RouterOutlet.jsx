@@ -1,9 +1,9 @@
-import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound"
 import Start from "../pages/Start";
 import SpotifyCallback from "../spotifyApi/SpotifyCallback";
+import SignIn from "../pages/SignIn";
 
 function RouterOutlet() {
     return (
@@ -15,6 +15,9 @@ function RouterOutlet() {
             <Route path="/start/:x" element={<Navigate to={'/start/step-1'} replace/>} />
 
             <Route path="/spotify/callback" element={<SpotifyCallback/>} />
+
+            <Route path="/signin" element={<SignIn/>} />
+
             <Route path="*" element={<NotFound/>} />
         </Routes>
     );
