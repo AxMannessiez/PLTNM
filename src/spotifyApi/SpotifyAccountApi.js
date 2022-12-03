@@ -1,5 +1,6 @@
 import {endpoints} from "./endpoints";
 
+import env from 'react-dotenv'
 import pkceChallenge from 'pkce-challenge';
 import qs from 'qs';
 import { v4 as uuid } from 'uuid';
@@ -11,8 +12,8 @@ class SpotifyAccountApi {
 
     static #baseUrl = "https://accounts.spotify.com";
     static #endpoints = endpoints.account;
-    static #clientId = process.env.REACT_APP_SPOTIFY_CLIENT_ID;
-    static #redirectUri = process.env.REACT_APP_SITE_URL + "/spotify/callback";
+    static #clientId = env.REACT_APP_SPOTIFY_CLIENT_ID;
+    static #redirectUri = env.REACT_APP_SITE_URL + "/spotify/callback";
     static #scope = "playlist-read-private playlist-read-collaborative";
     static #codeChallengeMethod = 'S256';
     static #localStorageKeys = {

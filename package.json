@@ -25,6 +25,7 @@
     "qs": "^6.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-dotenv": "^0.1.3",
     "react-icons": "^3.11.0",
     "react-query": "^3.39.2",
     "react-router-dom": "^6.4.3",
@@ -33,8 +34,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-dotenv && react-scripts start",
+    "build": "react-dotenv && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -51,6 +52,13 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "react-dotenv": {
+    "whitelist": [
+      "REACT_APP_SITE_URL",
+      "REACT_APP_SUPABASE_URL", "REACT_APP_SUPABASE_ANON_KEY",
+      "REACT_APP_SPOTIFY_API_URL", "REACT_APP_SPOTIFY_ACCOUNT_API_URL", "REACT_APP_SPOTIFY_CLIENT_ID"
     ]
   }
 }
