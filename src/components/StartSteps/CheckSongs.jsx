@@ -1,4 +1,5 @@
 import {SpotifyApi} from "../../spotifyApi/SpotifyApi";
+import {PltnmButton} from "../base/PltnmButton";
 
 import {
     Box,
@@ -12,7 +13,6 @@ import {
     SlideFade,
     HStack
 } from "@chakra-ui/react";
-import {PltnmButton} from "../base/PltnmButton";
 import _ from 'lodash';
 import {Link} from "react-router-dom";
 
