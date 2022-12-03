@@ -12,8 +12,8 @@ class SpotifyAccountApi {
 
     static #baseUrl = "https://accounts.spotify.com";
     static #endpoints = endpoints.account;
-    static #clientId = env.REACT_APP_SPOTIFY_CLIENT_ID;
     static #redirectUri = env.REACT_APP_SITE_URL + "/spotify/callback";
+    static #clientId = env.REACT_APP_SPOTIFY_CLIENT_ID;
     static #scope = "playlist-read-private playlist-read-collaborative";
     static #codeChallengeMethod = 'S256';
     static #localStorageKeys = {
