@@ -9,6 +9,7 @@ import {useState, useEffect} from "react";
 // TODO Add logout in header
 // TODO Add state parameter check to set the redirectTo
 // TODO Recode it without the Supabase UI (to get Chakra components)
+// TODO Put Spotify last if user chose other app for playlist
 
 const Container = (props) => {
     const { user} = Auth.useUser();
@@ -39,7 +40,7 @@ export default function SignIn() {
                         <Auth
                             supabaseClient={supabase}
                             socialLayout='vertical'
-                            providers={['apple', 'google', 'spotify']}
+                            providers={['spotify', 'google', 'twitter']}
                             onlyThirdPartyProviders={true}
                             //view = 'sign_in'
                             redirectTo='http://localhost:3000/signin'
