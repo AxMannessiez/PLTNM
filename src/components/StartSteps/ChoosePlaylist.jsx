@@ -1,7 +1,8 @@
 import {SpotifyAccountApi} from "../../spotifyApi/SpotifyAccountApi";
 import {SpotifyApi} from "../../spotifyApi/SpotifyApi";
 
-import {Box, Heading, Text, SimpleGrid, Input, Spacer, Button} from "@chakra-ui/react";
+import {Box, Heading, Text, SimpleGrid, Input, Spacer} from "@chakra-ui/react";
+import {PltnmButton} from "../base/PltnmButton";
 import {Card, CardHeader, CardBody, CardFooter} from "@chakra-ui/card";
 import {Select} from "chakra-react-select";
 import {Navigate, useLocation, useNavigate} from "react-router-dom";
@@ -64,7 +65,7 @@ export function ChoosePlaylist() {
                     </CardHeader>
                     <Spacer/>
                     <CardFooter>
-                        <Button bg='pltnm.primary' minW='50%' m='auto' disabled={lstYrPlstLoading} onClick={saveMostRecentYearPlaylistAndStep3}>{lstYrPlstLoading ? "Loading" : "Go!"}</Button>
+                        <PltnmButton minW='50%' m='auto' disabled={lstYrPlstLoading} onClick={saveMostRecentYearPlaylistAndStep3}>{lstYrPlstLoading ? "Loading" : "Go!"}</PltnmButton>
                     </CardFooter>
                 </Card>
                 <Card align='stretch' textAlign='center' borderRadius='lg' p={5} border='1px' borderColor='gray.200'>
@@ -81,7 +82,7 @@ export function ChoosePlaylist() {
                     </CardBody>
                     <Spacer/>
                     <CardFooter>
-                        <Button bg='pltnm.primary' minW='50%' m='auto'>Go!</Button>
+                        <PltnmButton minW='50%' m='auto'>Go!</PltnmButton>
                     </CardFooter>
                 </Card>
                 <Card align='stretch' textAlign='center' borderRadius='lg' p={5} border='1px' borderColor='gray.200'>
@@ -96,7 +97,7 @@ export function ChoosePlaylist() {
                     </CardBody>
                     <Spacer/>
                     <CardFooter>
-                        <Button bg='pltnm.primary' minW='50%' m='auto'>Go!</Button>
+                        <PltnmButton m='auto'>Go!</PltnmButton>
                     </CardFooter>
                 </Card>
             </SimpleGrid>

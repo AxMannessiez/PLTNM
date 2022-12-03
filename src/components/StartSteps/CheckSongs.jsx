@@ -9,12 +9,13 @@ import {
     Center,
     Text,
     Image,
-    Button,
     SlideFade,
     HStack
 } from "@chakra-ui/react";
+import {PltnmButton} from "../base/PltnmButton";
 import _ from 'lodash';
 import {Link} from "react-router-dom";
+
 
 
 // TODO Add animation
@@ -64,12 +65,12 @@ export function CheckSongs() {
                 <HStack>
                     <SlideFade in={true} delay={0.8} duration={1.5} offsetY={0}>
                         <Link to={'/start/step-2'}>
-                            <Button variant='outline' borderColor='pltnm.primary' color='pltnm.primary' fontWeight='normal'>I don't, take me back!</Button>
+                            <PltnmButton variant='outline'>I don't, take me back!</PltnmButton>
                         </Link>
                     </SlideFade>
                     <SlideFade in={true} delay={1} duration={1.5} offsetY={0}>
                         <Link to={'/start/step-4'}>
-                            <Button bg='pltnm.primary'>I do!</Button>
+                            <PltnmButton>I do!</PltnmButton>
                         </Link>
                     </SlideFade>
                 </HStack>

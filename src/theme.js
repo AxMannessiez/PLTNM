@@ -1,4 +1,4 @@
-import {extendTheme, keyframes, withDefaultColorScheme} from '@chakra-ui/react'
+import {extendTheme, withDefaultColorScheme} from '@chakra-ui/react'
 import '@fontsource/source-sans-pro'
 import '@fontsource/space-grotesk'
 import '@fontsource/lato'

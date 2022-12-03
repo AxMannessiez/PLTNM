@@ -1,5 +1,6 @@
 import AppHeader from "../components/AppHeader";
 import ProgressSteps from "../components/ProgressSteps";
+import '../styles/animation.css';
 import {MusicServiceLogin, ChoosePlaylist, CheckSongs, EndStep} from "../components/StartSteps";
 
 import {VStack, Box} from "@chakra-ui/react";

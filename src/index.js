@@ -1,5 +1,4 @@
 import {ChakraProvider} from '@chakra-ui/react';
-import './styles/animation.css';
 import React, { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from "react-query";
