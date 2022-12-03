@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = `./.env`;
-const vars = `;
+const vars = `
  REACT_APP_SITE_URL=${process.env.REACT_APP_SITE_URL}\n
  REACT_APP_SUPABASE_URL=${process.env.REACT_APP_SUPABASE_URL}\n
  REACT_APP_SUPABASE_ANON_KEY=${process.env.REACT_APP_SUPABASE_ANON_KEY}\n
