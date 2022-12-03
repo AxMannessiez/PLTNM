@@ -1,18 +1,26 @@
-import {
-    Box,
-    Flex,
-} from '@chakra-ui/react';
 import PltnmLogo from "./icons/PltnmLogo";
 
+import {Box, HStack} from '@chakra-ui/react';
+import {useLocation, Link} from "react-router-dom";
+
+
+const excludedPages = [
+    "/signin"
+]
 
 export default function AppHeader() {
     return (
-        <>
-            <Box bg='pltnm.background' px='1.5em'>
-                <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-                    <Box><PltnmLogo h='1.5em' w=''/></Box>
-                </Flex>
-            </Box>
-        </>
+        <>{
+            !excludedPages.includes(useLocation().pathname) ?
+                <HStack as='header' bg='pltnm.background' px='1.5em' h={16} alignItems={'center'}>
+                    <Box>
+                        <Link to='/'>
+                            <PltnmLogo h='1.5em' w=''/>
+                        </Link>
+                    </Box>
+                </HStack>
+                :
+                null
+        }</>
     );
 }

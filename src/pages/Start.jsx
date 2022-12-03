@@ -1,4 +1,3 @@
-import AppHeader from "../components/AppHeader";
 import ProgressSteps from "../components/ProgressSteps";
 import '../styles/animation.css';
 import {MusicServiceLogin, ChoosePlaylist, CheckSongs, EndStep} from "../components/StartSteps";
@@ -29,23 +28,20 @@ const Start = (props) => {
 
 
     return (
-        <>
-            <AppHeader/>
-            <VStack as="main" w="100%" pb={20}>
-                <Box pt={{base: 8, sm: 10}} px={10} w="100%" maxW={580}>
-                    <ProgressSteps steps={steps.labels} activeStep={activeStep}/>
-                </Box>
-                <VStack pt={{base: 6, sm: 10}} px={10}>
-                    {activeStep >= steps.labels.length ? (
-                        <EndStep/>
-                    ) : (
-                        <>
-                            {steps.components[activeStep]}
-                        </>
-                    )}
-                </VStack>
+        <VStack as="main" w="100%" pb={20}>
+            <Box pt={{base: 8, sm: 10}} px={10} w="100%" maxW={580}>
+                <ProgressSteps steps={steps.labels} activeStep={activeStep}/>
+            </Box>
+            <VStack pt={{base: 6, sm: 10}} px={10}>
+                {activeStep >= steps.labels.length ? (
+                    <EndStep/>
+                ) : (
+                    <>
+                        {steps.components[activeStep]}
+                    </>
+                )}
             </VStack>
-        </>
+        </VStack>
     )
 }
 
