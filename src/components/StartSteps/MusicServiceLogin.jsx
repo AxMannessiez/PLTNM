@@ -11,6 +11,8 @@ import {
 
 import {Box, Heading, Text, Center, SimpleGrid} from "@chakra-ui/react";
 
+//TODO Add loading indicators to every page
+//TODO Check .env keys hidden
 
 export function MusicServiceLogin() {
     const cardStyleProps = {
