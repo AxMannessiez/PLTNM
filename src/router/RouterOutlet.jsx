@@ -4,6 +4,7 @@ import NotFound from "../pages/NotFound"
 import Start from "../pages/Start";
 import SpotifyCallback from "../spotifyApi/SpotifyCallback";
 import SignIn from "../pages/SignIn";
+import Profile from "../pages/Profile";
 
 function RouterOutlet() {
     return (
@@ -17,6 +18,7 @@ function RouterOutlet() {
             <Route path="/spotify/callback" element={<SpotifyCallback/>} />
 
             <Route path="/signin" element={<SignIn/>} />
+            <Route path="/profile" element={<Profile/>} />
 
             <Route path="*" element={<NotFound/>} />
         </Routes>

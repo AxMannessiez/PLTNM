@@ -33,7 +33,7 @@ export default function SignIn() {
 
     return (
         <VStack h='100vh' justify='center'>
-            <Heading as='h1' size='lg' fontWeight='700'>Sign In</Heading>
+            <Heading as='h1' fontSize='2xl' fontWeight='700'>Sign In</Heading>
             <Text>We need an account to store your songs!</Text>
             <ScaleFade initialScale={0.95} in={mounted} duration={'1s'}>
                 <Auth.UserContextProvider supabaseClient={supabase}>

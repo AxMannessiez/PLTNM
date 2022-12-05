@@ -61,7 +61,7 @@ export function ChoosePlaylist() {
             <SimpleGrid pt={{base: 4, sm: 6}} spacing={6} columns={{base:1, md:3}} maxW={'4xl'} gridAutoRows='1fr'>
                 <Card align='stretch' textAlign='center' borderRadius={{base:'xl', md:'lg'}} p={5} border='1px' borderColor='gray.200'>
                     <CardHeader mb={5}>
-                        <Heading as='h4' size='md'>Pick your {spotifyMostRecentYear} top songs</Heading>
+                        <Heading as='h4' fontSize='xl'>Pick your {spotifyMostRecentYear} top songs</Heading>
                     </CardHeader>
                     <Spacer/>
                     <CardFooter>
@@ -70,7 +70,7 @@ export function ChoosePlaylist() {
                 </Card>
                 <Card align='stretch' textAlign='center' borderRadius='lg' p={5} border='1px' borderColor='gray.200'>
                     <CardHeader mb={5}>
-                        <Heading as='h4' size='md'>Pick from a previous year top songs</Heading>
+                        <Heading as='h4' fontSize='xl'>Pick from a previous year top songs</Heading>
                     </CardHeader>
                     <CardBody mb={5}>
                         <Box w={'50%'} m={'auto'}>
@@ -87,7 +87,7 @@ export function ChoosePlaylist() {
                 </Card>
                 <Card align='stretch' textAlign='center' borderRadius='lg' p={5} border='1px' borderColor='gray.200'>
                     <CardHeader mb={5}>
-                        <Heading as='h4' size='md'>Pick from a personal playlist</Heading>
+                        <Heading as='h4' fontSize='xl'>Pick from a personal playlist</Heading>
                     </CardHeader>
                     <CardBody mb={5}>
                         <Select
