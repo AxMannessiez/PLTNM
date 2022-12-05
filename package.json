@@ -10,8 +10,6 @@
     "@fontsource/lato": "^4.5.10",
     "@fontsource/source-sans-pro": "^4.5.11",
     "@fontsource/space-grotesk": "^4.5.10",
-    "@supabase/auth-ui-react": "^0.2.6",
-    "@supabase/supabase-js": "^2.1.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
@@ -57,7 +55,6 @@
   "react-dotenv": {
     "whitelist": [
       "REACT_APP_SITE_URL",
-      "REACT_APP_SUPABASE_URL", "REACT_APP_SUPABASE_ANON_KEY",
       "REACT_APP_SPOTIFY_API_URL", "REACT_APP_SPOTIFY_ACCOUNT_API_URL", "REACT_APP_SPOTIFY_CLIENT_ID"
     ]
   }
