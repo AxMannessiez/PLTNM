@@ -1,6 +1,6 @@
 import ProgressSteps from "../components/ProgressSteps";
 import '../styles/animation.css';
-import {MusicServiceLogin, ChoosePlaylist, CheckSongs, EndStep} from "../components/StartSteps";
+import {MusicServiceLogin, ChoosePlaylist, CheckSongs, Share} from "../components/StartSteps";
 
 import {VStack, Box} from "@chakra-ui/react";
 import {useSteps} from "chakra-ui-steps";
@@ -10,8 +10,8 @@ import {useParams, Navigate} from "react-router-dom";
 // TODO Page Name
 
 const steps = {
-    labels: ["Login", "Selection", "Check"],
-    components: [<MusicServiceLogin/>, <ChoosePlaylist/>, <CheckSongs/>]
+    labels: ["Login", "Selection", "Check", "Share"],
+    components: [<MusicServiceLogin/>, <ChoosePlaylist/>, <CheckSongs/>, <Share/>]
 };
 
 const Start = (props) => {
@@ -34,7 +34,7 @@ const Start = (props) => {
             </Box>
             <VStack pt={{base: 6, sm: 10}} px={10}>
                 {activeStep >= steps.labels.length ? (
-                    <EndStep/>
+                    ''
                 ) : (
                     <>
                         {steps.components[activeStep]}

@@ -3,7 +3,7 @@ import {AskName, AuthChoice} from "../components/SignIn";
 import {Auth} from '@supabase/auth-ui-react'
 import {VStack, Heading} from "@chakra-ui/react";
 
-
+// TODO Check if already signed in, the if we have his name (storage + database)
 // TODO Change error color to pltnm
 // TODO Recode it without the Supabase UI (to get Chakra components)
 // TODO Put Spotify last if user chose other app for playlist

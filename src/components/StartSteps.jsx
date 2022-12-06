@@ -1,11 +1,11 @@
 import {MusicServiceLogin} from "./StartSteps/MusicServiceLogin";
 import {ChoosePlaylist} from "./StartSteps/ChoosePlaylist";
 import {CheckSongs} from "./StartSteps/CheckSongs";
-import {EndStep} from "./StartSteps/EndStep";
+import {Share} from "./StartSteps/Share";
 
 export {
     MusicServiceLogin,
     ChoosePlaylist,
     CheckSongs,
-    EndStep
+    Share
 };
