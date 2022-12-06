@@ -13,7 +13,7 @@ import env from "react-dotenv";
 // TODO Put Spotify last if user chose other app for playlist
 
 const Container = (props) => {
-    const { user} = Auth.useUser();
+    const {user} = Auth.useUser();
     if (user)
         return (
             <>
