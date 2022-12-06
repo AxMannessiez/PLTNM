@@ -64,7 +64,7 @@ export function ChoosePlaylist() {
                         <Heading as='h4' fontSize='xl'>Pick your {spotifyMostRecentYear} top songs</Heading>
                     </CardHeader>
                     <Spacer/>
-                    <CardFooter>
+                    <CardFooter pt={5}>
                         <PltnmButton minW='50%' m='auto' disabled={lstYrPlstLoading} onClick={saveMostRecentYearPlaylistAndStep3}>{lstYrPlstLoading ? "Loading" : "Go!"}</PltnmButton>
                     </CardFooter>
                 </Card>
@@ -81,7 +81,7 @@ export function ChoosePlaylist() {
                         </Box>
                     </CardBody>
                     <Spacer/>
-                    <CardFooter>
+                    <CardFooter pt={5}>
                         <PltnmButton minW='50%' m='auto'>Go!</PltnmButton>
                     </CardFooter>
                 </Card>
@@ -96,8 +96,8 @@ export function ChoosePlaylist() {
                         />
                     </CardBody>
                     <Spacer/>
-                    <CardFooter>
-                        <PltnmButton m='auto'>Go!</PltnmButton>
+                    <CardFooter pt={5}>
+                        <PltnmButton minW='50%' m='auto'>Go!</PltnmButton>
                     </CardFooter>
                 </Card>
             </SimpleGrid>
