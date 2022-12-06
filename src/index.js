@@ -1,7 +1,10 @@
-import {ChakraProvider} from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
+
 import { QueryClient, QueryClientProvider } from "react-query";
+import {ChakraProvider} from '@chakra-ui/react';
+import {Auth} from '@supabase/auth-ui-react'
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
@@ -18,6 +21,7 @@ import '@fontsource/source-sans-pro/400.css'
 import '@fontsource/source-sans-pro/600.css'
 import '@fontsource/source-sans-pro/700.css'
 import '@fontsource/source-sans-pro/900.css'
+import {supabase} from "./auth/supabaseClient";
 
 const queryClient = new QueryClient();
 const container = document.getElementById('root');
@@ -27,7 +31,9 @@ root.render(
   <StrictMode>
       <QueryClientProvider client={queryClient}>
           <ChakraProvider resetCSS={true} theme={theme}>
-            <App />
+              <Auth.UserContextProvider supabaseClient={supabase}>
+                  <App />
+              </Auth.UserContextProvider>
           </ChakraProvider>
       </QueryClientProvider>
   </StrictMode>

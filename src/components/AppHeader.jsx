@@ -33,10 +33,16 @@ export default function AppHeader() {
                             <Button block={"true"} bg='transparent' color='pltnm.primary' onClick={() => supabase.auth.signOut()}>
                                 <Text fontSize='sm' fontWeight='normal'
                                       textDecoration={'underline 0.075em ' + theme.colors.pltnm.primary + '00'} textUnderlineOffset='0.2em'
-                                      transition='text-decoration-color ease .2s' _hover={{textDecorationColor: theme.colors.pltnm.primary + 'ff'}}>Sign Out</Text>
+                                      transition='text-decoration-color ease .2s' _hover={{textDecorationColor: theme.colors.pltnm.primary + 'ff'}}
+                                >Sign Out</Text>
                             </Button>
                             :
-                            null
+                            <Button block={"true"} bg='transparent' color='pltnm.primary' as={Link} to='/signin'>
+                                <Text fontSize='sm' fontWeight='normal'
+                                      textDecoration={'underline 0.075em ' + theme.colors.pltnm.primary + '00'} textUnderlineOffset='0.2em'
+                                      transition='text-decoration-color ease .2s' _hover={{textDecorationColor: theme.colors.pltnm.primary + 'ff'}}
+                                >Sign In</Text>
+                            </Button>
                     }</>
 
                 </HStack>

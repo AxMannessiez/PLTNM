@@ -36,36 +36,34 @@ export default function SignIn() {
             <Heading as='h1' fontSize='2xl' fontWeight='700'>Sign In</Heading>
             <Text>We need an account to store your songs!</Text>
             <ScaleFade initialScale={0.95} in={mounted} duration={'1s'}>
-                <Auth.UserContextProvider supabaseClient={supabase}>
-                    <Container supabaseClient={supabase}>
-                        <Auth
-                            supabaseClient={supabase}
-                            socialLayout='vertical'
-                            providers={['spotify', 'google']}
-                            onlyThirdPartyProviders={true}
-                            //view = 'sign_in'
-                            redirectTo={env.REACT_APP_SITE_URL +'/signin'}
-                            //localization = {{ lang: 'fr' }}
-                            localization={{
-                                //lang: 'fr',
-                                variables: {
-                                    sign_in: {
-                                        //email_label: 'Your email address',
-                                        //password_label: 'Your strong password',
-                                        social_provider_text: 'Continue with'
-                                    },
+                <Container supabaseClient={supabase}>
+                    <Auth
+                        supabaseClient={supabase}
+                        socialLayout='vertical'
+                        providers={['spotify', 'google']}
+                        onlyThirdPartyProviders={true}
+                        //view = 'sign_in'
+                        redirectTo={env.REACT_APP_SITE_URL +'/signin'}
+                        //localization = {{ lang: 'fr' }}
+                        localization={{
+                            //lang: 'fr',
+                            variables: {
+                                sign_in: {
+                                    //email_label: 'Your email address',
+                                    //password_label: 'Your strong password',
+                                    social_provider_text: 'Continue with'
                                 },
-                            }}
-                            appearance={{
-                                theme: customTheme,
-                                style: {
-                                    button: buttonStyle,
-                                    container: containerStyle,
-                                },
-                            }}
-                        />
-                    </Container>
-                </Auth.UserContextProvider>
+                            },
+                        }}
+                        appearance={{
+                            theme: customTheme,
+                            style: {
+                                button: buttonStyle,
+                                container: containerStyle,
+                            },
+                        }}
+                    />
+                </Container>
             </ScaleFade>
         </VStack>
     );
