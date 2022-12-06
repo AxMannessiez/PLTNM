@@ -6,6 +6,7 @@ import {Text, VStack, FormControl, Input, FormErrorMessage} from "@chakra-ui/rea
 import {Formik, Form, Field} from "formik";
 import {useNavigate} from "react-router-dom";
 import {capitalize} from "lodash/string";
+import {getRedirectAfterSignIn, removeRedirectAfterSignIn} from "../../localStorage/redirectAfterSignIn";
 
 export default function AskName(props) {
     const navigate = useNavigate();
@@ -20,7 +21,8 @@ export default function AskName(props) {
                     setTimeout(() => {
                         storeUserName(values.name);
                         actions.setSubmitting(false);
-                        navigate("/");
+                        navigate(getRedirectAfterSignIn());
+                        removeRedirectAfterSignIn();
                     }, 100);
                 }}
             >

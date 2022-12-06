@@ -5,7 +5,6 @@ import {VStack, Heading} from "@chakra-ui/react";
 
 
 // TODO Change error color to pltnm
-// TODO Add state parameter check to set the redirectTo
 // TODO Recode it without the Supabase UI (to get Chakra components)
 // TODO Put Spotify last if user chose other app for playlist
 

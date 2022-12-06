@@ -1,6 +1,5 @@
 import {PltnmButton} from "../components/base/PltnmButton";
 
-import React from "react";
 import {Container, VStack, Heading, Text, Center} from '@chakra-ui/react';
 import {Link} from "react-router-dom";
 

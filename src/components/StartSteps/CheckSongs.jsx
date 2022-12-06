@@ -1,5 +1,6 @@
 import {SpotifyApi} from "../../spotifyApi/SpotifyApi";
 import {PltnmButton} from "../base/PltnmButton";
+import {storeRedirectAfterSignIn} from "../../localStorage/redirectAfterSignIn";
 
 import {
     Box,
@@ -14,14 +15,19 @@ import {
     HStack
 } from "@chakra-ui/react";
 import _ from 'lodash';
-import {Link} from "react-router-dom";
-
+import {Link, useNavigate} from "react-router-dom";
 
 
 // TODO Add animation
 // TODO Check parameters / have token stored
 
 export function CheckSongs() {
+    const navigate = useNavigate();
+    function useGoSignIn(){
+        storeRedirectAfterSignIn("/share");
+        navigate("/signin");
+    }
+
     const spotifyApi = new SpotifyApi();
     const lastYearPlaylistData = spotifyApi.getCurrentPlaylistData();
 
@@ -69,9 +75,7 @@ export function CheckSongs() {
                         </Link>
                     </SlideFade>
                     <SlideFade in={true} delay={1} duration={1.5} offsetY={0}>
-                        <Link to={'/start/step-4'}>
-                            <PltnmButton>I do!</PltnmButton>
-                        </Link>
+                        <PltnmButton onClick={useGoSignIn}>I do!</PltnmButton>
                     </SlideFade>
                 </HStack>
             </Box>
