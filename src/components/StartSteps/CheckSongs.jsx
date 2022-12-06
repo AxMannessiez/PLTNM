@@ -29,14 +29,11 @@ export function CheckSongs() {
     }
 
     const spotifyApi = new SpotifyApi();
-    const lastYearPlaylistData = spotifyApi.getCurrentPlaylistData();
+    const lastYearPlaylistData = SpotifyApi.getCurrentPlaylistData();
 
-    // Get the different albums present in the playlist
-    let playlistAlbums = {};
-    for (const track of lastYearPlaylistData) {
-        playlistAlbums[track.track.album.id] = track.track.album;
-    }
-    const samplePlaylistAlbums = _.sampleSize(playlistAlbums, 5);
+    // Get 5 different albums present in the playlist
+    const nbAlbums = 5;
+    const samplePlaylistAlbums = SpotifyApi.getRandomAlbumsFromPlaylist(lastYearPlaylistData, nbAlbums);
 
     return (
         <>

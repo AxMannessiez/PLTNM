@@ -32,7 +32,7 @@ export function ChoosePlaylist() {
     const navigate = useNavigate();
     function saveMostRecentYearPlaylistAndStep3() {
         if (mostRecentYearPlaylistStatus === 'success') {
-            spotifyApi.storeCurrentPlaylistData(mostRecentYearPlaylistData.items);
+            SpotifyApi.storeCurrentPlaylistData(mostRecentYearPlaylistData.items);
             navigate("/start/step-3");
         }
     }

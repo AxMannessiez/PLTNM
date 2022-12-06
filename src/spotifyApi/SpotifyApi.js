@@ -1,14 +1,18 @@
 import {endpoints} from "./endpoints";
+import getSamples from "../helpers/getSamples";
 
 import axios from 'axios';
 import _ from 'lodash';
 
 
+// TODO Create Album class for same structure across music services
+
 class SpotifyApi {
 
+    baseUrl = "https://api.spotify.com/v1";
+    endpoints = endpoints.api;
+
     constructor(authToken= null) {
-        this.baseUrl = "https://api.spotify.com/v1";
-        this.endpoints = endpoints.api;
         this.authToken = authToken ? authToken.accessToken : null;
     }
 
@@ -25,15 +29,15 @@ class SpotifyApi {
         return res.data;
     };
 
-    storeCurrentPlaylistData(currentPlaylistData){
+    static storeCurrentPlaylistData(currentPlaylistData){
         localStorage.setItem('currentPlaylistData', JSON.stringify(currentPlaylistData));
     }
 
-    getCurrentPlaylistData(){
+    static getCurrentPlaylistData(){
         return JSON.parse(localStorage.getItem('currentPlaylistData'));
     }
 
-    getCurrentPlaylistDataCsvExport(){
+    static getCurrentPlaylistDataCsvExport(){
         let csvContent = "data:text/csv;charset=utf-8,";
         csvContent += "Index;Id;Name;Artists;Album;AlbumCoverSm;AlbumCoverMd;ISRC\n"
         let currentPlaylistData = this.getCurrentPlaylistData();
@@ -62,6 +66,18 @@ class SpotifyApi {
 
         // Return all variables
         return {trackId, trackName, artists, albumName, albumCoverSm, albumCoverMd, trackISRC};
+    }
+
+    static getRandomAlbumsFromPlaylist(playlist, n) {
+        return getSamples(this.#getUniqueAlbumsFromPlaylist(playlist), n)
+    }
+
+    static #getUniqueAlbumsFromPlaylist(playlist) {
+        let playlistAlbums = {};
+        for (const track of playlist) {
+            playlistAlbums[track.track.album.id] = track.track.album;
+        }
+        return playlistAlbums;
     }
 }
 
