@@ -65,7 +65,7 @@ export function ChoosePlaylist() {
                     </CardHeader>
                     <Spacer/>
                     <CardFooter pt={5}>
-                        <PltnmButton minW='50%' m='auto' disabled={lstYrPlstLoading} onClick={saveMostRecentYearPlaylistAndStep3}>{lstYrPlstLoading ? "Loading" : "Go!"}</PltnmButton>
+                        <PltnmButton minW='50%' m='auto' isLoading={lstYrPlstLoading} onClick={saveMostRecentYearPlaylistAndStep3}>{lstYrPlstLoading ? "Loading" : "Go!"}</PltnmButton>
                     </CardFooter>
                 </Card>
                 <Card align='stretch' textAlign='center' borderRadius='lg' p={5} border='1px' borderColor='gray.200'>
