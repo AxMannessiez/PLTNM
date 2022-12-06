@@ -1,10 +1,11 @@
 import {supabase} from "../auth/supabaseClient";
 import {customTheme, containerStyle, buttonStyle} from "../auth/customAuthUITheme";
 import {PltnmButton} from "../components/base/PltnmButton";
+import {storeUserName} from "../localStorage/userName";
 
 
 import {Auth} from '@supabase/auth-ui-react'
-import {VStack, Heading, Text, ScaleFade, Input, FormControl, FormLabel, FormErrorMessage} from "@chakra-ui/react";
+import {VStack, Heading, Text, ScaleFade, Input, FormControl, FormErrorMessage} from "@chakra-ui/react";
 import { Field, Form, Formik } from 'formik';
 import {useState, useEffect} from "react";
 import {useNavigate} from "react-router-dom";
@@ -38,7 +39,7 @@ const Container = (props) => {
                         initialValues={{ name: '' }}
                         onSubmit={(values, actions) => {
                             setTimeout(() => {
-                                localStorage.setItem("user_name", values.name);
+                                storeUserName(values.name);
                                 actions.setSubmitting(false);
                                 navigate("/");
                             }, 100);
