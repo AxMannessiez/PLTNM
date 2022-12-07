@@ -8,4 +8,8 @@ function getUserName() {
     return localStorage.getItem(localStorageKey);
 }
 
-export {storeUserName, getUserName};
+function removeUserName() {
+    localStorage.removeItem(localStorageKey);
+}
+
+export {storeUserName, getUserName, removeUserName};
