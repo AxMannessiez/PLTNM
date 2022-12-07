@@ -1,14 +1,17 @@
 import {storeUserName} from "../../localStorage/userName";
 import {PltnmButton} from "../base/PltnmButton";
 import {validateFormName} from "./validateFormName";
+import {getRedirectAfterSignIn, removeRedirectAfterSignIn} from "../../localStorage/redirectAfterSignIn";
 
 import {Text, VStack, FormControl, Input, FormErrorMessage} from "@chakra-ui/react";
 import {Formik, Form, Field} from "formik";
 import {useNavigate} from "react-router-dom";
 import {capitalize} from "lodash/string";
-import {getRedirectAfterSignIn, removeRedirectAfterSignIn} from "../../localStorage/redirectAfterSignIn";
+import {Auth} from "@supabase/auth-ui-react";
+import {Player} from "../../database/Player";
 
 export default function AskName(props) {
+    const {user} = Auth.useUser();
     const navigate = useNavigate();
 
     return (
@@ -18,12 +21,14 @@ export default function AskName(props) {
             <Formik
                 initialValues={{ name: '' }}
                 onSubmit={(values, actions) => {
-                    setTimeout(() => {
-                        storeUserName(values.name);
-                        actions.setSubmitting(false);
-                        navigate(getRedirectAfterSignIn());
-                        removeRedirectAfterSignIn();
-                    }, 100);
+                    const player = new Player(values.name, user.id);
+                    player.save()
+                        .then(() => {
+                            storeUserName(values.name);
+                            actions.setSubmitting(false);
+                            navigate(getRedirectAfterSignIn());
+                            removeRedirectAfterSignIn();
+                    });
                 }}
             >
                 {(props) => (

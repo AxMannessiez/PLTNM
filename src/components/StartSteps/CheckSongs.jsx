@@ -14,7 +14,6 @@ import {
     SlideFade,
     HStack
 } from "@chakra-ui/react";
-import _ from 'lodash';
 import {Link, useNavigate} from "react-router-dom";
 
 
@@ -24,11 +23,10 @@ import {Link, useNavigate} from "react-router-dom";
 export function CheckSongs() {
     const navigate = useNavigate();
     function useGoSignIn(){
-        storeRedirectAfterSignIn("/share");
+        storeRedirectAfterSignIn("/start/step-4");
         navigate("/signin");
     }
 
-    const spotifyApi = new SpotifyApi();
     const lastYearPlaylistData = SpotifyApi.getCurrentPlaylistData();
 
     // Get 5 different albums present in the playlist
