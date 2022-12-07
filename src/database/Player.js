@@ -3,22 +3,27 @@ import {supabase} from "../auth/supabaseClient";
 
 // Activate RLS
 
+const tableName = 'player';
+
 class Player {
 
-    constructor(name = null, supabase_user_id = null, id = null,) {
+    constructor(name = null, supabaseUserId = null, id = null,) {
         this.id = id;
         this.name = name;
-        this.supabase_user_id = supabase_user_id;
+        this.supabaseUserId = supabaseUserId;
     }
 
     async save() {
-        await supabase
-            .from('player')
+        const { data } = await supabase
+            .from(tableName)
             .upsert(
-                { name: this.name, supabase_user_id: this.supabase_user_id},
+                { name: this.name, supabase_user_id: this.supabaseUserId},
                 { onConflict: 'supabase_user_id' },
             )
-        //const { data, error } = await supabase.from('player').select()
+            .select().limit(1).single();
+        if (data) {
+            this.id = data.id;
+        }
     }
 }
 

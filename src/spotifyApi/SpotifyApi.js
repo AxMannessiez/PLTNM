@@ -3,6 +3,7 @@ import getSamples from "../helpers/getSamples";
 
 import axios from 'axios';
 import _ from 'lodash';
+import {storeCurrentPlaylistData, getCurrentPlaylistData} from "../localStorage/currentPlaylistData";
 
 
 // TODO Create Album class for same structure across music services
@@ -30,11 +31,11 @@ class SpotifyApi {
     };
 
     static storeCurrentPlaylistData(currentPlaylistData){
-        localStorage.setItem('currentPlaylistData', JSON.stringify(currentPlaylistData));
+        storeCurrentPlaylistData(JSON.stringify(currentPlaylistData));
     }
 
     static getCurrentPlaylistData(){
-        return JSON.parse(localStorage.getItem('currentPlaylistData'));
+        return JSON.parse(getCurrentPlaylistData());
     }
 
     static getCurrentPlaylistDataCsvExport(){

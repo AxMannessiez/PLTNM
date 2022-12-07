@@ -5,7 +5,7 @@ import theme from "../theme";
 import {Box, HStack, Spacer, Button, Text} from '@chakra-ui/react';
 import {useLocation, Link} from "react-router-dom";
 import {Auth} from "@supabase/auth-ui-react";
-import {removeUserName} from "../localStorage/userName";
+import {removeAll} from "../localStorage/removeAll";
 
 
 const excludedPages = [
@@ -17,7 +17,7 @@ function useShowHeader() {
 }
 
 function signOut() {
-    removeUserName();
+    removeAll();
     supabase.auth.signOut();
 }
 

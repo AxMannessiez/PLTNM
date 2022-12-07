@@ -1,6 +1,7 @@
-import {storeUserName} from "../../localStorage/userName";
 import {PltnmButton} from "../base/PltnmButton";
 import {validateFormName} from "./validateFormName";
+import {storeUserName} from "../../localStorage/userName";
+import {storeUserId} from "../../localStorage/userId";
 import {getRedirectAfterSignIn, removeRedirectAfterSignIn} from "../../localStorage/redirectAfterSignIn";
 
 import {Text, VStack, FormControl, Input, FormErrorMessage} from "@chakra-ui/react";
@@ -24,7 +25,8 @@ export default function AskName(props) {
                     const player = new Player(values.name, user.id);
                     player.save()
                         .then(() => {
-                            storeUserName(values.name);
+                            storeUserName(player.name);
+                            storeUserId(player.id);
                             actions.setSubmitting(false);
                             navigate(getRedirectAfterSignIn());
                             removeRedirectAfterSignIn();

@@ -1,9 +1,20 @@
 //import {SpotifyApi} from "../../spotifyApi/SpotifyApi";
+import {getTeamId, storeTeamId} from "../../localStorage/teamId";
+import {Team} from "../../database/Team";
 
 import {Container, Center} from '@chakra-ui/react';
+import {getUserId} from "../../localStorage/userId";
 
 
 export function Share(){
+
+    const team = getTeamId();    // Check if stored in LocalStorage, if not create one and store id
+    if (!team) {
+        Team.create().then(t => {
+            storeTeamId(t.id);
+            t.addPlayer(getUserId()).then(e => console.log(e));
+        });
+    }
 
     /*function savePlaylistAsCsv() {
         const data = encodeURI(SpotifyApi.getCurrentPlaylistDataCsvExport());
