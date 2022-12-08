@@ -1,5 +1,5 @@
 import {PltnmButton} from "../base/PltnmButton";
-import {validateFormName} from "./validateFormName";
+import {validateFormRequired} from "./validateFormRequired";
 import {storeUserName} from "../../localStorage/userName";
 import {storeUserId} from "../../localStorage/userId";
 import {getRedirectAfterSignIn, removeRedirectAfterSignIn} from "../../localStorage/redirectAfterSignIn";
@@ -36,7 +36,7 @@ export default function AskName(props) {
                 {(props) => (
                     <Form>
                         <VStack spacing={6}>
-                            <Field name='name' validate={validateFormName}>
+                            <Field name='name' validate={(n) => validateFormRequired(n, "Name")}>
                                 {({ field, form }) => (
                                     <FormControl isInvalid={form.errors.name && form.touched.name}>
                                         <Input {...field} placeholder='John' />

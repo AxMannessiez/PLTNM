@@ -4,6 +4,8 @@ import '@fontsource/space-grotesk'
 import '@fontsource/lato'
 import { StepsStyleConfig } from "chakra-ui-steps";
 
+//TODO use text color by default
+
 const colors = {
     pltnm: {
         primary: '#F32346',
