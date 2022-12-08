@@ -7,7 +7,7 @@ const tableName = 'player';
 
 class Player {
 
-    constructor(name = null, supabaseUserId = null, id = null,) {
+    constructor(name = null, supabaseUserId = null, id = null) {
         this.id = id;
         this.name = name;
         this.supabaseUserId = supabaseUserId;
@@ -24,6 +24,10 @@ class Player {
         if (data) {
             this.id = data.id;
         }
+    }
+
+    getId() {
+        return this.id;
     }
 }
 

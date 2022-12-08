@@ -30,15 +30,15 @@ class SpotifyApi {
         return res.data;
     };
 
-    static storeCurrentPlaylistData(currentPlaylistData){
+    static storeCurrentPlaylistData(currentPlaylistData) {
         storeCurrentPlaylistData(JSON.stringify(currentPlaylistData));
     }
 
-    static getCurrentPlaylistData(){
+    static getCurrentPlaylistData() {
         return JSON.parse(getCurrentPlaylistData());
     }
 
-    static getCurrentPlaylistDataCsvExport(){
+    static getCurrentPlaylistDataCsvExport() {
         let csvContent = "data:text/csv;charset=utf-8,";
         csvContent += "Index;Id;Name;Artists;Album;AlbumCoverSm;AlbumCoverMd;ISRC\n"
         let currentPlaylistData = this.getCurrentPlaylistData();
@@ -49,7 +49,26 @@ class SpotifyApi {
         return csvContent;
     }
 
-    static #getAndCheckTrackInfos(track){
+    static getCurrentPlaylistDataJsonExport() {
+        const currentPlaylistData = this.getCurrentPlaylistData();
+        return (
+            currentPlaylistData.map((track, idx) => {
+            let {trackId, trackName, artists, albumName, albumCoverSm, albumCoverMd, trackISRC} = SpotifyApi.#getAndCheckTrackInfos(track.track);
+            return ({
+                    idx: idx,
+                    id: trackId,
+                    name: trackName,
+                    artists,
+                    alb: albumName,
+                    albCovSm: albumCoverSm,
+                    albCovMd: albumCoverMd,
+                    ISRC: trackISRC
+                });
+            })
+        );
+    }
+
+    static #getAndCheckTrackInfos(track) {
         // Check if properties exist else set empty string
         let trackId = track.id ?? '';
         let trackName = track.name ?? '';
@@ -63,6 +82,8 @@ class SpotifyApi {
         if (artists.length > 1) {
             const lastArtist = artists.pop();
             artists = artists.join(', ') + ' & ' + lastArtist;
+        } else if (artists.length === 1) {
+            artists = artists[0];
         }
 
         // Return all variables

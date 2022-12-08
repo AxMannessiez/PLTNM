@@ -6,7 +6,7 @@ const playerTeamRelTableName = 'player_team';
 
 class Team {
 
-    constructor(name = null, createdAt = null, id = null,) {
+    constructor(name = null, id = null, createdAt = null) {
         this.id = id;
         this.createdAt = createdAt;
         this.name = name;

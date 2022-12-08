@@ -5,7 +5,7 @@ const tableName = 'game';
 
 class Game {
 
-    constructor(team, createdAt = null, id = null,) {
+    constructor(team, id = null, createdAt = null) {
         this.id = id;
         this.createdAt = createdAt;
         this.team = team;
