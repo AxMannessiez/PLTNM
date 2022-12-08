@@ -9,7 +9,7 @@ import {Playlist} from "../../database/Playlist";
 import {SavingPlaylistSpinner} from "./Share/SavingPlaylistSpinner";
 import {TeamNameForm} from "./Share/TeamNameForm";
 
-import {Stack, VStack, HStack, StackDivider, Heading, Text, Box, Input, Button} from "@chakra-ui/react";
+import {Stack, VStack, HStack, StackDivider, Heading, Text, Box, Input, Button, Center, Image} from "@chakra-ui/react";
 import {useState, useEffect} from "react";
 import env from 'react-dotenv';
 
@@ -53,6 +53,7 @@ export function Share() {
 
     // URL for game
     let gameUrl = env.REACT_APP_SITE_URL + '/start/' + gameId;
+    let gameUrlQr = 'https://api.qrserver.com/v1/create-qr-code/?data=' + gameUrl + '&size=400x400';
 
     return (
         <>{
@@ -75,11 +76,14 @@ export function Share() {
                         </VStack>
                         <VStack flex={1} py={6} w='100%'>
                             <Heading as='h5' fontSize='lg' mb={3} align='center'>Share the link</Heading>
-                            <Button data-clipboard-text={gameUrl} border='1px' borderColor='gray.200' borderRadius='md' p={0}>
+                            <Button display={['revert', 'none']} data-clipboard-text={gameUrl} border='1px' borderColor='gray.200' borderRadius='md' p={0}>
                                 <HStack w='100%'>
                                     <Input isReadOnly size={'md'} border='none' textColor='black' value={gameUrl} />
                                 </HStack>
                             </Button>
+                            <Center display={['none', 'block']} border='1px' borderColor='gray.200' borderRadius='md' p={2}>
+                                <Image src={gameUrlQr} alt="Game link QR Code" load='lazy' htmlWidth={'150em'} align='center' />
+                            </Center>
                         </VStack>
                     </Stack>
                 </>
