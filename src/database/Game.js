@@ -5,19 +5,19 @@ const tableName = 'game';
 
 class Game {
 
-    constructor(team, id = null, createdAt = null) {
+    constructor(teamId, id = null, createdAt = null) {
         this.id = id;
         this.createdAt = createdAt;
-        this.team = team;
+        this.team = teamId;
     }
 
-    static async create(team) {
+    static async create(teamId) {
         const { data, error } = await supabase
             .from(tableName)
-            .insert({ team: team})
+            .insert({ team: teamId})
             .select().limit(1).single();
         if (data) {
-            return new Game(team, data.created_at, data.id);
+            return new Game(teamId, data.id, data.created_at);
         } else {
             return error;
         }

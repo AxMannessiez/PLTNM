@@ -8,29 +8,40 @@ import {Game} from "../../database/Game";
 import {Playlist} from "../../database/Playlist";
 
 import {Container, Center} from '@chakra-ui/react';
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 
 // TODO Team name from local Storage
 
+// Team and game creation in database
+async function createTeamAndGame(setTeamName, setGameId) {
+    const teamId = getTeamId();    // Check if stored in LocalStorage, if not create one and store id
+    if (!teamId) {
+        const teamName = getUserName() + "'s Team";
+        setTeamName(teamName)
+        const createdTeam = await Team.create(teamName);
+        storeTeamId(createdTeam.id);
+
+        createdTeam.addPlayer(getUserId());
+
+        const game = await Game.create(createdTeam.id)
+        storeGameId(game.id);
+        setGameId(game.id);
+    } else {
+        const teamName = getUserName() + "'s Team";
+        setTeamName(teamName)
+    }
+}
+
 export function Share(){
+    const [teamName, setTeamName] = useState(null);
+    const [gameId, setGameId] = useState(null);
     const [savingPlaylist, setSavingPlaylist] = useState(true);
 
-    // Team and game creation in database
-    const teamId = getTeamId();    // Check if stored in LocalStorage, if not create one and store id
-    let teamName;
-    let game = null;
-    if (!teamId) {
-        teamName = getUserName() + "'s Team";
-        Team.create(teamName).then(createdTeam => {
-            storeTeamId(createdTeam.id);
-            createdTeam.addPlayer(getUserId()).then(e => console.log(e));
-            game = Game.create(createdTeam);
-            storeGameId(game.id);
-        });
-    } else {
-        teamName = getUserName() + "'s Team";
-    }
+    useEffect(() => {
+        createTeamAndGame(setTeamName, setGameId)
+    }, []);
+
 
     // Save user playlist in database
     const playlist = new Playlist(getUserId(), SpotifyApi.getCurrentPlaylistDataJsonExport());
@@ -40,7 +51,9 @@ export function Share(){
     return (
         <Container maxW={'3xl'} mt={20}>
             <Center>{savingPlaylist ? "Saving playlist..." : "Playlist saved!"}</Center>
+            <Center>Team name : {teamName}</Center>
             <Center>Share the link with your friends to play!</Center>
+            <Center>Game Id : {gameId}</Center>
         </Container>
     )
 }

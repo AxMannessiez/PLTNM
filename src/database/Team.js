@@ -18,7 +18,7 @@ class Team {
             .insert({ name: name ?? ''})
             .select().limit(1).single();
         if (data) {
-            return new Team(data.name, data.created_at, data.id);
+            return new Team(data.name, data.id, data.created_at);
         } else {
             return error;
         }

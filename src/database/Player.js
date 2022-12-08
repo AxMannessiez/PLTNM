@@ -25,10 +25,6 @@ class Player {
             this.id = data.id;
         }
     }
-
-    getId() {
-        return this.id;
-    }
 }
 
 export {Player};
