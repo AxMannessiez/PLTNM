@@ -1,18 +1,25 @@
 //import {SpotifyApi} from "../../spotifyApi/SpotifyApi";
 import {getTeamId, storeTeamId} from "../../localStorage/teamId";
+import {getUserId} from "../../localStorage/userId";
+import {storeGameId} from "../../localStorage/gameId";
 import {Team} from "../../database/Team";
+import {Game} from "../../database/Game";
 
 import {Container, Center} from '@chakra-ui/react';
-import {getUserId} from "../../localStorage/userId";
+
 
 
 export function Share(){
 
+    // Team and game creation in database
     const team = getTeamId();    // Check if stored in LocalStorage, if not create one and store id
+    let game = null;
     if (!team) {
-        Team.create().then(t => {
-            storeTeamId(t.id);
-            t.addPlayer(getUserId()).then(e => console.log(e));
+        Team.create().then(createdTeam => {
+            storeTeamId(createdTeam.id);
+            createdTeam.addPlayer(getUserId()).then(e => console.log(e));
+            game = Game.create(createdTeam);
+            storeGameId(game.id);
         });
     }
 

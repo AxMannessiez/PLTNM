@@ -27,7 +27,7 @@ class Team {
     async addPlayer(playerId) {
         const { error } = await supabase
             .from(playerTeamRelTableName)
-            .insert({ player: playerId, team: this.id })
+            .upsert({ player: playerId, team: this.id })
         return error;
     }
 }

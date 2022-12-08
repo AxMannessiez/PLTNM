@@ -23,7 +23,7 @@ export default function AskName(props) {
                 initialValues={{ name: '' }}
                 onSubmit={(values, actions) => {
                     const player = new Player(values.name, user.id);
-                    player.save()
+                    player.save()   // Save in database
                         .then(() => {
                             storeUserName(player.name);
                             storeUserId(player.id);
