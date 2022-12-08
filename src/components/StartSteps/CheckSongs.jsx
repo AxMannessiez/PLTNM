@@ -45,7 +45,7 @@ export function CheckSongs() {
                     samplePlaylistAlbums.map((album, i) =>
                         <WrapItem key={album.id}>
                             <SlideFade in={true} duration={0.5} delay={0.5 + i*0.15}>
-                                <AspectRatio ratio={1} w='10em' title={album.name + ' - ' + album.artists[0].name} borderRadius='base' border='1px #E0E0E0 solid' boxShadow='md' overflow='hidden'>
+                                <AspectRatio ratio={1} w={['8em', '10em']} title={album.name + ' - ' + album.artists[0].name} borderRadius='base' border='1px #E0E0E0 solid' boxShadow='md' overflow='hidden'>
                                     {
                                         (album.images && album.images[1] && album.images[1].url) ?
                                             <Image src={album.images[1].url} alt={album.name}/>
