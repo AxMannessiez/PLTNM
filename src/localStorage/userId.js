@@ -1,15 +1,15 @@
-const localStorageKey = "user_id";
+const localStorageKey = 'user_id';
 
 function storeUserId(id) {
-    localStorage.setItem(localStorageKey, id);
+  localStorage.setItem(localStorageKey, id);
 }
 
 function getUserId() {
-    return localStorage.getItem(localStorageKey);
+  return localStorage.getItem(localStorageKey);
 }
 
 function removeUserId() {
-    localStorage.removeItem(localStorageKey);
+  localStorage.removeItem(localStorageKey);
 }
 
-export {storeUserId, getUserId, removeUserId};
+export { storeUserId, getUserId, removeUserId };

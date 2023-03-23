@@ -1,4 +1,4 @@
-import AskName from "./SignIn/AskName"
-import AuthChoice from "./SignIn/AuthChoice"
+import AskName from './SignIn/AskName';
+import AuthChoice from './SignIn/AuthChoice';
 
-export {AskName, AuthChoice};
+export { AskName, AuthChoice };

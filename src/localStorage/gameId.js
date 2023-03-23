@@ -1,15 +1,15 @@
-const localStorageKey = "game_id";
+const localStorageKey = 'game_id';
 
 function storeGameId(id) {
-    localStorage.setItem(localStorageKey, id);
+  localStorage.setItem(localStorageKey, id);
 }
 
 function getGameId() {
-    return localStorage.getItem(localStorageKey);
+  return localStorage.getItem(localStorageKey);
 }
 
 function removeGameId() {
-    localStorage.removeItem(localStorageKey);
+  localStorage.removeItem(localStorageKey);
 }
 
-export {storeGameId, getGameId, removeGameId};
+export { storeGameId, getGameId, removeGameId };

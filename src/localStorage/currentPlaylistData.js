@@ -1,15 +1,19 @@
-const localStorageKey = "currentPlaylistData";
+const localStorageKey = 'currentPlaylistData';
 
 function storeCurrentPlaylistData(currentPlaylistData) {
-    localStorage.setItem(localStorageKey, currentPlaylistData);
+  localStorage.setItem(localStorageKey, currentPlaylistData);
 }
 
 function getCurrentPlaylistData() {
-    return localStorage.getItem(localStorageKey);
+  return localStorage.getItem(localStorageKey);
 }
 
 function removeCurrentPlaylistData() {
-    localStorage.removeItem(localStorageKey);
+  localStorage.removeItem(localStorageKey);
 }
 
-export {storeCurrentPlaylistData, getCurrentPlaylistData, removeCurrentPlaylistData};
+export {
+  storeCurrentPlaylistData,
+  getCurrentPlaylistData,
+  removeCurrentPlaylistData,
+};

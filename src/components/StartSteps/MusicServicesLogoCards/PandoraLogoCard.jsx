@@ -1,15 +1,15 @@
-import {MusicServiceLogoCard} from "./MusicServiceLogoCard";
-import {ReactComponent as PandoraIcon} from './svgs/pandoraIcon.svg';
+import MusicServiceLogoCard from './MusicServiceLogoCard';
+import { ReactComponent as PandoraIcon } from './svgs/pandoraIcon.svg';
 
-export function PandoraLogoCard(props) {
-    return (
-        <MusicServiceLogoCard
-            name="Pandora"
-            bg="#fff"
-            nameMargin={props.nameMargin}
-            maxW={props.maxW}
-            svg={<PandoraIcon/>}
-            link={props.link}
-        />
-    )
+export default function PandoraLogoCard(props) {
+  return (
+    <MusicServiceLogoCard
+      name="Pandora"
+      bg="#fff"
+      nameMargin={props.nameMargin}
+      maxW={props.maxW}
+      svg={<PandoraIcon />}
+      link={props.link}
+    />
+  );
 }

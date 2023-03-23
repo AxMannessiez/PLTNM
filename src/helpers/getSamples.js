@@ -1,5 +1,5 @@
-import _ from "lodash";
+import _ from 'lodash';
 
 export default function getSamples(list, n) {
-    return _.sampleSize(list, n);
+  return _.sampleSize(list, n);
 }

@@ -1,15 +1,15 @@
-const localStorageKey = "user_name";
+const localStorageKey = 'user_name';
 
 function storeUserName(name) {
-    localStorage.setItem(localStorageKey, name);
+  localStorage.setItem(localStorageKey, name);
 }
 
 function getUserName() {
-    return localStorage.getItem(localStorageKey);
+  return localStorage.getItem(localStorageKey);
 }
 
 function removeUserName() {
-    localStorage.removeItem(localStorageKey);
+  localStorage.removeItem(localStorageKey);
 }
 
-export {storeUserName, getUserName, removeUserName};
+export { storeUserName, getUserName, removeUserName };
