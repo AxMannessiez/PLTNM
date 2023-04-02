@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Box, Heading, SimpleGrid, Spacer } from '@chakra-ui/react';
 import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/card';
 import { Select } from 'chakra-react-select';
@@ -57,6 +58,12 @@ export default function ChoosePlaylist() {
     { value: 'id3', label: 'My Playlist 2' },
   ];
 
+  useEffect(() => {
+    if (mostRecentYearPlaylistStatus === 'error') {
+      setTimeout(() => window.location.reload(), 1000);
+    }
+  }, [mostRecentYearPlaylistStatus]);
+
   return (
     <>
       <Box as="header" textAlign="center">
@@ -95,7 +102,11 @@ export default function ChoosePlaylist() {
               isLoading={lstYrPlstLoading}
               onClick={saveMostRecentYearPlaylistAndStep3}
             >
-              {lstYrPlstLoading ? 'Loading' : 'Go!'}
+              {lstYrPlstLoading
+                ? 'Loading'
+                : mostRecentYearPlaylistStatus === 'error'
+                ? 'Error.. Trying again in 1 second'
+                : 'Go!'}
             </PltnmButton>
           </CardFooter>
         </Card>
