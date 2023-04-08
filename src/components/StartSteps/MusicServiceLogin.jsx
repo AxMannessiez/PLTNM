@@ -1,15 +1,15 @@
-import { Box, Heading, Text, Center, SimpleGrid } from '@chakra-ui/react';
+import { Box, Center, Heading, SimpleGrid, Text } from '@chakra-ui/react';
 
 import {
   AmazonMusicLogoCard,
   AppleMusicLogoCard,
   DeezerLogoCard,
   NapsterLogoCard,
+  PandoraLogoCard,
+  SoundcloudLogoCard,
   SpotifyLogoCard,
   TidalLogoCard,
-  PandoraLogoCard,
   YoutubeMusicLogoCard,
-  SoundcloudLogoCard,
 } from './MusicServicesLogoCards';
 
 // TODO Add loading indicators to every page
@@ -17,10 +17,8 @@ import {
 // TODO Use Chakra LinkOverlay
 
 export default function MusicServiceLogin() {
-  const cardStyleProps = {
-    maxW: '200px',
-    nameMargin: { base: 0, sm: 1 },
-  };
+  const cardMaxW = '200px';
+  const cardNameMargin = { base: 0, sm: 1 };
 
   // TODO Add toast message if auth failed
 
@@ -28,14 +26,14 @@ export default function MusicServiceLogin() {
     <>
       <Box as="header" textAlign="center">
         <Heading as="h2" fontSize="2xl" fontWeight="bold">
-          Let's Start!
+          Let&apos;s Start!
         </Heading>
         <Heading as="h3" fontSize="xl" fontFamily="body" fontWeight="normal">
           Choose you music service.
         </Heading>
         <Text lineHeight="shorter" mt={2}>
-          You'll be redirected there to log in and grant us permission to see
-          your playlists!
+          You&apos;ll be redirected there to log in and grant us permission to
+          see your playlists!
         </Text>
       </Box>
       <Center pt={{ base: 6, sm: 10 }}>
@@ -45,21 +43,23 @@ export default function MusicServiceLogin() {
           spacingY={{ base: 2, sm: 4 }}
           maxW={{ base: '30vh', sm: '35em' }}
         >
-          <SpotifyLogoCard {...cardStyleProps} />
+          <SpotifyLogoCard maxW={cardMaxW} nameMargin={cardNameMargin} />
           <AppleMusicLogoCard
-            {...cardStyleProps}
+            maxW={cardMaxW}
+            nameMargin={cardNameMargin}
             link="https://music.apple.com/subscribe"
           />
           <DeezerLogoCard
-            {...cardStyleProps}
+            maxW={cardMaxW}
+            nameMargin={cardNameMargin}
             link="https://www.deezer.com/login"
           />
-          <YoutubeMusicLogoCard {...cardStyleProps} />
-          <TidalLogoCard {...cardStyleProps} />
-          <PandoraLogoCard {...cardStyleProps} />
-          <SoundcloudLogoCard {...cardStyleProps} />
-          <AmazonMusicLogoCard {...cardStyleProps} />
-          <NapsterLogoCard {...cardStyleProps} />
+          <YoutubeMusicLogoCard maxW={cardMaxW} nameMargin={cardNameMargin} />
+          <TidalLogoCard maxW={cardMaxW} nameMargin={cardNameMargin} />
+          <PandoraLogoCard maxW={cardMaxW} nameMargin={cardNameMargin} />
+          <SoundcloudLogoCard maxW={cardMaxW} nameMargin={cardNameMargin} />
+          <AmazonMusicLogoCard maxW={cardMaxW} nameMargin={cardNameMargin} />
+          <NapsterLogoCard maxW={cardMaxW} nameMargin={cardNameMargin} />
         </SimpleGrid>
       </Center>
     </>

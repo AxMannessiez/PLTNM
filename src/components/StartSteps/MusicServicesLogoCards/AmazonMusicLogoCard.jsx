@@ -1,3 +1,5 @@
+/* eslint-disable react/destructuring-assignment, react/prop-types */
+
 import MusicServiceLogoCard from './MusicServiceLogoCard';
 
 export default function AmazonMusicLogoCard(props) {

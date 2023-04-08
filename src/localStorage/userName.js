@@ -12,4 +12,4 @@ function removeUserName() {
   localStorage.removeItem(localStorageKey);
 }
 
-export { storeUserName, getUserName, removeUserName };
+export { getUserName, removeUserName, storeUserName };

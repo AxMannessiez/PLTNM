@@ -1,15 +1,16 @@
-import { VStack, Box } from '@chakra-ui/react';
+import { Box, VStack } from '@chakra-ui/react';
 import { useSteps } from 'chakra-ui-steps';
-import { useParams, Navigate } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 
 import ProgressSteps from '../components/ProgressSteps';
-import '../styles/animation.css';
 import {
-  MusicServiceLogin,
-  ChoosePlaylist,
   CheckSongs,
+  ChoosePlaylist,
+  MusicServiceLogin,
   Share,
 } from '../components/StartSteps';
+
+import '../styles/animation.css';
 
 // TODO Page Name
 

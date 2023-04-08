@@ -1,13 +1,12 @@
 import React, { StrictMode } from 'react';
-import * as ReactDOM from 'react-dom/client';
 
-import { QueryClient, QueryClientProvider } from 'react-query';
 import { ChakraProvider } from '@chakra-ui/react';
 import { Auth } from '@supabase/auth-ui-react';
+import * as ReactDOM from 'react-dom/client';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import * as serviceWorker from './serviceWorker';
+import supabase from './auth/supabaseClient';
 import theme from './theme';
 
 import '@fontsource/space-grotesk/300.css';
@@ -21,7 +20,6 @@ import '@fontsource/source-sans-pro/400.css';
 import '@fontsource/source-sans-pro/600.css';
 import '@fontsource/source-sans-pro/700.css';
 import '@fontsource/source-sans-pro/900.css';
-import { supabase } from './auth/supabaseClient';
 
 const queryClient = new QueryClient();
 const container = document.getElementById('root');
@@ -38,13 +36,3 @@ root.render(
     </QueryClientProvider>
   </StrictMode>
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://cra.link/PWA
-serviceWorker.unregister();
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

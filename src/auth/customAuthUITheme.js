@@ -27,4 +27,4 @@ const buttonStyle = {
   transitionDuration: 'var(--chakra-transition-duration-normal)',
 };
 
-export { customTheme, containerStyle, buttonStyle };
+export { buttonStyle, containerStyle, customTheme };

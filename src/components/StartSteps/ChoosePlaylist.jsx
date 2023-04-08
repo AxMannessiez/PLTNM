@@ -1,13 +1,14 @@
 import { useEffect } from 'react';
-import { Box, Heading, SimpleGrid, Spacer } from '@chakra-ui/react';
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/card';
-import { Select } from 'chakra-react-select';
-import { useNavigate } from 'react-router-dom';
-import { useQuery } from 'react-query';
 
+import { Box, Heading, SimpleGrid, Spacer } from '@chakra-ui/react';
+import { Card, CardBody, CardFooter, CardHeader } from '@chakra-ui/card';
+import { Select } from 'chakra-react-select';
+import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
+
+import PltnmButton from '../base/PltnmButton';
 import SpotifyAccountApi from '../../spotifyApi/SpotifyAccountApi';
 import SpotifyApi from '../../spotifyApi/SpotifyApi';
-import PltnmButton from '../base/PltnmButton';
 
 export default function ChoosePlaylist() {
   // TODO Check parameters / have token stored
@@ -36,12 +37,12 @@ export default function ChoosePlaylist() {
 
   // Store the playlist data and move to next step
   const navigate = useNavigate();
-  function saveMostRecentYearPlaylistAndStep3() {
+  const saveMostRecentYearPlaylistAndStep3 = () => {
     if (mostRecentYearPlaylistStatus === 'success') {
       SpotifyApi.storeCurrentPlaylistData(mostRecentYearPlaylistData.items);
       navigate('/start/step-3');
     }
-  }
+  };
 
   // TODO Fetch possible years / playlists for second card
   const yearOptions = [
@@ -102,11 +103,14 @@ export default function ChoosePlaylist() {
               isLoading={lstYrPlstLoading}
               onClick={saveMostRecentYearPlaylistAndStep3}
             >
-              {lstYrPlstLoading
-                ? 'Loading'
-                : mostRecentYearPlaylistStatus === 'error'
-                ? 'Error.. Trying again in 1 second'
-                : 'Go!'}
+              {(() => {
+                if (lstYrPlstLoading) {
+                  return 'Loading';
+                }
+                return mostRecentYearPlaylistStatus === 'error'
+                  ? 'Error.. Trying again in 1 second'
+                  : 'Go!';
+              })()}
             </PltnmButton>
           </CardFooter>
         </Card>

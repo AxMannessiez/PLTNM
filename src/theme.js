@@ -1,10 +1,11 @@
 import { extendTheme, withDefaultColorScheme } from '@chakra-ui/react';
+import { StepsStyleConfig } from 'chakra-ui-steps';
+
 import '@fontsource/source-sans-pro';
 import '@fontsource/space-grotesk';
 import '@fontsource/lato';
-import { StepsStyleConfig } from 'chakra-ui-steps';
 
-//TODO use text color by default
+// TODO use text color by default
 
 const colors = {
   pltnm: {
@@ -27,82 +28,80 @@ const fonts = {
 
 const CustomSteps = {
   ...StepsStyleConfig,
-  baseStyle: props => {
-    return {
-      ...StepsStyleConfig.baseStyle(props),
-      step: {
-        ...StepsStyleConfig.baseStyle(props).step,
-        transition: 'opacity .3s ease',
-        '&:hover': {
-          cursor: 'default',
-        },
-        '&.clickable:hover': {
-          cursor: 'pointer',
-          opacity: 0.8,
-        },
+  baseStyle: props => ({
+    ...StepsStyleConfig.baseStyle(props),
+    step: {
+      ...StepsStyleConfig.baseStyle(props).step,
+      transition: 'opacity .3s ease',
+      '&:hover': {
+        cursor: 'default',
       },
-      stepIconContainer: {
-        ...StepsStyleConfig.baseStyle(props).stepIconContainer,
+      '&.clickable:hover': {
+        cursor: 'pointer',
+        opacity: 0.8,
+      },
+    },
+    stepIconContainer: {
+      ...StepsStyleConfig.baseStyle(props).stepIconContainer,
+      background: 'white',
+      borderColor: colors.pltnm.primary,
+      opacity: 0.8,
+      transition: 'opacity .2s ease',
+      '&[aria-current=step]': {
         background: 'white',
         borderColor: colors.pltnm.primary,
-        opacity: 0.8,
-        transition: 'opacity .2s ease',
-        '&[aria-current=step]': {
-          background: 'white',
-          borderColor: colors.pltnm.primary,
-          opacity: 1,
-          borderWidth: '3px',
-          '& span': {
-            color: colors.pltnm.primary,
-            fontWeight: 'bold',
-          },
-        },
-        '&[data-highlighted]': {
-          background: colors.pltnm.primary,
-          borderColor: colors.pltnm.primary,
-          opacity: 1,
-        },
+        opacity: 1,
+        borderWidth: '3px',
         '& span': {
-          fontFamily: fonts.numbers,
-        },
-        '&[data-clickable]': {
-          '&:hover': {
-            borderColor: colors.pltnm.primary,
-          },
+          color: colors.pltnm.primary,
+          fontWeight: 'bold',
         },
       },
-      connector: {
-        ...StepsStyleConfig.baseStyle(props).connector,
+      '&[data-highlighted]': {
+        background: colors.pltnm.primary,
+        borderColor: colors.pltnm.primary,
+        opacity: 1,
+      },
+      '& span': {
+        fontFamily: fonts.numbers,
+      },
+      '&[data-clickable]': {
+        '&:hover': {
+          borderColor: colors.pltnm.primary,
+        },
+      },
+    },
+    connector: {
+      ...StepsStyleConfig.baseStyle(props).connector,
+      borderColor: '#e8e8e8',
+      '&[data-highlighted]': {
         borderColor: '#e8e8e8',
-        '&[data-highlighted]': {
-          borderColor: '#e8e8e8',
-          '&:after': {
-            content: "''",
-            borderColor: colors.pltnm.primary,
-            borderTopWidth: 2,
-            position: 'absolute',
-            top: '-2px',
-            left: 0,
-            bottom: 0,
-            height: 2,
-            width: '100%',
-            animation: 'progress ease .3s',
-          },
+        '&:after': {
+          content: "''",
+          borderColor: colors.pltnm.primary,
+          borderTopWidth: 2,
+          position: 'absolute',
+          top: '-2px',
+          left: 0,
+          bottom: 0,
+          height: 2,
+          width: '100%',
+          animation: 'progress ease .3s',
         },
       },
-      label: {
-        ...StepsStyleConfig.baseStyle(props).label,
-        fontFamily: fonts.body,
-        color: colors.pltnm.text,
-      },
-    };
-  },
+    },
+    label: {
+      ...StepsStyleConfig.baseStyle(props).label,
+      fontFamily: fonts.body,
+      color: colors.pltnm.text,
+    },
+  }),
 };
 
 const theme = extendTheme(
   {
-    colors: colors,
-    fonts: fonts,
+    colors,
+    fonts,
     components: {
       Steps: CustomSteps,
     },

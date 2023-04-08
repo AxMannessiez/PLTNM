@@ -11,15 +11,50 @@
     "airbnb",
     "prettier"
   ],
-  "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier"],
+  "plugins": ["react", "prettier", "simple-import-sort"],
   "rules": {
+    "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
+    "prettier/prettier": "error",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
     "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "prettier/prettier": "error"
-  }
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+  },
+  "overrides": [
+    // override "simple-import-sort" config
+    {
+      "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
+      "rules": {
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              // React, prop-types, and react-related packages
+              ["^react$", "^prop-types"],
+              // Packages related to @chakra-ui, then @supabase, and other external packages
+              [
+                "^@chakra-ui/react$",
+                "^@chakra-ui",
+                "chakra",
+                "^@supabase",
+                "^@?\\w"
+              ],
+              // Internal packages
+              ["^(@|components)(/.*|$)"],
+              // Side effect imports
+              ["^\\u0000"],
+              // Local imports
+              ["^\\./[^.]", "^\\.\\./[^.]", "^\\.", "^\\.\\./?$", "^\\./?$"],
+              // Style imports
+              ["^.+\\.css$"]
+            ]
+          }
+        ]
+      }
+    }
+  ]
 }

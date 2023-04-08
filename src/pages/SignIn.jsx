@@ -1,10 +1,10 @@
+import { Heading, VStack } from '@chakra-ui/react';
 import { Auth } from '@supabase/auth-ui-react';
-import { VStack, Heading } from '@chakra-ui/react';
 import { Navigate } from 'react-router-dom';
 
 import { AskName, AuthChoice } from '../components/SignIn';
-import { getUserName } from '../localStorage/userName';
 import { getRedirectAfterSignIn } from '../localStorage/redirectAfterSignIn';
+import { getUserName } from '../localStorage/userName';
 
 // TODO Check if already signed in, the if we have his name (storage + database)
 // TODO Change error color to pltnm
@@ -19,17 +19,16 @@ export default function SignIn() {
       <Heading as="h1" fontSize="2xl" fontWeight="700">
         Sign In
       </Heading>
-      <>
-        {user && user.app_metadata && user.app_metadata.provider ? (
-          getUserName() ? (
+      {(() => {
+        if (user && user.app_metadata && user.app_metadata.provider) {
+          return getUserName() ? (
             <Navigate to={getRedirectAfterSignIn()} />
           ) : (
             <AskName user={user} />
-          )
-        ) : (
-          <AuthChoice />
-        )}
-      </>
+          );
+        }
+        return <AuthChoice />;
+      })()}
     </VStack>
   );
 }

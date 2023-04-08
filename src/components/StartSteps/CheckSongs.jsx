@@ -1,30 +1,30 @@
 import {
-  Box,
-  Heading,
-  Wrap,
-  WrapItem,
   AspectRatio,
+  Box,
   Center,
-  Text,
+  Heading,
+  HStack,
   Image,
   SlideFade,
-  HStack,
+  Text,
+  Wrap,
+  WrapItem,
 } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import SpotifyApi from '../../spotifyApi/SpotifyApi';
 import PltnmButton from '../base/PltnmButton';
 import { storeRedirectAfterSignIn } from '../../localStorage/redirectAfterSignIn';
+import SpotifyApi from '../../spotifyApi/SpotifyApi';
 
 // TODO Add animation
 // TODO Check parameters / have token stored
 
 export default function CheckSongs() {
   const navigate = useNavigate();
-  function useGoSignIn() {
+  const useGoSignIn = () => {
     storeRedirectAfterSignIn('/start/step-4');
     navigate('/signin');
-  }
+  };
 
   const lastYearPlaylistData = SpotifyApi.getCurrentPlaylistData();
 
@@ -42,7 +42,7 @@ export default function CheckSongs() {
           Perfect!
         </Heading>
         <Heading as="h3" fontSize="xl" fontFamily="body" fontWeight="normal">
-          You should recognize some of these 🤓
+          You should recognize some of these&nbsp;🤓
         </Heading>
       </Box>
       <Wrap justify="center" pt={5} px={2} spacing={5} maxW="xl">
@@ -84,7 +84,7 @@ export default function CheckSongs() {
           <SlideFade in delay={0.8} duration={1.5} offsetY={0}>
             <Link to="/start/step-2">
               <PltnmButton variant="outline">
-                I don't, take me back!
+                I don&apos;t, take me back!
               </PltnmButton>
             </Link>
           </SlideFade>

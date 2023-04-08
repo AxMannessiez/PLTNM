@@ -1,4 +1,4 @@
-import { supabase } from '../auth/supabaseClient';
+import supabase from '../auth/supabaseClient';
 
 const tableName = 'game';
 

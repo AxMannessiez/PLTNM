@@ -1,34 +1,35 @@
+import { useEffect, useState } from 'react';
+
 import {
-  Flex,
-  Stack,
-  StackDivider,
-  Heading,
-  Text,
   Box,
-  Input,
   Button,
   Center,
+  Flex,
+  Heading,
   Image,
+  Input,
+  Stack,
+  StackDivider,
+  Text,
 } from '@chakra-ui/react';
-import {
-  IoCopyOutline,
-  IoCheckmarkOutline,
-  IoShareOutline,
-} from 'react-icons/io5';
-import { useState, useEffect } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import env from 'react-dotenv';
+import {
+  IoCheckmarkOutline,
+  IoCopyOutline,
+  IoShareOutline,
+} from 'react-icons/io5';
 
-import SpotifyApi from '../../spotifyApi/SpotifyApi';
-import { getTeamId, storeTeamId } from '../../localStorage/teamId';
-import { getUserId } from '../../localStorage/userId';
-import { getGameId, storeGameId } from '../../localStorage/gameId';
-import { getUserName } from '../../localStorage/userName';
-import Team from '../../database/Team';
-import Game from '../../database/Game';
-import Playlist from '../../database/Playlist';
 import SavingPlaylistSpinner from './Share/SavingPlaylistSpinner';
 import TeamNameForm from './Share/TeamNameForm';
+import Game from '../../database/Game';
+import Playlist from '../../database/Playlist';
+import Team from '../../database/Team';
+import { getGameId, storeGameId } from '../../localStorage/gameId';
+import { getTeamId, storeTeamId } from '../../localStorage/teamId';
+import { getUserId } from '../../localStorage/userId';
+import { getUserName } from '../../localStorage/userName';
+import SpotifyApi from '../../spotifyApi/SpotifyApi';
 
 const sideButtonStyle = {
   boxSize: 10,

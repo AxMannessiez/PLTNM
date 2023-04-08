@@ -3,13 +3,13 @@ import { Box, Button, Heading } from '@chakra-ui/react';
 import SpotifyApi from '../../spotifyApi/SpotifyApi';
 
 export default function EndStep() {
-  function savePlaylistAsCsv() {
+  const savePlaylistAsCsv = () => {
     const data = encodeURI(SpotifyApi.getCurrentPlaylistDataCsvExport());
     const link = document.createElement('a');
     link.setAttribute('href', data);
     link.setAttribute('download', 'My Spotify Top Songs.csv');
     link.click();
-  }
+  };
 
   return (
     <>

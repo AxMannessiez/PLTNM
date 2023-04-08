@@ -16,7 +16,7 @@ function removeRedirectAfterSignIn() {
 }
 
 export {
-  storeRedirectAfterSignIn,
   getRedirectAfterSignIn,
   removeRedirectAfterSignIn,
+  storeRedirectAfterSignIn,
 };

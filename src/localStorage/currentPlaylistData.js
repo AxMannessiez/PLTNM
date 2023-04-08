@@ -13,7 +13,7 @@ function removeCurrentPlaylistData() {
 }
 
 export {
-  storeCurrentPlaylistData,
   getCurrentPlaylistData,
   removeCurrentPlaylistData,
+  storeCurrentPlaylistData,
 };

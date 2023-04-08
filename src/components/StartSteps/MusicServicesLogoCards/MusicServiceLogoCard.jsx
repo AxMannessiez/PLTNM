@@ -1,14 +1,16 @@
+/* eslint-disable react/prop-types, react/destructuring-assignment, react/jsx-props-no-spreading */
+
 import {
   Box,
-  VStack,
   Center,
-  Icon,
   Heading,
+  Icon,
   useBoolean,
+  VStack,
 } from '@chakra-ui/react';
 
 // Used to add a border to light backgrounds
-function getLightnessFromHex(hexColor) {
+const getLightnessFromHex = hexColor => {
   let rgb;
   if (hexColor.length === 4) {
     rgb = hexColor.slice(1, 4).split('');
@@ -22,7 +24,7 @@ function getLightnessFromHex(hexColor) {
     });
   }
   return ((1 / 510) * (Math.max(...rgb) + Math.min(...rgb))).toFixed(2);
-}
+};
 
 export default function MusicServiceLogoCard(props) {
   const [cardHovered, setCardHovered] = useBoolean();

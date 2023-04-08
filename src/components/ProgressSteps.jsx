@@ -1,26 +1,29 @@
+import PropTypes from 'prop-types';
+
 import { Step, Steps } from 'chakra-ui-steps';
 import { useNavigate } from 'react-router-dom';
 
-export default function ProgressSteps(props) {
-  const { activeStep } = props;
+function ProgressSteps(props) {
+  const { activeStep, steps } = props;
   const navigate = useNavigate();
 
-  function goBackStep(step) {
+  const goBackStep = step => {
     if (step < activeStep) {
       navigate(`/start/step-${String(step + 1)}`);
     }
-  }
+  };
 
   return (
     <Steps
       labelOrientation="vertical"
-      activeStep={props.activeStep}
+      activeStep={activeStep}
       onClickStep={step => goBackStep(step)}
       responsive={false}
     >
-      {props.steps.map((label, index) => (
+      {steps.map((label, index) => (
         <Step
           label={label}
+          // eslint-disable-next-line react/no-array-index-key
           key={label + index}
           className={index < activeStep ? 'clickable' : ''}
         />
@@ -28,3 +31,10 @@ export default function ProgressSteps(props) {
     </Steps>
   );
 }
+
+ProgressSteps.propTypes = {
+  activeStep: PropTypes.number.isRequired,
+  steps: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+export default ProgressSteps;

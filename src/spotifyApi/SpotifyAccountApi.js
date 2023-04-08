@@ -1,10 +1,10 @@
-import env from 'react-dotenv';
+import axios from 'axios';
 import pkceChallenge from 'pkce-challenge';
 import qs from 'qs';
+import env from 'react-dotenv';
 import { v4 as uuid } from 'uuid';
-import axios from 'axios';
 
-import { endpoints } from './endpoints';
+import endpoints from './endpoints';
 
 // TODO Refresh Token
 

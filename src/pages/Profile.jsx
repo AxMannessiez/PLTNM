@@ -1,18 +1,19 @@
-import { useState, useEffect } from 'react';
-import { supabase } from '../auth/supabaseClient';
+import { useEffect, useState } from 'react';
 
-async function signOut() {
+import supabase from '../auth/supabaseClient';
+
+const signOut = async () => {
   await supabase.auth.signOut();
-  console.log('Redirect to login');
-}
+  // console.log('Redirect to login');
+};
 
-function Profile() {
+export default function Profile() {
   const [profile, setProfile] = useState(null);
 
   async function fetchProfile() {
     const profileData = await supabase.auth.user();
     if (!profileData) {
-      console.log('Redirect to login');
+      // console.log('Redirect to login');
     } else {
       setProfile(profileData);
     }
@@ -22,7 +23,7 @@ function Profile() {
     fetchProfile();
   }, []);
 
-  console.log(profile);
+  // console.log(profile);
   if (!profile) return null;
 
   return (
@@ -45,5 +46,3 @@ function Profile() {
     </div>
   );
 }
-
-export default Profile;

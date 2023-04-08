@@ -1,6 +1,6 @@
-import MusicServiceLogin from './StartSteps/MusicServiceLogin';
-import ChoosePlaylist from './StartSteps/ChoosePlaylist';
 import CheckSongs from './StartSteps/CheckSongs';
+import ChoosePlaylist from './StartSteps/ChoosePlaylist';
+import MusicServiceLogin from './StartSteps/MusicServiceLogin';
 import Share from './StartSteps/Share';
 
-export { MusicServiceLogin, ChoosePlaylist, CheckSongs, Share };
+export { CheckSongs, ChoosePlaylist, MusicServiceLogin, Share };

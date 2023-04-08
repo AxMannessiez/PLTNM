@@ -1,12 +1,12 @@
 import axios from 'axios';
 import _ from 'lodash';
 
-import {
-  storeCurrentPlaylistData,
-  getCurrentPlaylistData,
-} from '../localStorage/currentPlaylistData';
-import { endpoints } from './endpoints';
+import endpoints from './endpoints';
 import getSamples from '../helpers/getSamples';
+import {
+  getCurrentPlaylistData,
+  storeCurrentPlaylistData,
+} from '../localStorage/currentPlaylistData';
 
 // TODO Create Album class for same structure across music services
 
@@ -101,7 +101,7 @@ export default class SpotifyApi {
       const lastArtist = artists.pop();
       artists = `${artists.join(', ')} & ${lastArtist}`;
     } else if (artists.length === 1) {
-      artists = artists[0];
+      [artists] = artists;
     }
 
     // Return all variables

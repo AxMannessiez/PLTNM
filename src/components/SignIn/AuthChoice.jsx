@@ -1,14 +1,15 @@
-import { Auth } from '@supabase/auth-ui-react';
-import { Text, ScaleFade } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
+
+import { ScaleFade, Text } from '@chakra-ui/react';
+import { Auth } from '@supabase/auth-ui-react';
 import env from 'react-dotenv';
 
 import {
-  customTheme,
-  containerStyle,
   buttonStyle,
+  containerStyle,
+  customTheme,
 } from '../../auth/customAuthUITheme';
-import { supabase } from '../../auth/supabaseClient';
+import supabase from '../../auth/supabaseClient';
 
 export default function AuthChoice() {
   const [mounted, setMounted] = useState(false);

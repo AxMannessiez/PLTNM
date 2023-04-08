@@ -1,4 +1,4 @@
-export const endpoints = {
+const endpoints = {
   account: {
     authorize: '/authorize',
     token: '/api/token',
@@ -7,3 +7,5 @@ export const endpoints = {
     playlists: '/playlists',
   },
 };
+
+export default endpoints;

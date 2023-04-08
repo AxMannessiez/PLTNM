@@ -1,4 +1,4 @@
-import { Container, VStack, Heading, Text, Center } from '@chakra-ui/react';
+import { Center, Container, Heading, Text, VStack } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
 import PltnmButton from '../components/base/PltnmButton';
@@ -30,8 +30,9 @@ function Home() {
           fontWeight="normal"
           color="gray.500"
         >
-          Do you have any idea what kind of music your friends listen to? It's
-          time to find out if you're right.
+          Do you have any idea what kind of music your friends listen to?
+          <br />
+          It&apos;s time to find out if you&apos;re right.
         </Heading>
         <Center spacing={3}>
           <Link to="/start/">

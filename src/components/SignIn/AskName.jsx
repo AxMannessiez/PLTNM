@@ -1,33 +1,34 @@
+import PropTypes from 'prop-types';
+
 import {
+  FormControl,
+  FormErrorMessage,
+  Input,
   Text,
   VStack,
-  FormControl,
-  Input,
-  FormErrorMessage,
 } from '@chakra-ui/react';
-import { Formik, Form, Field } from 'formik';
-import { useNavigate } from 'react-router-dom';
+import { Field, Form, Formik } from 'formik';
 import { capitalize } from 'lodash/string';
-import { Auth } from '@supabase/auth-ui-react';
-import Player from '../../database/Player';
+import { useNavigate } from 'react-router-dom';
 
-import PltnmButton from '../base/PltnmButton';
 import validateFormRequired from './validateFormRequired';
-import { storeUserName } from '../../localStorage/userName';
-import { storeUserId } from '../../localStorage/userId';
+import PltnmButton from '../base/PltnmButton';
+import Player from '../../database/Player';
 import {
   getRedirectAfterSignIn,
   removeRedirectAfterSignIn,
 } from '../../localStorage/redirectAfterSignIn';
+import { storeUserId } from '../../localStorage/userId';
+import { storeUserName } from '../../localStorage/userName';
 
-export default function AskName(props) {
-  const { user } = Auth.useUser();
+function AskName(props) {
+  const { user } = props;
   const navigate = useNavigate();
 
   return (
     <>
       <Text pt={5}>
-        {`Signed in with${capitalize(props.user.app_metadata.provider)} ✔`}
+        {`Signed in with${capitalize(user.app_metadata.provider)} ✔`}
       </Text>
       <Text pt={5}>Now we only need your name!</Text>
       <Formik
@@ -45,27 +46,46 @@ export default function AskName(props) {
             });
         }}
       >
-        <Form>
-          <VStack spacing={6}>
-            <Field name="name" validate={n => validateFormRequired(n, 'Name')}>
-              {({ field, form }) => (
-                <FormControl isInvalid={form.errors.name && form.touched.name}>
-                  <Input {...field} placeholder="John" />
-                  <FormErrorMessage>{form.errors.name}</FormErrorMessage>
-                </FormControl>
-              )}
-            </Field>
-            <PltnmButton
-              mt={4}
-              isLoading={props.isSubmitting}
-              type="submit"
-              w="100%"
-            >
-              Continue
-            </PltnmButton>
-          </VStack>
-        </Form>
+        {({ isSubmitting }) => (
+          <Form>
+            <VStack spacing={6}>
+              <Field
+                name="name"
+                validate={n => validateFormRequired(n, 'Name')}
+              >
+                {({ field, form }) => (
+                  <FormControl
+                    isInvalid={form.errors.name && form.touched.name}
+                  >
+                    {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+                    <Input {...field} placeholder="John" />
+                    <FormErrorMessage>{form.errors.name}</FormErrorMessage>
+                  </FormControl>
+                )}
+              </Field>
+              <PltnmButton
+                mt={4}
+                isLoading={isSubmitting}
+                type="submit"
+                w="100%"
+              >
+                Continue
+              </PltnmButton>
+            </VStack>
+          </Form>
+        )}
       </Formik>
     </>
   );
 }
+
+AskName.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    app_metadata: PropTypes.shape({
+      provider: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
+};
+
+export default AskName;

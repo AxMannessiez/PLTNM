@@ -1,11 +1,11 @@
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
+import Profile from '../pages/Profile';
+import SignIn from '../pages/SignIn';
 import Start from '../pages/Start';
 import SpotifyCallback from '../spotifyApi/SpotifyCallback';
-import SignIn from '../pages/SignIn';
-import Profile from '../pages/Profile';
 
 function RouterOutlet() {
   return (

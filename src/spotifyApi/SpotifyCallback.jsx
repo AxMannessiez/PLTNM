@@ -1,4 +1,5 @@
-import React from 'react';
+import { useEffect } from 'react';
+
 import { useNavigate } from 'react-router-dom';
 
 import SpotifyAccountApi from './SpotifyAccountApi';
@@ -11,7 +12,7 @@ function SpotifyCallback() {
   const { error, code, state } = useUrlParams(['error', 'code', 'state']);
   const navigate = useNavigate();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (error) {
       navigate('/start/step-2', {
         state: { error: 'Authentification error.' },

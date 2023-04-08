@@ -1,30 +1,42 @@
+import PropTypes from 'prop-types';
+
 import { Button } from '@chakra-ui/react';
 
-const variantStyles = {
-  base: {
-    px: 4,
-    _hover: {
-      opacity: '.8',
-    },
-  },
-  solid: {
-    bg: 'pltnm.primary',
-    color: 'white',
-  },
-  outline: {
-    variant: 'outline',
-    borderColor: 'pltnm.primary',
-    color: 'pltnm.primary',
-    fontWeight: 'normal',
+const baseStyle = {
+  px: 4,
+  _hover: {
+    opacity: '.8',
   },
 };
 
-export default function PltnmButton(props) {
-  return props.variant === 'outline' ? (
+const solidStyle = {
+  ...baseStyle,
+  bg: 'pltnm.primary',
+  color: 'white',
+};
+
+const outlineStyle = {
+  ...baseStyle,
+  variant: 'outline',
+  borderColor: 'pltnm.primary',
+  color: 'pltnm.primary',
+  fontWeight: 'normal',
+};
+
+function PltnmButton(props) {
+  const { variant } = props;
+  return (
     // eslint-disable-next-line react/jsx-props-no-spreading
-    <Button {...variantStyles.base} {...variantStyles.outline} {...props} />
-  ) : (
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    <Button {...variantStyles.base} {...variantStyles.solid} {...props} />
+    <Button sx={variant === 'outline' ? outlineStyle : solidStyle} {...props} />
   );
 }
+
+PltnmButton.propTypes = {
+  variant: PropTypes.string,
+};
+
+PltnmButton.defaultProps = {
+  variant: 'solid',
+};
+
+export default PltnmButton;

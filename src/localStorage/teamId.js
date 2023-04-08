@@ -12,4 +12,4 @@ function removeTeamId() {
   localStorage.removeItem(localStorageKey);
 }
 
-export { storeTeamId, getTeamId, removeTeamId };
+export { getTeamId, removeTeamId, storeTeamId };
