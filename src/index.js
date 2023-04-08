@@ -30,7 +30,7 @@ const root = ReactDOM.createRoot(container);
 root.render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <ChakraProvider resetCSS={true} theme={theme}>
+      <ChakraProvider resetCSS theme={theme}>
         <Auth.UserContextProvider supabaseClient={supabase}>
           <App />
         </Auth.UserContextProvider>

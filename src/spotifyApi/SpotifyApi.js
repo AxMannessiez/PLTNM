@@ -27,6 +27,7 @@ export default class SpotifyApi {
           Authorization: `Bearer ${this.authToken}`,
           'content-type': 'application/json',
         },
+        timeout: 2000,
       }
     );
     return res.data;

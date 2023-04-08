@@ -10,7 +10,11 @@ import {
   Center,
   Image,
 } from '@chakra-ui/react';
-import { CopyIcon, CheckIcon } from '@chakra-ui/icons';
+import {
+  IoCopyOutline,
+  IoCheckmarkOutline,
+  IoShareOutline,
+} from 'react-icons/io5';
 import { useState, useEffect } from 'react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import env from 'react-dotenv';
@@ -25,6 +29,17 @@ import Game from '../../database/Game';
 import Playlist from '../../database/Playlist';
 import SavingPlaylistSpinner from './Share/SavingPlaylistSpinner';
 import TeamNameForm from './Share/TeamNameForm';
+
+const sideButtonStyle = {
+  boxSize: 10,
+  p: 0,
+  borderLeft: '1px',
+  borderColor: 'gray.200',
+  borderRadius: '0 5px 5px 0',
+  color: 'gray.500',
+  _hover: { backgroundColor: 'gray.50' },
+  _active: { backgroundColor: 'gray.200' },
+};
 
 // TODO Team name from local Storage
 
@@ -53,8 +68,7 @@ export default function Share() {
   const [teamName, setTeamName] = useState(null);
   const [gameId, setGameId] = useState(null);
   const [savingPlaylist, setSavingPlaylist] = useState(true);
-  const [shouldDisplayCopyCheckIcon, setShouldDisplayCopyCheckIcon] =
-    useState(false);
+  const [shouldDisplayCheckIcon, setShouldDisplayCheckIcon] = useState(false);
 
   useEffect(() => {
     createTeamAndGame(setTeamName, setGameId);
@@ -119,31 +133,49 @@ export default function Share() {
               textColor="black"
               value={gameUrl}
             />
-            <CopyToClipboard
-              text={gameUrl}
-              onCopy={() => {
-                setShouldDisplayCopyCheckIcon(true);
-                setTimeout(() => {
-                  setShouldDisplayCopyCheckIcon(false);
-                }, 500);
-              }}
-            >
+            {navigator.share ? (
               <Button
-                boxSize={10}
-                p={0}
-                borderLeft="1px"
-                borderColor="gray.200"
-                borderRadius="0 5px 5px 0"
-                _hover={{ backgroundColor: 'gray.50' }}
-                _active={{ backgroundColor: 'gray.200' }}
+                sx={sideButtonStyle}
+                onClick={() => {
+                  navigator
+                    .share({
+                      url: gameUrl,
+                      title: 'PLTNM',
+                      text: 'Play with me on PLTNM by uploading your playlist!',
+                    })
+                    .then(() => {
+                      setShouldDisplayCheckIcon(true);
+                      setTimeout(() => {
+                        setShouldDisplayCheckIcon(false);
+                      }, 500);
+                    });
+                }}
               >
-                {shouldDisplayCopyCheckIcon ? (
-                  <CheckIcon color="gray.500" />
+                {shouldDisplayCheckIcon ? (
+                  <IoCheckmarkOutline />
                 ) : (
-                  <CopyIcon color="gray.500" />
+                  <IoShareOutline />
                 )}
               </Button>
-            </CopyToClipboard>
+            ) : (
+              <CopyToClipboard
+                text={gameUrl}
+                onCopy={() => {
+                  setShouldDisplayCheckIcon(true);
+                  setTimeout(() => {
+                    setShouldDisplayCheckIcon(false);
+                  }, 500);
+                }}
+              >
+                <Button sx={sideButtonStyle}>
+                  {shouldDisplayCheckIcon ? (
+                    <IoCheckmarkOutline />
+                  ) : (
+                    <IoCopyOutline />
+                  )}
+                </Button>
+              </CopyToClipboard>
+            )}
           </Flex>
 
           <Center border="1px" borderColor="gray.200" borderRadius="md" p={2}>
