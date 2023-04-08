@@ -18,7 +18,7 @@ function Home() {
         >
           How well do you
           <br />
-          know
+          know{' '}
           <Text as="span" color="pltnm.primary">
             your friends?
           </Text>

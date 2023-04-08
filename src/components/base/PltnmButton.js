@@ -21,8 +21,10 @@ const variantStyles = {
 
 export default function PltnmButton(props) {
   return props.variant === 'outline' ? (
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <Button {...variantStyles.base} {...variantStyles.outline} {...props} />
   ) : (
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <Button {...variantStyles.base} {...variantStyles.solid} {...props} />
   );
 }

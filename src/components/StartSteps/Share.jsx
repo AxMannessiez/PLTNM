@@ -1,7 +1,6 @@
 import {
+  Flex,
   Stack,
-  VStack,
-  HStack,
   StackDivider,
   Heading,
   Text,
@@ -11,7 +10,9 @@ import {
   Center,
   Image,
 } from '@chakra-ui/react';
+import { CopyIcon, CheckIcon } from '@chakra-ui/icons';
 import { useState, useEffect } from 'react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import env from 'react-dotenv';
 
 import SpotifyApi from '../../spotifyApi/SpotifyApi';
@@ -52,6 +53,8 @@ export default function Share() {
   const [teamName, setTeamName] = useState(null);
   const [gameId, setGameId] = useState(null);
   const [savingPlaylist, setSavingPlaylist] = useState(true);
+  const [shouldDisplayCopyCheckIcon, setShouldDisplayCopyCheckIcon] =
+    useState(false);
 
   useEffect(() => {
     createTeamAndGame(setTeamName, setGameId);
@@ -68,84 +71,92 @@ export default function Share() {
   const gameUrl = `${env.REACT_APP_SITE_URL}/start/${gameId}`;
   const gameUrlQr = `https://api.qrserver.com/v1/create-qr-code/?data=${gameUrl}&size=400x400`;
 
-  return (
+  return savingPlaylist ? (
+    <SavingPlaylistSpinner />
+  ) : (
     <>
-      {savingPlaylist ? (
-        <SavingPlaylistSpinner />
-      ) : (
-        <>
-          <Box as="header" textAlign="center">
-            <Heading as="h2" fontSize="2xl" fontWeight="bold">
-              We saved your playlist!
-            </Heading>
-            <Heading
-              as="h3"
-              fontSize="xl"
-              fontFamily="body"
-              fontWeight="normal"
-            >
-              Now share the link with your friends!
-            </Heading>
-            <Text lineHeight="shorter" mt={2}>
-              They will be able to play with you by uploading their own
-              playlists.
-            </Text>
-          </Box>
-          <Stack
-            divider={<StackDivider borderColor="gray.200" />}
-            spacing={6}
-            pt={{ base: 2, sm: 6 }}
+      <Box as="header" textAlign="center">
+        <Heading as="h2" fontSize="2xl" fontWeight="bold">
+          We saved your playlist!
+        </Heading>
+        <Heading as="h3" fontSize="xl" fontFamily="body" fontWeight="normal">
+          Now share the link with your friends!
+        </Heading>
+        <Text lineHeight="shorter" mt={2}>
+          They will be able to play with you by uploading their own playlists.
+        </Text>
+      </Box>
+      <Stack
+        divider={<StackDivider borderColor="gray.200" />}
+        spacing={6}
+        pt={{ base: 2, sm: 6 }}
+        w="100%"
+        align="start"
+        direction={['column', 'row']}
+      >
+        <Flex direction="column" py={6} w="100%">
+          <Heading as="h5" fontSize="lg" mb={3} align="center">
+            Check your team name
+          </Heading>
+          <TeamNameForm initialName={teamName} />
+        </Flex>
+        <Flex direction="column" align="center" py={6} w="100%">
+          <Heading as="h5" fontSize="lg" mb={3} align="center">
+            Share the link
+          </Heading>
+          <Flex
             w="100%"
-            align="start"
-            direction={['column', 'row']}
+            border="1px"
+            borderColor="gray.200"
+            borderRadius="6px"
+            p={0}
+            mb={3}
           >
-            <VStack flex={1} py={6} w="100%">
-              <Heading as="h5" fontSize="lg" mb={3} align="center">
-                Check your team name
-              </Heading>
-              <TeamNameForm initialName={teamName} />
-            </VStack>
-            <VStack flex={1} py={6} w="100%">
-              <Heading as="h5" fontSize="lg" mb={3} align="center">
-                Share the link
-              </Heading>
+            <Input
+              isReadOnly
+              size="md"
+              border="none"
+              textColor="black"
+              value={gameUrl}
+            />
+            <CopyToClipboard
+              text={gameUrl}
+              onCopy={() => {
+                setShouldDisplayCopyCheckIcon(true);
+                setTimeout(() => {
+                  setShouldDisplayCopyCheckIcon(false);
+                }, 500);
+              }}
+            >
               <Button
-                display={['revert', 'none']}
-                data-clipboard-text={gameUrl}
-                border="1px"
-                borderColor="gray.200"
-                borderRadius="md"
+                boxSize={10}
                 p={0}
-              >
-                <HStack w="100%">
-                  <Input
-                    isReadOnly
-                    size="md"
-                    border="none"
-                    textColor="black"
-                    value={gameUrl}
-                  />
-                </HStack>
-              </Button>
-              <Center
-                display={['none', 'block']}
-                border="1px"
+                borderLeft="1px"
                 borderColor="gray.200"
-                borderRadius="md"
-                p={2}
+                borderRadius="0 5px 5px 0"
+                _hover={{ backgroundColor: 'gray.50' }}
+                _active={{ backgroundColor: 'gray.200' }}
               >
-                <Image
-                  src={gameUrlQr}
-                  alt="Game link QR Code"
-                  load="lazy"
-                  htmlWidth="150em"
-                  align="center"
-                />
-              </Center>
-            </VStack>
-          </Stack>
-        </>
-      )}
+                {shouldDisplayCopyCheckIcon ? (
+                  <CheckIcon color="gray.500" />
+                ) : (
+                  <CopyIcon color="gray.500" />
+                )}
+              </Button>
+            </CopyToClipboard>
+          </Flex>
+
+          <Center border="1px" borderColor="gray.200" borderRadius="md" p={2}>
+            <Image
+              src={gameUrlQr}
+              alt="Game link QR Code"
+              load="lazy"
+              htmlWidth="150em"
+              align="center"
+            />
+          </Center>
+        </Flex>
+      </Stack>
     </>
   );
 }
