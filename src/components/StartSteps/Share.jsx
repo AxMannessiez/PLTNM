@@ -34,6 +34,7 @@ import SpotifyApi from '../../spotifyApi/SpotifyApi';
 const sideButtonStyle = {
   boxSize: 10,
   p: 0,
+  boxSizing: 'content-box',
   borderLeft: '1px',
   borderColor: 'gray.200',
   borderRadius: '0 5px 5px 0',

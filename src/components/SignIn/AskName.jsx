@@ -28,7 +28,7 @@ function AskName(props) {
   return (
     <>
       <Text pt={5}>
-        {`Signed in with${capitalize(user.app_metadata.provider)} ✔`}
+        {`Signed in with ${capitalize(user.app_metadata.provider)} ✔`}
       </Text>
       <Text pt={5}>Now we only need your name!</Text>
       <Formik
@@ -55,10 +55,16 @@ function AskName(props) {
               >
                 {({ field, form }) => (
                   <FormControl
-                    isInvalid={form.errors.name && form.touched.name}
+                    isInvalid={!!form.errors.name && !!form.touched.name}
                   >
-                    {/* eslint-disable-next-line react/jsx-props-no-spreading */}
-                    <Input {...field} placeholder="John" />
+                    <Input
+                      type="text"
+                      placeholder="John"
+                      autocomplete="given-name"
+                      // eslint-disable-next-line react/jsx-props-no-spreading
+                      {...field}
+                      aria-required="true"
+                    />
                     <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                   </FormControl>
                 )}
