@@ -61,7 +61,7 @@ export default function MusicServiceLogoCard(props) {
               borderRadius: '0.75rem',
             },
           }}
-          boxShadow={cardHovered ? '0 10px 20px 0px rgba(0 0 0 / 25%)' : 'base'}
+          boxShadow={cardHovered ? '0 10px 20px 0px rgba(0, 0, 0, .2)' : 'base'}
           transition="box-shadow .1s ease-out, aspect-ratio .4s ease, border-radius .4s ease"
           overflow="hidden"
         >
@@ -97,6 +97,10 @@ export default function MusicServiceLogoCard(props) {
         textAlign="center"
         fontFamily="body"
         fontWeight="normal"
+        sx={{
+          whiteSpace: 'nowrap',
+          visibility: cardHovered ? 'visible' : 'hidden',
+        }}
         opacity={cardHovered ? 1 : 0}
         transition="opacity .1s ease"
         noOfLines={1}

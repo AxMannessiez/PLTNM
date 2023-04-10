@@ -1,4 +1,4 @@
-import { Box, Center, Heading, SimpleGrid, Text } from '@chakra-ui/react';
+import { Center, SimpleGrid } from '@chakra-ui/react';
 
 import {
   AmazonMusicLogoCard,
@@ -11,6 +11,7 @@ import {
   TidalLogoCard,
   YoutubeMusicLogoCard,
 } from './MusicServicesLogoCards';
+import StartStepsHeader from './StartStepsHeader';
 
 // TODO Add loading indicators to every page
 // TODO Check .env keys hidden
@@ -24,18 +25,12 @@ export default function MusicServiceLogin() {
 
   return (
     <>
-      <Box as="header" textAlign="center">
-        <Heading as="h2" fontSize="2xl" fontWeight="bold">
-          Let&apos;s Start!
-        </Heading>
-        <Heading as="h3" fontSize="xl" fontFamily="body" fontWeight="normal">
-          Choose you music service.
-        </Heading>
-        <Text lineHeight="shorter" mt={2}>
-          You&apos;ll be redirected there to log in and grant us permission to
-          see your playlists!
-        </Text>
-      </Box>
+      <StartStepsHeader
+        title="Let's Start!"
+        subtitle="Choose you music service."
+        description="You'll be redirected there to log in and grant us permission to
+          see your playlists!"
+      />
       <Center pt={{ base: 6, sm: 10 }}>
         <SimpleGrid
           columns={3}

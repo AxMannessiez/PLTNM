@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 
-import { Box, Heading, SimpleGrid, Spacer } from '@chakra-ui/react';
+import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import { Card, CardBody, CardFooter, CardHeader } from '@chakra-ui/card';
 import { Select } from 'chakra-react-select';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
+import StartStepsHeader from './StartStepsHeader';
 import PltnmButton from '../base/PltnmButton';
 import SpotifyAccountApi from '../../spotifyApi/SpotifyAccountApi';
 import SpotifyApi from '../../spotifyApi/SpotifyApi';
@@ -67,36 +68,29 @@ export default function ChoosePlaylist() {
 
   return (
     <>
-      <Box as="header" textAlign="center">
-        <Heading as="h2" fontSize="2xl" fontWeight="bold">
-          Great!
-        </Heading>
-        <Heading as="h3" fontSize="xl" fontFamily="body" fontWeight="normal">
-          Now for the playlist:
-        </Heading>
-      </Box>
+      <StartStepsHeader title=" Great!" subtitle="Now for the playlist:" />
       <SimpleGrid
         pt={{ base: 4, sm: 6 }}
         spacing={6}
         columns={{ base: 1, md: 3 }}
         maxW="4xl"
-        gridAutoRows="1fr"
+        gridAutoRows={{ base: null, md: '1fr' }}
       >
         <Card
           align="stretch"
+          justify="space-between"
           textAlign="center"
           borderRadius={{ base: 'xl', md: 'lg' }}
           p={5}
           border="1px"
           borderColor="gray.200"
         >
-          <CardHeader mb={5}>
+          <CardHeader>
             <Heading as="h4" fontSize="xl">
               {`Pick your ${spotifyMostRecentYear} top songs`}
             </Heading>
           </CardHeader>
-          <Spacer />
-          <CardFooter pt={5}>
+          <CardFooter mt={{ base: 14, md: null }}>
             <PltnmButton
               minW="50%"
               m="auto"
@@ -116,18 +110,19 @@ export default function ChoosePlaylist() {
         </Card>
         <Card
           align="stretch"
+          justify="space-between"
           textAlign="center"
           borderRadius="lg"
           p={5}
           border="1px"
           borderColor="gray.200"
         >
-          <CardHeader mb={5}>
+          <CardHeader>
             <Heading as="h4" fontSize="xl">
               Pick from a previous year top songs
             </Heading>
           </CardHeader>
-          <CardBody mb={5}>
+          <CardBody my={[5, 8]}>
             <Box w="50%" m="auto">
               <Select
                 size="md"
@@ -139,8 +134,7 @@ export default function ChoosePlaylist() {
               />
             </Box>
           </CardBody>
-          <Spacer />
-          <CardFooter pt={5}>
+          <CardFooter>
             <PltnmButton minW="50%" m="auto">
               Go!
             </PltnmButton>
@@ -148,18 +142,19 @@ export default function ChoosePlaylist() {
         </Card>
         <Card
           align="stretch"
+          justify="space-between"
           textAlign="center"
           borderRadius="lg"
           p={5}
           border="1px"
           borderColor="gray.200"
         >
-          <CardHeader mb={5}>
+          <CardHeader>
             <Heading as="h4" fontSize="xl">
               Pick from a personal playlist
             </Heading>
           </CardHeader>
-          <CardBody mb={5}>
+          <CardBody my={[5, 8]}>
             <Select
               size="md"
               placeholder="Playlist"
@@ -169,8 +164,7 @@ export default function ChoosePlaylist() {
               selectedOptionColor="pltnm.primaryValues"
             />
           </CardBody>
-          <Spacer />
-          <CardFooter pt={5}>
+          <CardFooter>
             <PltnmButton minW="50%" m="auto">
               Go!
             </PltnmButton>

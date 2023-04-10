@@ -6,3 +6,12 @@
     right: calc(-50% + 28px);
   }
 }
+
+@keyframes progress-sm {
+  from {
+    right: 0;
+  }
+  to {
+    right: calc(-50% + 24px);
+  }
+}

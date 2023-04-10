@@ -2,7 +2,6 @@ import {
   AspectRatio,
   Box,
   Center,
-  Heading,
   HStack,
   Image,
   SlideFade,
@@ -12,6 +11,7 @@ import {
 } from '@chakra-ui/react';
 import { Link, useNavigate } from 'react-router-dom';
 
+import StartStepsHeader from './StartStepsHeader';
 import PltnmButton from '../base/PltnmButton';
 import { storeRedirectAfterSignIn } from '../../localStorage/redirectAfterSignIn';
 import SpotifyApi from '../../spotifyApi/SpotifyApi';
@@ -37,14 +37,10 @@ export default function CheckSongs() {
 
   return (
     <>
-      <Box as="header" textAlign="center">
-        <Heading as="h2" fontSize="2xl" fontWeight="bold">
-          Perfect!
-        </Heading>
-        <Heading as="h3" fontSize="xl" fontFamily="body" fontWeight="normal">
-          You should recognize some of these&nbsp;🤓
-        </Heading>
-      </Box>
+      <StartStepsHeader
+        title="Perfect!"
+        subtitle=" You should recognize some of these&nbsp;🤓"
+      />
       <Wrap justify="center" pt={5} px={2} spacing={5} maxW="xl">
         {samplePlaylistAlbums
           ? samplePlaylistAlbums.map((album, i) => (
@@ -52,7 +48,7 @@ export default function CheckSongs() {
                 <SlideFade in duration={0.5} delay={0.5 + i * 0.15}>
                   <AspectRatio
                     ratio={1}
-                    w={['8em', '10em']}
+                    w={['7em', '10em']}
                     title={`${album.name} - ${album.artists[0].name}`}
                     borderRadius="base"
                     border="1px #E0E0E0 solid"

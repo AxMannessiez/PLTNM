@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 import {
-  Box,
   Button,
   Center,
   Flex,
@@ -10,7 +9,6 @@ import {
   Input,
   Stack,
   StackDivider,
-  Text,
 } from '@chakra-ui/react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import env from 'react-dotenv';
@@ -22,6 +20,7 @@ import {
 
 import SavingPlaylistSpinner from './Share/SavingPlaylistSpinner';
 import TeamNameForm from './Share/TeamNameForm';
+import StartStepsHeader from './StartStepsHeader';
 import Game from '../../database/Game';
 import Playlist from '../../database/Playlist';
 import Team from '../../database/Team';
@@ -91,17 +90,11 @@ export default function Share() {
     <SavingPlaylistSpinner />
   ) : (
     <>
-      <Box as="header" textAlign="center">
-        <Heading as="h2" fontSize="2xl" fontWeight="bold">
-          We saved your playlist!
-        </Heading>
-        <Heading as="h3" fontSize="xl" fontFamily="body" fontWeight="normal">
-          Now share the link with your friends!
-        </Heading>
-        <Text lineHeight="shorter" mt={2}>
-          They will be able to play with you by uploading their own playlists.
-        </Text>
-      </Box>
+      <StartStepsHeader
+        title="We saved your playlist!"
+        subtitle="Now share the link with your friends!"
+        description="They will be able to play with you by uploading their own playlists."
+      />
       <Stack
         divider={<StackDivider borderColor="gray.200" />}
         spacing={6}

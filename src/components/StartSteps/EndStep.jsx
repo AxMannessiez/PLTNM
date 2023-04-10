@@ -1,5 +1,6 @@
-import { Box, Button, Heading } from '@chakra-ui/react';
+import { Box, Button } from '@chakra-ui/react';
 
+import StartStepsHeader from './StartStepsHeader';
 import SpotifyApi from '../../spotifyApi/SpotifyApi';
 
 export default function EndStep() {
@@ -13,11 +14,7 @@ export default function EndStep() {
 
   return (
     <>
-      <Box as="header" textAlign="center">
-        <Heading as="h2" fontSize="2xl" fontWeight="bold">
-          All done!
-        </Heading>
-      </Box>
+      <StartStepsHeader title="All done!" />
       <Box pt={12}>
         <Button bg="pltnm.primary" onClick={savePlaylistAsCsv}>
           Download as .csv
