@@ -1,3 +1,4 @@
+import Player from './Player';
 import supabase from '../auth/supabaseClient';
 
 const tableName = 'team';
@@ -27,6 +28,39 @@ export default class Team {
     const { error } = await supabase
       .from(playerTeamRelTableName)
       .upsert({ player: playerId, team: this.id });
+    return error;
+  }
+
+  static async getTeam(teamId) {
+    const { data, error } = await supabase
+      .from(tableName)
+      .select()
+      .eq('id', teamId)
+      .single();
+    if (data) {
+      return new Team(data.name, teamId, data.created_at);
+    }
+    return error;
+  }
+
+  async getPlayers() {
+    const { data, error } = await supabase
+      .from(playerTeamRelTableName)
+      .select(
+        `
+          player ( 
+            id, 
+            name,
+            picture
+          )
+        `
+      )
+      .eq('team', this.id);
+    if (data) {
+      return data.map(
+        rel => new Player(rel.player.name, rel.player.picture, rel.player.id)
+      );
+    }
     return error;
   }
 }

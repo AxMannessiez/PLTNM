@@ -1,7 +1,7 @@
 import axios from 'axios';
-import _ from 'lodash';
 
 import endpoints from './endpoints';
+import displayNames from '../helpers/displayNames';
 import getSamples from '../helpers/getSamples';
 import {
   getCurrentPlaylistData,
@@ -95,14 +95,9 @@ export default class SpotifyApi {
     const albumCoverMd = track.album?.images[0]?.url ?? '';
     const trackISRC = track.external_ids?.isrc ?? '';
 
-    // Regroup artists array into a comma/& separated string
-    let artists = _.map(track.artists, 'name'); // Take only the artists names
-    if (artists.length > 1) {
-      const lastArtist = artists.pop();
-      artists = `${artists.join(', ')} & ${lastArtist}`;
-    } else if (artists.length === 1) {
-      [artists] = artists;
-    }
+    // Take only the artists names, and convert the
+    // array into a comma/& separated string
+    const artists = displayNames(track.artists.map(artist => artist.name));
 
     // Return all variables
     return {

@@ -34,7 +34,9 @@ function AskName(props) {
       <Formik
         initialValues={{ name: '' }}
         onSubmit={(values, actions) => {
-          const player = new Player(values.name, user.id);
+          const playerPicture =
+            user.user_metadata.picture || user.user_metadata.avatar_url || null;
+          const player = new Player(values.name, user.id, playerPicture);
           player
             .save() // Save in database
             .then(() => {
@@ -60,7 +62,7 @@ function AskName(props) {
                     <Input
                       type="text"
                       placeholder="John"
-                      autocomplete="given-name"
+                      autoComplete="given-name"
                       // eslint-disable-next-line react/jsx-props-no-spreading
                       {...field}
                       aria-required="true"
@@ -90,6 +92,10 @@ AskName.propTypes = {
     id: PropTypes.string.isRequired,
     app_metadata: PropTypes.shape({
       provider: PropTypes.string,
+    }).isRequired,
+    user_metadata: PropTypes.shape({
+      picture: PropTypes.string,
+      avatar_url: PropTypes.string,
     }).isRequired,
   }).isRequired,
 };

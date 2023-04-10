@@ -14,7 +14,7 @@ function Home() {
         <Heading
           as="h1"
           fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-          lineHeight="110%"
+          lineHeight="1.1"
         >
           How well do you
           <br />
@@ -34,7 +34,7 @@ function Home() {
           <br />
           It&apos;s time to find out if you&apos;re right.
         </Heading>
-        <Center spacing={3}>
+        <Center>
           <Link to="/start/">
             <PltnmButton rounded="full" px={6}>
               Get Started

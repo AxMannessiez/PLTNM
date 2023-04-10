@@ -5,6 +5,7 @@ import NotFound from '../pages/NotFound';
 import Profile from '../pages/Profile';
 import SignIn from '../pages/SignIn';
 import Start from '../pages/Start';
+import StartGame from '../pages/StartGame';
 import SpotifyCallback from '../spotifyApi/SpotifyCallback';
 
 function RouterOutlet() {
@@ -13,6 +14,7 @@ function RouterOutlet() {
       <Route path="/" element={<Home />} />
 
       <Route path="/start/step-:stepIdx" element={<Start />} />
+      <Route path="/start/game/:gameId" element={<StartGame />} />
       <Route path="/start" element={<Navigate to="/start/step-1" replace />} />
       <Route
         path="/start/:x"

@@ -21,4 +21,16 @@ export default class Game {
     }
     return error;
   }
+
+  static async getGame(gameId) {
+    const { data, error } = await supabase
+      .from(tableName)
+      .select()
+      .eq('id', gameId)
+      .single();
+    if (data) {
+      return new Game(data.team, gameId, data.created_at);
+    }
+    return error;
+  }
 }

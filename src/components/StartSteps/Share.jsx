@@ -46,10 +46,10 @@ const sideButtonStyle = {
 
 // Team and game creation in database
 async function createTeamAndGame(setTeamName, setGameId) {
+  const teamName = `${getUserName()}'s Team`;
+  setTeamName(teamName);
   const teamId = getTeamId(); // Check if stored in LocalStorage, if not create one and store id
   if (!teamId) {
-    const teamName = `${getUserName()}'s Team`;
-    setTeamName(teamName);
     const createdTeam = await Team.create(teamName);
     storeTeamId(createdTeam.id);
 
@@ -59,8 +59,6 @@ async function createTeamAndGame(setTeamName, setGameId) {
     storeGameId(game.id);
     setGameId(game.id);
   } else {
-    const teamName = `${getUserName()}'s Team`;
-    setTeamName(teamName);
     setGameId(getGameId());
   }
 }
@@ -72,18 +70,19 @@ export default function Share() {
   const [shouldDisplayCheckIcon, setShouldDisplayCheckIcon] = useState(false);
 
   useEffect(() => {
-    createTeamAndGame(setTeamName, setGameId);
+    createTeamAndGame(setTeamName, setGameId).then(() => {
+      // Save user playlist in database
+      const playlist = new Playlist(
+        getUserId(),
+        SpotifyApi.getCurrentPlaylistDataJsonExport(),
+        gameId
+      );
+      playlist.save().then(() => setSavingPlaylist(false));
+    });
   }, []);
 
-  // Save user playlist in database
-  const playlist = new Playlist(
-    getUserId(),
-    SpotifyApi.getCurrentPlaylistDataJsonExport()
-  );
-  playlist.save().then(() => setSavingPlaylist(false));
-
   // URL for game
-  const gameUrl = `${env.REACT_APP_SITE_URL}/start/${gameId}`;
+  const gameUrl = `${env.REACT_APP_SITE_URL}/start/game/${gameId}`;
   const gameUrlQr = `https://api.qrserver.com/v1/create-qr-code/?data=${gameUrl}&size=400x400`;
 
   return savingPlaylist ? (
