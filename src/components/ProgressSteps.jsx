@@ -15,10 +15,72 @@ function ProgressSteps(props) {
 
   return (
     <Steps
-      labelOrientation="vertical"
       activeStep={activeStep}
       onClickStep={step => goBackStep(step)}
+      variant="circles-alt"
       responsive={false}
+      sx={{
+        '& .cui-steps__horizontal-step': {
+          cursor: 'default!important',
+          '&[aria-disabled=true]': {
+            opacity: 0.7,
+          },
+          '&:not(:last-child):after': {
+            // Default track
+            backgroundColor: '#e8e8e8!important',
+            transition: 'none',
+          },
+          '&[data-active]': {
+            cursor: 'pointer!important',
+            '&:not(:last-child):before': {
+              // Filled track for done steps
+              content: '""',
+              backgroundColor: 'pltnm.primary',
+              height: '2px',
+              position: 'absolute',
+              top: 'calc(20px)',
+              left: 'calc(50% + 28px)',
+              right: 'calc(-50% + 28px)',
+              zIndex: 1,
+              animation: 'progress ease-out .3s',
+            },
+          },
+        },
+        '& .cui-steps__horizontal-step-container': {
+          '& > div:last-child > span': {
+            // Text label
+            fontFamily: 'body',
+            color: 'pltnm.text',
+            mt: 1,
+          },
+        },
+        '& .cui-steps__step-icon-container': {
+          background: 'white!important',
+          borderColor: 'pltnm.primary!important',
+          transition: 'border .1s ease-out',
+          '&:hover': {
+            // Prevent default green & pointer
+            cursor: 'default!important',
+            borderColor: 'pltnm.primary',
+          },
+          '&[data-active]': {
+            cursor: 'pointer!important',
+            background: 'pltnm.primary!important',
+          },
+          '&[aria-current=step]': {
+            borderWidth: '3px',
+            '& span': {
+              color: 'pltnm.primary',
+              fontWeight: 'bold!important',
+            },
+          },
+          '& span': {
+            // Number in circle
+            fontFamily: 'numbers',
+            fontWeight: '500!important',
+          },
+        },
+      }}
     >
       {steps.map((label, index) => (
         <Step

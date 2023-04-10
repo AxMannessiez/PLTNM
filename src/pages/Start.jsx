@@ -38,7 +38,7 @@ function Start() {
 
   return (
     <VStack as="main" w="100%" pb={20}>
-      <Box pt={{ base: 8, sm: 10 }} px={10} w="100%" maxW={580}>
+      <Box pt={{ base: 8, sm: 10 }} w="100%" maxW={580}>
         <ProgressSteps steps={steps.labels} activeStep={activeStep} />
       </Box>
       <VStack pt={{ base: 6, sm: 10 }} px={10}>
