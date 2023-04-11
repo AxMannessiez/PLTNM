@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment, react/prop-types */
 
 import MusicServiceLogoCard from './MusicServiceLogoCard';
-import SpotifyAccountApi from '../../../spotifyApi/SpotifyAccountApi';
+import { SpotifyAccountApi } from '../../../spotifyApi';
 
 export default function SpotifyLogoCard(props) {
   const userAuthentificationUrl =

@@ -6,22 +6,26 @@ import ProgressSteps from '../components/ProgressSteps';
 import {
   CheckSongs,
   ChoosePlaylist,
+  End,
   MusicServiceLogin,
   Share,
 } from '../components/StartSteps';
+import { getGameId } from '../localStorage';
 
 import '../styles/animation.css';
 
 // TODO Page Name
 
+const existingGameId = getGameId();
+const isNewGame = !existingGameId;
+
 const steps = {
-  labels: ['Login', 'Selection', 'Check', 'Share'],
-  components: [
-    <MusicServiceLogin />,
-    <ChoosePlaylist />,
-    <CheckSongs />,
-    <Share />,
-  ],
+  labels: isNewGame
+    ? ['Login', 'Selection', 'Check', 'Share']
+    : ['Login', 'Selection', 'Check'],
+  components: isNewGame
+    ? [<MusicServiceLogin />, <ChoosePlaylist />, <CheckSongs />, <Share />]
+    : [<MusicServiceLogin />, <ChoosePlaylist />, <CheckSongs />, <End />],
 };
 
 function Start() {
@@ -42,7 +46,7 @@ function Start() {
         <ProgressSteps steps={steps.labels} activeStep={activeStep} />
       </Box>
       <VStack pt={[6, 10]} px={[6, 10]}>
-        {activeStep >= steps.labels.length ? '' : steps.components[activeStep]}
+        {activeStep >= 4 ? '' : steps.components[activeStep]}
       </VStack>
     </VStack>
   );

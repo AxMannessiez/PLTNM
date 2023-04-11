@@ -21,14 +21,16 @@ import {
 import SavingPlaylistSpinner from './Share/SavingPlaylistSpinner';
 import TeamNameForm from './Share/TeamNameForm';
 import StartStepsHeader from './StartStepsHeader';
-import Game from '../../database/Game';
-import Playlist from '../../database/Playlist';
-import Team from '../../database/Team';
-import { getGameId, storeGameId } from '../../localStorage/gameId';
-import { getTeamId, storeTeamId } from '../../localStorage/teamId';
-import { getUserId } from '../../localStorage/userId';
-import { getUserName } from '../../localStorage/userName';
-import SpotifyApi from '../../spotifyApi/SpotifyApi';
+import { Game, Playlist, Team } from '../../database';
+import {
+  getGameId,
+  getTeamId,
+  getUserId,
+  getUserName,
+  storeGameId,
+  storeTeamId,
+} from '../../localStorage';
+import { SpotifyApi } from '../../spotifyApi';
 
 const sideButtonStyle = {
   boxSize: 10,

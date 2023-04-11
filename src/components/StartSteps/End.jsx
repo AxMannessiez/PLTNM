@@ -1,9 +1,9 @@
 import { Box, Button } from '@chakra-ui/react';
 
 import StartStepsHeader from './StartStepsHeader';
-import SpotifyApi from '../../spotifyApi/SpotifyApi';
+import { SpotifyApi } from '../../spotifyApi';
 
-export default function EndStep() {
+export default function End() {
   const savePlaylistAsCsv = () => {
     const data = encodeURI(SpotifyApi.getCurrentPlaylistDataCsvExport());
     const link = document.createElement('a');

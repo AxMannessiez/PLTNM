@@ -8,8 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 import StartStepsHeader from './StartStepsHeader';
 import PltnmButton from '../base/PltnmButton';
-import SpotifyAccountApi from '../../spotifyApi/SpotifyAccountApi';
-import SpotifyApi from '../../spotifyApi/SpotifyApi';
+import { SpotifyAccountApi, SpotifyApi } from '../../spotifyApi';
 
 export default function ChoosePlaylist() {
   // TODO Check parameters / have token stored

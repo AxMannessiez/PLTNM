@@ -15,11 +15,9 @@ import {
 import { Link, useNavigate, useParams } from 'react-router-dom';
 
 import PltnmButton from '../components/base/PltnmButton';
-import Game from '../database/Game';
-import Team from '../database/Team';
+import { Game, Team } from '../database';
 import displayNames from '../helpers/displayNames';
-import { storeGameId } from '../localStorage/gameId';
-import { storeTeamId } from '../localStorage/teamId';
+import { storeGameId, storeTeamId } from '../localStorage';
 
 function StartGame() {
   const [teamName, setTeamName] = useState('');

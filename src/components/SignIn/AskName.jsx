@@ -13,13 +13,13 @@ import { useNavigate } from 'react-router-dom';
 
 import validateFormRequired from './validateFormRequired';
 import PltnmButton from '../base/PltnmButton';
-import Player from '../../database/Player';
+import { Player } from '../../database';
 import {
   getRedirectAfterSignIn,
   removeRedirectAfterSignIn,
-} from '../../localStorage/redirectAfterSignIn';
-import { storeUserId } from '../../localStorage/userId';
-import { storeUserName } from '../../localStorage/userName';
+  storeUserId,
+  storeUserName,
+} from '../../localStorage';
 
 function AskName(props) {
   const { user } = props;

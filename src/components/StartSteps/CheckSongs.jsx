@@ -13,8 +13,8 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import StartStepsHeader from './StartStepsHeader';
 import PltnmButton from '../base/PltnmButton';
-import { storeRedirectAfterSignIn } from '../../localStorage/redirectAfterSignIn';
-import SpotifyApi from '../../spotifyApi/SpotifyApi';
+import { storeRedirectAfterSignIn } from '../../localStorage';
+import { SpotifyApi } from '../../spotifyApi';
 
 // TODO Add animation
 // TODO Check parameters / have token stored

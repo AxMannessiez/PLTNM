@@ -3,8 +3,7 @@ import { Auth } from '@supabase/auth-ui-react';
 import { Navigate } from 'react-router-dom';
 
 import { AskName, AuthChoice } from '../components/SignIn';
-import { getRedirectAfterSignIn } from '../localStorage/redirectAfterSignIn';
-import { getUserName } from '../localStorage/userName';
+import { getRedirectAfterSignIn, getUserName } from '../localStorage';
 
 // TODO Check if already signed in, the if we have his name (storage + database)
 // TODO Change error color to pltnm
