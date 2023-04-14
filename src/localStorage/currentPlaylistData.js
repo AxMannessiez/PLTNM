@@ -1,4 +1,4 @@
-const localStorageKey = 'currentPlaylistData';
+const localStorageKey = 'pltnm-currentPlaylistData';
 
 function storeCurrentPlaylistData(currentPlaylistData) {
   localStorage.setItem(localStorageKey, currentPlaylistData);

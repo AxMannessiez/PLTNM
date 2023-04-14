@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import { Box, VStack } from '@chakra-ui/react';
 import { useSteps } from 'chakra-ui-steps';
 import { Navigate, useParams } from 'react-router-dom';
@@ -10,25 +12,37 @@ import {
   MusicServiceLogin,
   Share,
 } from '../components/StartSteps';
-import { getGameId } from '../localStorage';
+import { getIsExistingGame } from '../localStorage';
 
 import '../styles/animation.css';
 
 // TODO Page Name
 
-const existingGameId = getGameId();
-const isNewGame = !existingGameId;
-
-const steps = {
-  labels: isNewGame
-    ? ['Login', 'Selection', 'Check', 'Share']
-    : ['Login', 'Selection', 'Check'],
-  components: isNewGame
-    ? [<MusicServiceLogin />, <ChoosePlaylist />, <CheckSongs />, <Share />]
-    : [<MusicServiceLogin />, <ChoosePlaylist />, <CheckSongs />, <End />],
-};
-
 function Start() {
+  const [labels, setLabels] = useState([
+    'Login',
+    'Selection',
+    'Check',
+    'Share',
+  ]);
+  const [components, setComponents] = useState([
+    <MusicServiceLogin />,
+    <ChoosePlaylist />,
+    <CheckSongs />,
+    <Share />,
+  ]);
+  useEffect(() => {
+    if (getIsExistingGame()) {
+      setLabels(['Login', 'Selection', 'Check']);
+      setComponents([
+        <MusicServiceLogin />,
+        <ChoosePlaylist />,
+        <CheckSongs />,
+        <End />,
+      ]);
+    }
+  }, []);
+
   let { activeStep } = useSteps({
     initialStep: 0,
   });
@@ -43,10 +57,10 @@ function Start() {
   return (
     <VStack as="main" w="100%" pb={20}>
       <Box pt={[8, 10]} w="100%" maxW={580}>
-        <ProgressSteps steps={steps.labels} activeStep={activeStep} />
+        <ProgressSteps steps={labels} activeStep={activeStep} />
       </Box>
       <VStack pt={[6, 10]} px={[6, 10]}>
-        {activeStep >= 4 ? '' : steps.components[activeStep]}
+        {activeStep >= 4 ? '' : components[activeStep]}
       </VStack>
     </VStack>
   );

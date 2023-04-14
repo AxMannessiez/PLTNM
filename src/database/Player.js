@@ -5,7 +5,7 @@ import supabase from '../auth/supabaseClient';
 const tableName = 'player';
 
 export default class Player {
-  constructor(name = null, picture = null, id = null, supabaseUserId = null) {
+  constructor(name = null, picture = null, supabaseUserId = null, id = null) {
     this.id = id;
     this.name = name;
     this.picture = picture;

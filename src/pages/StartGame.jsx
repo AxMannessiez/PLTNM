@@ -13,11 +13,12 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 import PltnmButton from '../components/base/PltnmButton';
 import { Game, Team } from '../database';
 import displayNames from '../helpers/displayNames';
-import { storeGameId, storeTeamId } from '../localStorage';
+import { storeGameId, storeIsExistingGame, storeTeamId } from '../localStorage';
 
 function StartGame() {
   const [teamName, setTeamName] = useState('');
@@ -37,6 +38,7 @@ function StartGame() {
           navigate('/start/step-3');
         }
         setTeamName(team.name);
+        storeIsExistingGame(true);
         storeTeamId(team.id);
         storeGameId(game.id);
 
@@ -50,9 +52,9 @@ function StartGame() {
   useEffect(() => {
     const names = displayNames(teamPlayers.map(player => player.name));
     if (teamPlayers.length > 1) {
-      setPlayersNameText(`${names} have already added theirs.`);
+      setPlayersNameText(`${names} have already added their songs.`);
     } else if (names) {
-      setPlayersNameText(`Only ${names} has added his for now.`);
+      setPlayersNameText(`Only ${names} has added his songs for now.`);
     }
   }, [teamPlayers]);
 
@@ -77,7 +79,7 @@ function StartGame() {
               fontFamily="body"
               fontWeight="normal"
             >
-              Ready to add your songs?
+              Ready to add your playlist?
             </Heading>
           </Box>
         </Fade>
@@ -91,6 +93,7 @@ function StartGame() {
             <AvatarGroup max={4} spacing={-4}>
               {teamPlayers.map(player => (
                 <Avatar
+                  key={uuidv4()}
                   name={player.name}
                   src={player.picture}
                   borderWidth="3px"

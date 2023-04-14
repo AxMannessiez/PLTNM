@@ -36,7 +36,7 @@ function AskName(props) {
         onSubmit={(values, actions) => {
           const playerPicture =
             user.user_metadata.picture || user.user_metadata.avatar_url || null;
-          const player = new Player(values.name, user.id, playerPicture);
+          const player = new Player(values.name, playerPicture, user.id);
           player
             .save() // Save in database
             .then(() => {

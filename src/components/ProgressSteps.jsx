@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useMediaQuery } from '@chakra-ui/react';
 import { Step, Steps } from 'chakra-ui-steps';
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 const getStepsStyle = isLargerThanSm => ({
   '& .cui-steps__horizontal-step': {
@@ -93,8 +94,7 @@ function ProgressSteps(props) {
       {steps.map((label, index) => (
         <Step
           label={label}
-          // eslint-disable-next-line react/no-array-index-key
-          key={label + index}
+          key={uuidv4()}
           className={index < activeStep ? 'clickable' : ''}
         />
       ))}
@@ -111,8 +111,7 @@ function ProgressSteps(props) {
       {steps.map((label, index) => (
         <Step
           label={label}
-          // eslint-disable-next-line react/no-array-index-key
-          key={label + index}
+          key={uuidv4()}
           className={index < activeStep ? 'clickable' : ''}
         />
       ))}

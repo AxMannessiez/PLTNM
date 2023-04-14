@@ -1,4 +1,4 @@
-const localStorageKey = 'team_id';
+const localStorageKey = 'pltnm-teamId';
 
 function storeTeamId(id) {
   localStorage.setItem(localStorageKey, id);

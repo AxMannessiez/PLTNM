@@ -14,7 +14,10 @@ export default class Playlist {
   async save() {
     const { data } = await supabase
       .from(tableName)
-      .insert({ player: this.player, songs: this.songs, game: this.gameId })
+      .upsert(
+        { player: this.player, songs: this.songs, game: this.gameId },
+        { onConflict: 'player, game' }
+      )
       .select()
       .limit(1)
       .single();

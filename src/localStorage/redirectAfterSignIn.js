@@ -1,4 +1,4 @@
-const localStorageKey = 'redirect_after_sign_in';
+const localStorageKey = 'pltnm-redirectAfterSignIn';
 
 function storeRedirectAfterSignIn(path) {
   localStorage.setItem(localStorageKey, path);

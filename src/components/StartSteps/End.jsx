@@ -1,25 +1,47 @@
-import { Box, Button } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 
+import SavingPlaylistSpinner from './Share/SavingPlaylistSpinner';
 import StartStepsHeader from './StartStepsHeader';
+import { Game, Playlist, Team } from '../../database';
+import { getGameId, getTeamId, getUserId, removeAll } from '../../localStorage';
 import { SpotifyApi } from '../../spotifyApi';
 
-export default function End() {
-  const savePlaylistAsCsv = () => {
-    const data = encodeURI(SpotifyApi.getCurrentPlaylistDataCsvExport());
-    const link = document.createElement('a');
-    link.setAttribute('href', data);
-    link.setAttribute('download', 'My Spotify Top Songs.csv');
-    link.click();
-  };
+const addPlayerAndGetGame = async userId => {
+  const [team, game] = await Promise.all([
+    Team.getTeam(getTeamId()),
+    Game.getGame(getGameId()),
+  ]);
 
-  return (
-    <>
-      <StartStepsHeader title="All done!" />
-      <Box pt={12}>
-        <Button bg="pltnm.primary" onClick={savePlaylistAsCsv}>
-          Download as .csv
-        </Button>
-      </Box>
-    </>
+  await team.addPlayer(userId);
+  return game;
+};
+
+export default function End() {
+  const [savingPlaylist, setSavingPlaylist] = useState(true);
+
+  useEffect(() => {
+    const userId = getUserId();
+    addPlayerAndGetGame(userId).then(game => {
+      new Playlist(
+        userId,
+        SpotifyApi.getCurrentPlaylistDataJsonExport(),
+        game.id
+      )
+        .save()
+        .then(() => {
+          setSavingPlaylist(false);
+          removeAll();
+        });
+    });
+  }, []);
+
+  return savingPlaylist ? (
+    <SavingPlaylistSpinner />
+  ) : (
+    <StartStepsHeader
+      title="We saved your playlist!"
+      subtitle="It has been added to your friend's game."
+      description="The only thing left to do is wait for the others!"
+    />
   );
 }

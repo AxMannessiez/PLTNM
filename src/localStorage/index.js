@@ -5,6 +5,11 @@ import {
 } from './currentPlaylistData';
 import { getGameId, removeGameId, storeGameId } from './gameId';
 import {
+  getIsExistingGame,
+  removeIsExistingGame,
+  storeIsExistingGame,
+} from './isExistingGame';
+import {
   getRedirectAfterSignIn,
   removeRedirectAfterSignIn,
   storeRedirectAfterSignIn,
@@ -29,3 +34,4 @@ export { removeAll };
 export { getTeamId, removeTeamId, storeTeamId };
 export { getUserId, removeUserId, storeUserId };
 export { getUserName, removeUserName, storeUserName };
+export { getIsExistingGame, removeIsExistingGame, storeIsExistingGame };

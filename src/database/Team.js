@@ -58,7 +58,8 @@ export default class Team {
       .eq('team', this.id);
     if (data) {
       return data.map(
-        rel => new Player(rel.player.name, rel.player.picture, rel.player.id)
+        rel =>
+          new Player(rel.player.name, rel.player.picture, null, rel.player.id)
       );
     }
     return error;

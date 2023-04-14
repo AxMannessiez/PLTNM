@@ -1,4 +1,4 @@
-const localStorageKey = 'game_id';
+const localStorageKey = 'pltnm-gameId';
 
 function storeGameId(id) {
   localStorage.setItem(localStorageKey, id);

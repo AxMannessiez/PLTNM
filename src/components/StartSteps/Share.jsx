@@ -46,6 +46,8 @@ const sideButtonStyle = {
 
 // TODO Team name from local Storage
 
+// TODO QR with fixed layout + spinner
+
 // Team and game creation in database
 async function createTeamAndGame(setTeamName, setGameId) {
   const teamName = `${getUserName()}'s Team`;
@@ -55,14 +57,15 @@ async function createTeamAndGame(setTeamName, setGameId) {
     const createdTeam = await Team.create(teamName);
     storeTeamId(createdTeam.id);
 
-    createdTeam.addPlayer(getUserId());
+    await createdTeam.addPlayer(getUserId());
 
     const game = await Game.create(createdTeam.id);
     storeGameId(game.id);
     setGameId(game.id);
-  } else {
-    setGameId(getGameId());
   }
+  const gameId = getGameId();
+  setGameId(gameId);
+  return gameId;
 }
 
 export default function Share() {
@@ -72,12 +75,12 @@ export default function Share() {
   const [shouldDisplayCheckIcon, setShouldDisplayCheckIcon] = useState(false);
 
   useEffect(() => {
-    createTeamAndGame(setTeamName, setGameId).then(() => {
+    createTeamAndGame(setTeamName, setGameId).then(returnGameId => {
       // Save user playlist in database
       const playlist = new Playlist(
         getUserId(),
         SpotifyApi.getCurrentPlaylistDataJsonExport(),
-        gameId
+        returnGameId
       );
       playlist.save().then(() => setSavingPlaylist(false));
     });
