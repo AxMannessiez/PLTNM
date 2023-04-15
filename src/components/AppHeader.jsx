@@ -3,19 +3,12 @@ import { Auth } from '@supabase/auth-ui-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import PltnmLogo from './icons/PltnmLogo';
-import supabase from '../auth/supabaseClient';
-import removeAll from '../localStorage/removeAll';
+import signOut from '../helpers/signOut';
 import theme from '../theme';
 
 const excludedPages = ['/signin'];
 
 const useShowHeader = () => !excludedPages.includes(useLocation().pathname);
-
-const signOut = navigate => {
-  removeAll();
-  supabase.auth.signOut();
-  navigate('/');
-};
 
 export default function AppHeader() {
   const { user } = Auth.useUser();
