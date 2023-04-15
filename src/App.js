@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import { BrowserRouter } from 'react-router-dom';
 
@@ -8,8 +8,10 @@ import RouterOutlet from './router/RouterOutlet';
 function App() {
   return (
     <BrowserRouter>
-      <AppHeader />
-      <RouterOutlet />
+      <Suspense fallback="">
+        <AppHeader />
+        <RouterOutlet />
+      </Suspense>
     </BrowserRouter>
   );
 }

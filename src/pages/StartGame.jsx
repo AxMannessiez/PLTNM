@@ -12,21 +12,23 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 
 import PltnmButton from '../components/base/PltnmButton';
 import { Game, Team } from '../database';
-import displayNames from '../helpers/displayNames';
+import { startsByVowel } from '../helpers';
 import { storeGameId, storeIsExistingGame, storeTeamId } from '../localStorage';
 
 function StartGame() {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+  const { gameId } = useParams();
+
   const [teamName, setTeamName] = useState('');
   const [teamPlayers, setTeamPlayers] = useState([]);
   const [playersNameText, setPlayersNameText] = useState('');
-  const { gameId } = useParams();
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     Game.getGame(gameId).then(game => {
@@ -50,15 +52,16 @@ function StartGame() {
   }, []);
 
   useEffect(() => {
-    const names = displayNames(teamPlayers.map(player => player.name));
-    if (teamPlayers.length > 1) {
-      setPlayersNameText(`${names} have already added their songs.`);
-    } else if (names) {
-      setPlayersNameText(`Only ${names} has added his songs for now.`);
-    }
+    setPlayersNameText(
+      t('startGame.PlayersAlreadyAdded', {
+        names: teamPlayers.map(player => player.name),
+        count: teamPlayers.length,
+      })
+    );
   }, [teamPlayers]);
 
-  const displayBottomPart = !!teamPlayers && !!playersNameText;
+  const displayBottomPart =
+    !!teamName && teamPlayers.length > 0 && !!playersNameText;
 
   return (
     <Container maxW="3xl">
@@ -71,7 +74,10 @@ function StartGame() {
               lineHeight="1.1"
               mb={[2, 4]}
             >
-              Welcome to {teamName}! 👋
+              {t('startGame.Title', {
+                teamName,
+                context: startsByVowel(teamName) ? 'vowel' : null,
+              })}
             </Heading>
             <Heading
               as="h3"
@@ -79,7 +85,7 @@ function StartGame() {
               fontFamily="body"
               fontWeight="normal"
             >
-              Ready to add your playlist?
+              {t('startGame.Subtitle')}
             </Heading>
           </Box>
         </Fade>
@@ -112,7 +118,7 @@ function StartGame() {
           <Center>
             <Link to="/start/">
               <PltnmButton rounded="full" px={6}>
-                Get Started
+                {t('global.GetStarted')}
               </PltnmButton>
             </Link>
           </Center>

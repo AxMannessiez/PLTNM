@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { Box, VStack } from '@chakra-ui/react';
 import { useSteps } from 'chakra-ui-steps';
+import { useTranslation } from 'react-i18next';
 import { Navigate, useParams } from 'react-router-dom';
 
 import ProgressSteps from '../components/ProgressSteps';
@@ -18,12 +19,14 @@ import '../styles/animation.css';
 
 // TODO Page Name
 
-function Start() {
+export default function Start() {
+  const { t } = useTranslation();
+
   const [labels, setLabels] = useState([
-    'Login',
-    'Selection',
-    'Check',
-    'Share',
+    t('startSteps.labels.Login'),
+    t('startSteps.labels.Selection'),
+    t('startSteps.labels.CheckSongs'),
+    t('startSteps.labels.Share'),
   ]);
   const [components, setComponents] = useState([
     <MusicServiceLogin />,
@@ -33,7 +36,11 @@ function Start() {
   ]);
   useEffect(() => {
     if (getIsExistingGame()) {
-      setLabels(['Login', 'Selection', 'Check']);
+      setLabels([
+        t('startSteps.labels.Login'),
+        t('startSteps.labels.Selection'),
+        t('startSteps.labels.CheckSongs'),
+      ]);
       setComponents([
         <MusicServiceLogin />,
         <ChoosePlaylist />,
@@ -65,5 +72,3 @@ function Start() {
     </VStack>
   );
 }
-
-export default Start;

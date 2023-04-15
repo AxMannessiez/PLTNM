@@ -1,9 +1,12 @@
 import { Center, Container, Heading, Text, VStack } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import PltnmButton from '../components/base/PltnmButton';
 
 function Home() {
+  const { t } = useTranslation();
+
   return (
     <Container maxW="3xl">
       <VStack
@@ -16,11 +19,9 @@ function Home() {
           fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
           lineHeight="1.1"
         >
-          How well do you
-          <br />
-          know{' '}
+          {t('home.title.FirstPart')}
           <Text as="span" color="pltnm.primary">
-            your friends?
+            {t('home.title.highlighted')}
           </Text>
         </Heading>
         <Heading
@@ -30,14 +31,14 @@ function Home() {
           fontWeight="normal"
           color="gray.500"
         >
-          Do you have any idea what kind of music your friends listen to?
+          {t('home.description.FirstLine')}
           <br />
-          It&apos;s time to find out if you&apos;re right.
+          {t('home.description.SecondLine')}
         </Heading>
         <Center>
           <Link to="/start/">
             <PltnmButton rounded="full" px={6}>
-              Get Started
+              {t('global.GetStarted')}
             </PltnmButton>
           </Link>
         </Center>

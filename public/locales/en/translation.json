@@ -1,0 +1,91 @@
+{
+  "global": {
+    "Continue": "Continue",
+    "Loading": "Loading",
+    "Go": "Go!",
+    "Error": "Error",
+    "Year": "Year",
+    "Playlist": "Playlist",
+    "GetStarted": "Get started",
+    "Save": "Save",
+    "SignIn": "Sign In",
+    "SignOut": "Sign Out",
+    "DefaultName": "John",
+    "DefaultTeamName": "{{creatorName}}'s Team",
+    "DefaultTeamName_vowel": "{{creatorName}}'s Team"
+  },
+  "errors": {
+    "pageNotFound": {
+      "Title": "Page not found",
+      "Subtitle": "The page you're looking for does not seem to exist."
+    },
+    "GoToHome": "Go to Home"
+  },
+  "fieldRequired": {
+    "Name": "Name is required.",
+    "TeamName": "Team name is required."
+  },
+  "home": {
+    "title": {
+      "FirstPart": "How well do you know ",
+      "highlighted": "your friends?"
+    },
+    "description": {
+      "FirstLine": "Do you have any idea what kind of music your friends listen to?",
+      "SecondLine": "It's time to find out if you're right!"
+    }
+  },
+  "signIn": {
+    "NeedAccount": "We need an account to store your songs!",
+    "NeedName": "Now we only need your name!",
+    "ContinueWith": "Continue with",
+    "SignedInWith": "Signed in with {{provider}} ✔"
+  },
+  "startGame": {
+    "Title": "Welcome to {{teamName}}! \uD83D\uDC4B",
+    "Title_vowel": "Welcome to {{teamName}}! \uD83D\uDC4B",
+    "Subtitle": "Ready to add your playlist?",
+    "PlayersAlreadyAdded_one": "Only {{names, list(style: short)}} has added his songs for now.",
+    "PlayersAlreadyAdded_other": "{{names, list(style: short)}} have already added their songs."
+  },
+  "startSteps": {
+    "labels":{
+      "Login": "Login",
+      "Selection": "Selection",
+      "CheckSongs": "Check",
+      "Share": "Share"
+    },
+    "login": {
+      "Title": "Let's Start!",
+      "Subtitle": "Choose you music service.",
+      "Description": "You'll be redirected there to log in and grant us permission to see your playlists!"
+    },
+    "selection": {
+      "Title": "Great!",
+      "Subtitle": "Now for the playlist:",
+      "MostRecentYear": "Pick your {{year}} top songs",
+      "PreviousYears": "Pick from a previous year top songs",
+      "PersonalPlaylist": "Pick from a personal playlist"
+    },
+    "checkSongs": {
+      "Title": "Perfect!",
+      "Subtitle": "You should recognize some of these \uD83E\uDD13",
+      "SongsOk": "I do!",
+      "SongsNotOk": "I don't, take me back!"
+    },
+    "share": {
+      "SavingPlaylist": "Saving your playlist!",
+      "Title": "We saved your playlist!",
+      "Subtitle": "Now share the link with your friends!",
+      "Description": "They will be able to play with you by uploading their own playlists.",
+      "CheckTeamName": "Check your team name",
+      "ShareLink": "Share the link",
+      "ShareMessage": "Play with me on PLTNM by uploading your playlist!"
+    },
+    "end": {
+      "SavingPlaylist": "We saved your playlist!",
+      "Title": "It has been added to your friend's game.",
+      "Subtitle": "The only thing left to do is wait for the others!"
+    }
+  }
+}

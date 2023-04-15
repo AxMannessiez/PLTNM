@@ -1,12 +1,11 @@
 import axios from 'axios';
 
 import endpoints from './endpoints';
-import displayNames from '../helpers/displayNames';
-import getSamples from '../helpers/getSamples';
+import { displayNames, getSamples } from '../helpers';
 import {
   getCurrentPlaylistData,
   storeCurrentPlaylistData,
-} from '../localStorage/currentPlaylistData';
+} from '../localStorage';
 
 // TODO Create Album class for same structure across music services
 

@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import SpotifyAccountApi from './SpotifyAccountApi';
-import useUrlParams from '../helpers/useUrlParams';
+import { useUrlParams } from '../helpers';
 
 // TODO Test error behavior
 // TODO Return to Step 2 with a variable giving the music service

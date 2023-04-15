@@ -5,6 +5,8 @@ import { Auth } from '@supabase/auth-ui-react';
 import * as ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
+import './i18n';
+
 import App from './App';
 import supabase from './auth/supabaseClient';
 import theme from './theme';

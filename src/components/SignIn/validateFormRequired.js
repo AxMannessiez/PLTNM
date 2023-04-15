@@ -1,7 +1,7 @@
-export default function validateFormRequired(value, variableName) {
+export default function validateFormRequired(value, errorMessage) {
   let error;
   if (!value) {
-    error = `${variableName} is required`;
+    error = errorMessage;
   }
   return error;
 }

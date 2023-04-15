@@ -33,14 +33,15 @@
           "error",
           {
             "groups": [
-              // React, prop-types, and react-related packages
+              // React, prop-types
               ["^react$", "^prop-types"],
-              // Packages related to @chakra-ui, then @supabase, and other external packages
+              // Packages related to @chakra-ui, then @supabase, react-related packages and other external packages
               [
                 "^@chakra-ui/react$",
                 "^@chakra-ui",
                 "chakra",
                 "^@supabase",
+                "react",
                 "^@?\\w"
               ],
               // Internal packages

@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
-
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import { Card, CardBody, CardFooter, CardHeader } from '@chakra-ui/card';
 import { Select } from 'chakra-react-select';
+import { useTranslation } from 'react-i18next';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,8 +9,27 @@ import StartStepsHeader from './StartStepsHeader';
 import PltnmButton from '../base/PltnmButton';
 import { SpotifyAccountApi, SpotifyApi } from '../../spotifyApi';
 
+const yearOptions = [
+  { value: '2021', label: '2021' },
+  { value: '2020', label: '2020' },
+  { value: '2019', label: '2019' },
+  { value: '2018', label: '2018' },
+];
+
+const playlistOptions = [
+  { value: 'id1', label: 'Playlist 1' },
+  { value: 'id2', label: 'Playlist 2' },
+  { value: 'id3', label: 'Playlist 3' },
+];
+
+// TODO Check parameters / have token stored
+// TODO Fetch possible years / playlists for second card
+// TODO Implement search for third card
+
 export default function ChoosePlaylist() {
-  // TODO Check parameters / have token stored
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+
   /*
     if (location.state &&location.state.error) {
         return <Navigate to={"/start/step-1"} state={{error: location.state.error}}/>;
@@ -36,7 +54,6 @@ export default function ChoosePlaylist() {
   );
 
   // Store the playlist data and move to next step
-  const navigate = useNavigate();
   const saveMostRecentYearPlaylistAndStep3 = () => {
     if (mostRecentYearPlaylistStatus === 'success') {
       SpotifyApi.storeCurrentPlaylistData(mostRecentYearPlaylistData.items);
@@ -44,30 +61,12 @@ export default function ChoosePlaylist() {
     }
   };
 
-  // TODO Fetch possible years / playlists for second card
-  const yearOptions = [
-    { value: '2021', label: '2021' },
-    { value: '2020', label: '2020' },
-    { value: '2019', label: '2019' },
-    { value: '2018', label: '2018' },
-  ];
-
-  // TODO Implement search for third card
-  const playlistOptions = [
-    { value: 'id1', label: 'My Playlist 1' },
-    { value: 'id2', label: 'Songs for running' },
-    { value: 'id3', label: 'My Playlist 2' },
-  ];
-
-  useEffect(() => {
-    if (mostRecentYearPlaylistStatus === 'error') {
-      setTimeout(() => window.location.reload(), 1000);
-    }
-  }, [mostRecentYearPlaylistStatus]);
-
   return (
     <>
-      <StartStepsHeader title=" Great!" subtitle="Now for the playlist:" />
+      <StartStepsHeader
+        title={t('startSteps.selection.Title')}
+        subtitle={t('startSteps.selection.Subtitle')}
+      />
       <SimpleGrid
         pt={{ base: 4, sm: 6 }}
         spacing={6}
@@ -86,7 +85,9 @@ export default function ChoosePlaylist() {
         >
           <CardHeader>
             <Heading as="h4" fontSize="xl">
-              {`Pick your ${spotifyMostRecentYear} top songs`}
+              {t('startSteps.selection.MostRecentYear', {
+                year: spotifyMostRecentYear,
+              })}
             </Heading>
           </CardHeader>
           <CardFooter mt={{ base: 14, md: null }}>
@@ -98,11 +99,11 @@ export default function ChoosePlaylist() {
             >
               {(() => {
                 if (lstYrPlstLoading) {
-                  return 'Loading';
+                  return t('global.Loading');
                 }
                 return mostRecentYearPlaylistStatus === 'error'
-                  ? 'Error.. Trying again in 1 second'
-                  : 'Go!';
+                  ? t('global.Error')
+                  : t('global.Go');
               })()}
             </PltnmButton>
           </CardFooter>
@@ -118,14 +119,14 @@ export default function ChoosePlaylist() {
         >
           <CardHeader>
             <Heading as="h4" fontSize="xl">
-              Pick from a previous year top songs
+              {t('startSteps.selection.PreviousYears')}
             </Heading>
           </CardHeader>
           <CardBody my={[5, 8]}>
             <Box w="50%" m="auto">
               <Select
                 size="md"
-                placeholder="Year"
+                placeholder={t('global.Year')}
                 options={yearOptions}
                 useBasicStyles
                 focusBorderColor="pltnm.primary"
@@ -135,7 +136,7 @@ export default function ChoosePlaylist() {
           </CardBody>
           <CardFooter>
             <PltnmButton minW="50%" m="auto">
-              Go!
+              {t('global.Go')}
             </PltnmButton>
           </CardFooter>
         </Card>
@@ -150,13 +151,13 @@ export default function ChoosePlaylist() {
         >
           <CardHeader>
             <Heading as="h4" fontSize="xl">
-              Pick from a personal playlist
+              {t('startSteps.selection.PersonalPlaylist')}
             </Heading>
           </CardHeader>
           <CardBody my={[5, 8]}>
             <Select
               size="md"
-              placeholder="Playlist"
+              placeholder={t('global.Playlist')}
               options={playlistOptions}
               useBasicStyles
               focusBorderColor="pltnm.primary"
@@ -165,7 +166,7 @@ export default function ChoosePlaylist() {
           </CardBody>
           <CardFooter>
             <PltnmButton minW="50%" m="auto">
-              Go!
+              {t('global.Go')}
             </PltnmButton>
           </CardFooter>
         </Card>

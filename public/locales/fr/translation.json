@@ -1,0 +1,91 @@
+{
+  "global": {
+    "Continue": "Continuer",
+    "Loading": "Chargement",
+    "Go": "Go !",
+    "Error": "Erreur",
+    "Year": "Année",
+    "Playlist": "Playlist",
+    "GetStarted": "Commencer",
+    "Save": "Enregistrer",
+    "SignIn": "Connexion",
+    "SignOut": "Déconnexion",
+    "DefaultName": "Jean",
+    "DefaultTeamName": "Équipe de {{creatorName}}",
+    "DefaultTeamName_vowel": "Équipe d'{{creatorName}}"
+  },
+  "errors": {
+    "pageNotFound": {
+      "Title": "Page introuvable",
+      "Subtitle": "Cette page ne semble pas exister."
+    },
+    "GoToHome": "Retour à l'accueil"
+  },
+  "fieldRequired": {
+    "Name": "Le nom est requis.",
+    "TeamName": "Le nom d'équipe est requis."
+  },
+  "home": {
+    "title": {
+      "FirstPart": "À quel point connais-tu ",
+      "highlighted": "tes potes ?"
+    },
+    "description": {
+      "FirstLine": "Tu penses savoir quel genre de musique tes potes écoutent ?",
+      "SecondLine": "C'est l'heure de savoir si tu as raison !"
+    }
+  },
+  "signIn": {
+    "NeedAccount": "On a besoin d'un compte pour enregistrer tes sons !",
+    "NeedName": "On a juste besoin de ton nom !",
+    "ContinueWith": "Continuer avec",
+    "SignedInWith": "Connecté via {{provider}} ✔"
+  },
+  "startGame": {
+    "Title": "Bienvenue dans la {{teamName}} ! \uD83D\uDC4B",
+    "Title_vowel": "Bienvenue dans l'{{teamName}} ! \uD83D\uDC4B",
+    "Subtitle": "Chaud pour ajouter ta playlist ?",
+    "PlayersAlreadyAdded_one": "Seul {{names, list(style: short)}} a ajouté ses sons pour le moment.",
+    "PlayersAlreadyAdded_other": "{{names, list(style: short)}} ont déjà ajouté leurs sons."
+  },
+  "startSteps": {
+    "labels":{
+      "Login": "Connexion",
+      "Selection": "Sélection",
+      "CheckSongs": "Vérification",
+      "Share": "Partage"
+    },
+    "login": {
+      "Title": "C'est parti !",
+      "Subtitle": "Choisis ton service de streaming.",
+      "Description": "Tu y seras redirigé pour te connecter et nous autoriser à voir tes playlists !"
+    },
+    "selection": {
+      "Title": "Top !",
+      "Subtitle": "Maintenant pour la playlist :",
+      "MostRecentYear": "Prendre ton Top Sons {{year}}",
+      "PreviousYears": "Prendre ton Top Sons d'une autre année",
+      "PersonalPlaylist": "Prendre une playlist personelle"
+    },
+    "checkSongs": {
+      "Title": "Parfait !",
+      "Subtitle": "Tu devrais reconnaître ces albums \uD83E\uDD13",
+      "SongsOk": "Tout à fait !",
+      "SongsNotOk": "Non, reviens en arrière !"
+    },
+    "share": {
+      "SavingPlaylist": "On sauvegarde ta playlist !",
+      "Title": "Playlist sauvegardée !",
+      "Subtitle": "Partage le lien avec tes potes !",
+      "Description": "Ils pourront jouer avec toi en ajoutant leur propres playlists.",
+      "CheckTeamName": "Vérifie ton nom d'équipe",
+      "ShareLink": "Partage le lien",
+      "ShareMessage": "Joue avec moi sur PLTNM en ajoutant ta playlist !"
+    },
+    "end": {
+      "Title": "Playlist sauvegardée !",
+      "Subtitle": "Elle a été ajoutée à la partie de ton pote.",
+      "Description": "Il ne te reste plus qu'à attendre les autres !"
+    }
+  }
+}

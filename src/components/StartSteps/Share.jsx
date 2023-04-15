@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import env from 'react-dotenv';
+import { useTranslation } from 'react-i18next';
 import {
   IoCheckmarkOutline,
   IoCopyOutline,
@@ -22,6 +23,7 @@ import SavingPlaylistSpinner from './Share/SavingPlaylistSpinner';
 import TeamNameForm from './Share/TeamNameForm';
 import StartStepsHeader from './StartStepsHeader';
 import { Game, Playlist, Team } from '../../database';
+import { startsByVowel } from '../../helpers';
 import {
   getGameId,
   getTeamId,
@@ -44,13 +46,15 @@ const sideButtonStyle = {
   _active: { backgroundColor: 'gray.200' },
 };
 
-// TODO Team name from local Storage
-
-// TODO QR with fixed layout + spinner
+const getLocalizedDefaultTeamName = (t, creatorName) =>
+  t('global.DefaultTeamName', {
+    creatorName,
+    context: startsByVowel(creatorName) ? 'vowel' : null,
+  });
 
 // Team and game creation in database
-async function createTeamAndGame(setTeamName, setGameId) {
-  const teamName = `${getUserName()}'s Team`;
+const createTeamAndGame = async (setTeamName, setGameId, t) => {
+  const teamName = getLocalizedDefaultTeamName(t, getUserName());
   setTeamName(teamName);
   const teamId = getTeamId(); // Check if stored in LocalStorage, if not create one and store id
   if (!teamId) {
@@ -66,16 +70,21 @@ async function createTeamAndGame(setTeamName, setGameId) {
   const gameId = getGameId();
   setGameId(gameId);
   return gameId;
-}
+};
+
+// TODO Team name from local Storage
+// TODO QR with fixed layout + spinner
 
 export default function Share() {
+  const { t } = useTranslation();
+
   const [teamName, setTeamName] = useState(null);
   const [gameId, setGameId] = useState(null);
   const [savingPlaylist, setSavingPlaylist] = useState(true);
   const [shouldDisplayCheckIcon, setShouldDisplayCheckIcon] = useState(false);
 
   useEffect(() => {
-    createTeamAndGame(setTeamName, setGameId).then(returnGameId => {
+    createTeamAndGame(setTeamName, setGameId, t).then(returnGameId => {
       // Save user playlist in database
       const playlist = new Playlist(
         getUserId(),
@@ -95,9 +104,9 @@ export default function Share() {
   ) : (
     <>
       <StartStepsHeader
-        title="We saved your playlist!"
-        subtitle="Now share the link with your friends!"
-        description="They will be able to play with you by uploading their own playlists."
+        title={t('startSteps.share.Title')}
+        subtitle={t('startSteps.share.Subtitle')}
+        description={t('startSteps.share.Description')}
       />
       <Stack
         divider={<StackDivider borderColor="gray.200" />}
@@ -109,13 +118,13 @@ export default function Share() {
       >
         <Flex direction="column" py={6} w="100%">
           <Heading as="h5" fontSize="lg" mb={3} align="center">
-            Check your team name
+            {t('startSteps.share.CheckTeamName')}
           </Heading>
           <TeamNameForm initialName={teamName} />
         </Flex>
         <Flex direction="column" align="center" py={6} w="100%">
           <Heading as="h5" fontSize="lg" mb={3} align="center">
-            Share the link
+            {t('startSteps.share.ShareLink')}
           </Heading>
           <Flex
             w="100%"
@@ -140,7 +149,7 @@ export default function Share() {
                     .share({
                       url: gameUrl,
                       title: 'PLTNM',
-                      text: 'Play with me on PLTNM by uploading your playlist!',
+                      text: t('startSteps.share.ShareMessage'),
                     })
                     .then(() => {
                       setShouldDisplayCheckIcon(true);

@@ -1,4 +1,5 @@
 import { Center, SimpleGrid } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 
 import {
   AmazonMusicLogoCard,
@@ -13,23 +14,23 @@ import {
 } from './MusicServicesLogoCards';
 import StartStepsHeader from './StartStepsHeader';
 
+const cardMaxW = '200px';
+const cardNameMargin = { base: 0, sm: 1 };
+
 // TODO Add loading indicators to every page
 // TODO Check .env keys hidden
 // TODO Use Chakra LinkOverlay
+// TODO Add toast message if auth failed
 
 export default function MusicServiceLogin() {
-  const cardMaxW = '200px';
-  const cardNameMargin = { base: 0, sm: 1 };
-
-  // TODO Add toast message if auth failed
+  const { t } = useTranslation();
 
   return (
     <>
       <StartStepsHeader
-        title="Let's Start!"
-        subtitle="Choose you music service."
-        description="You'll be redirected there to log in and grant us permission to
-          see your playlists!"
+        title={t('startSteps.login.Title')}
+        subtitle={t('startSteps.login.Subtitle')}
+        description={t('startSteps.login.Description')}
       />
       <Center pt={{ base: 6, sm: 10 }}>
         <SimpleGrid

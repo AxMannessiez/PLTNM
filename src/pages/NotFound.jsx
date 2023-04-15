@@ -1,9 +1,12 @@
 import { Box, Heading, Text } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import PltnmButton from '../components/base/PltnmButton';
 
 export default function NotFound() {
+  const { t } = useTranslation();
+
   return (
     <Box textAlign="center" py={40} px={10}>
       <Heading as="h1" size="2xl" color="pltnm.primary">
@@ -17,14 +20,14 @@ export default function NotFound() {
         mt={6}
         mb={1}
       >
-        Page Not Found
+        {t('errors.pageNotFound.Title')}
       </Heading>
       <Text color="gray.500" mb={6}>
-        The page you&apos;re looking for does not seem to exist.
+        {t('errors.pageNotFound.Subtitle')}
       </Text>
 
-      <PltnmButton>
-        <Link to="/">Go to Home</Link>
+      <PltnmButton rounded="full" px={6}>
+        <Link to="/">{t('errors.GoToHome')}</Link>
       </PltnmButton>
     </Box>
   );

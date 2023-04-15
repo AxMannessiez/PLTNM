@@ -7,9 +7,10 @@ import {
   Text,
   VStack,
 } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { Field, Form, Formik } from 'formik';
 import { capitalize } from 'lodash/string';
-import { useNavigate } from 'react-router-dom';
 
 import validateFormRequired from './validateFormRequired';
 import PltnmButton from '../base/PltnmButton';
@@ -23,14 +24,17 @@ import {
 
 function AskName(props) {
   const { user } = props;
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   return (
     <>
       <Text pt={5}>
-        {`Signed in with ${capitalize(user.app_metadata.provider)} ✔`}
+        {t('signIn.SignedInWith', {
+          provider: capitalize(user.app_metadata.provider),
+        })}
       </Text>
-      <Text pt={5}>Now we only need your name!</Text>
+      <Text pt={5}>{t('signIn.NeedName')}</Text>
       <Formik
         initialValues={{ name: '' }}
         onSubmit={(values, actions) => {
@@ -53,7 +57,9 @@ function AskName(props) {
             <VStack spacing={6}>
               <Field
                 name="name"
-                validate={n => validateFormRequired(n, 'Name')}
+                validate={name =>
+                  validateFormRequired(name, t('fieldRequired.Name'))
+                }
               >
                 {({ field, form }) => (
                   <FormControl
@@ -61,7 +67,7 @@ function AskName(props) {
                   >
                     <Input
                       type="text"
-                      placeholder="John"
+                      placeholder={t('global.DefaultName')}
                       autoComplete="given-name"
                       // eslint-disable-next-line react/jsx-props-no-spreading
                       {...field}
@@ -77,7 +83,7 @@ function AskName(props) {
                 type="submit"
                 w="100%"
               >
-                Continue
+                {t('global.Continue')}
               </PltnmButton>
             </VStack>
           </Form>

@@ -2,25 +2,28 @@ import {
   AspectRatio,
   Box,
   Center,
-  HStack,
+  Flex,
   Image,
   SlideFade,
   Text,
   Wrap,
   WrapItem,
 } from '@chakra-ui/react';
+import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 
 import StartStepsHeader from './StartStepsHeader';
 import PltnmButton from '../base/PltnmButton';
-import goSignIn from '../../helpers/goSignIn';
+import { goSignIn } from '../../helpers';
 import { SpotifyApi } from '../../spotifyApi';
 
 // TODO Add animation
 // TODO Check parameters / have token stored
 
 export default function CheckSongs() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
+
   const goSignInOnClick = () => goSignIn(navigate, '/signin', '/start/step-4');
 
   const lastYearPlaylistData = SpotifyApi.getCurrentPlaylistData();
@@ -35,8 +38,8 @@ export default function CheckSongs() {
   return (
     <>
       <StartStepsHeader
-        title="Perfect!"
-        subtitle=" You should recognize some of these&nbsp;🤓"
+        title={t('startSteps.checkSongs.Title')}
+        subtitle={t('startSteps.checkSongs.Subtitle')}
       />
       <Wrap justify="center" pt={5} px={2} spacing={5} maxW="xl">
         {samplePlaylistAlbums
@@ -72,19 +75,21 @@ export default function CheckSongs() {
             ))
           : null}
       </Wrap>
-      <Box pt={5}>
-        <HStack>
+      <Box pt={[8, 5]}>
+        <Flex flexWrap="wrap" align="center" justify="center" gap={3}>
           <SlideFade in delay={0.8} duration={1.5} offsetY={0}>
             <Link to="/start/step-2">
               <PltnmButton variant="outline">
-                I don&apos;t, take me back!
+                {t('startSteps.checkSongs.SongsNotOk')}
               </PltnmButton>
             </Link>
           </SlideFade>
           <SlideFade in delay={1} duration={1.5} offsetY={0}>
-            <PltnmButton onClick={goSignInOnClick}>I do!</PltnmButton>
+            <PltnmButton onClick={goSignInOnClick}>
+              {t('startSteps.checkSongs.SongsOk')}
+            </PltnmButton>
           </SlideFade>
-        </HStack>
+        </Flex>
       </Box>
     </>
   );

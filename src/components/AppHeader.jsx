@@ -2,20 +2,22 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { Box, Button, HStack, Spacer, Text } from '@chakra-ui/react';
 import { Auth } from '@supabase/auth-ui-react';
+import { useTranslation } from 'react-i18next';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import PltnmLogo from './icons/PltnmLogo';
-import goSignIn from '../helpers/goSignIn';
-import signOut from '../helpers/signOut';
+import { goSignIn, signOut } from '../helpers';
 import theme from '../theme';
 
 const excludedPages = ['/signin'];
 
 export default function AppHeader() {
-  const [shouldShowHeader, setShouldShowHeader] = useState(true);
+  const { t } = useTranslation();
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const { user } = Auth.useUser();
+
+  const [shouldShowHeader, setShouldShowHeader] = useState(true);
 
   useEffect(() => {
     setShouldShowHeader(!excludedPages.includes(pathname));
@@ -62,7 +64,7 @@ export default function AppHeader() {
               textDecorationColor: `${theme.colors.pltnm.primary}ff`,
             }}
           >
-            Sign Out
+            {t('global.SignOut')}
           </Text>
         </Button>
       ) : (
@@ -82,7 +84,7 @@ export default function AppHeader() {
               textDecorationColor: `${theme.colors.pltnm.primary}ff`,
             }}
           >
-            Sign In
+            {t('global.SignIn')}
           </Text>
         </Button>
       )}
