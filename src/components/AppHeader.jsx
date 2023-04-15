@@ -1,20 +1,37 @@
+import { useCallback, useEffect, useState } from 'react';
+
 import { Box, Button, HStack, Spacer, Text } from '@chakra-ui/react';
 import { Auth } from '@supabase/auth-ui-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import PltnmLogo from './icons/PltnmLogo';
+import goSignIn from '../helpers/goSignIn';
 import signOut from '../helpers/signOut';
 import theme from '../theme';
 
 const excludedPages = ['/signin'];
 
-const useShowHeader = () => !excludedPages.includes(useLocation().pathname);
-
 export default function AppHeader() {
-  const { user } = Auth.useUser();
+  const [shouldShowHeader, setShouldShowHeader] = useState(true);
+  const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { user } = Auth.useUser();
 
-  return useShowHeader() ? (
+  useEffect(() => {
+    setShouldShowHeader(!excludedPages.includes(pathname));
+  }, [pathname]);
+
+  const signOutOnClick = useCallback(() => signOut(navigate), [navigate]);
+  const goSignInOnClick = useCallback(
+    () => goSignIn(navigate, '/signin', pathname),
+    [navigate, pathname]
+  );
+
+  if (!shouldShowHeader) {
+    return null;
+  }
+
+  return (
     <HStack
       as="header"
       bg="pltnm.background"
@@ -33,7 +50,7 @@ export default function AppHeader() {
           block="true"
           bg="transparent"
           color="pltnm.primary"
-          onClick={() => signOut(navigate)}
+          onClick={signOutOnClick}
         >
           <Text
             fontSize="sm"
@@ -53,8 +70,7 @@ export default function AppHeader() {
           block="true"
           bg="transparent"
           color="pltnm.primary"
-          as={Link}
-          to="/signin"
+          onClick={goSignInOnClick}
         >
           <Text
             fontSize="sm"
@@ -71,5 +87,5 @@ export default function AppHeader() {
         </Button>
       )}
     </HStack>
-  ) : null;
+  );
 }

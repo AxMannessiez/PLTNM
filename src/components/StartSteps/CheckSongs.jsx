@@ -13,7 +13,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import StartStepsHeader from './StartStepsHeader';
 import PltnmButton from '../base/PltnmButton';
-import { storeRedirectAfterSignIn } from '../../localStorage';
+import goSignIn from '../../helpers/goSignIn';
 import { SpotifyApi } from '../../spotifyApi';
 
 // TODO Add animation
@@ -21,10 +21,7 @@ import { SpotifyApi } from '../../spotifyApi';
 
 export default function CheckSongs() {
   const navigate = useNavigate();
-  const useGoSignIn = () => {
-    storeRedirectAfterSignIn('/start/step-4');
-    navigate('/signin');
-  };
+  const goSignInOnClick = () => goSignIn(navigate, '/signin', '/start/step-4');
 
   const lastYearPlaylistData = SpotifyApi.getCurrentPlaylistData();
 
@@ -85,7 +82,7 @@ export default function CheckSongs() {
             </Link>
           </SlideFade>
           <SlideFade in delay={1} duration={1.5} offsetY={0}>
-            <PltnmButton onClick={useGoSignIn}>I do!</PltnmButton>
+            <PltnmButton onClick={goSignInOnClick}>I do!</PltnmButton>
           </SlideFade>
         </HStack>
       </Box>

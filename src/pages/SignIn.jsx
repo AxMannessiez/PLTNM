@@ -21,7 +21,7 @@ export default function SignIn() {
       {(() => {
         if (user && user.app_metadata && user.app_metadata.provider) {
           return getUserName() ? (
-            <Navigate to={getRedirectAfterSignIn()} />
+            <Navigate to={getRedirectAfterSignIn() || '/'} />
           ) : (
             <AskName user={user} />
           );
