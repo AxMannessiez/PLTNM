@@ -7,7 +7,7 @@ export default function DeezerLogoCard(props) {
   return (
     <MusicServiceLogoCard
       name="Deezer"
-      bg="#111117"
+      bg="#0f0d13"
       nameMargin={props.nameMargin}
       maxW={props.maxW}
       svg={<DeezerIcon />}
