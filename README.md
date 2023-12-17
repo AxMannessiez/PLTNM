@@ -8,8 +8,8 @@
 <br>
 
 <div align="center">
-  <img width="600" alt="Step 1 - PLTNM" src="https://github.com/AxMannessiez/PLTNM/assets/74686075/6461c699-78b4-4e25-94fc-ef292242e61f">
-  <img width="200" alt="Step 1 - Mobile - PLTNM" src="https://github.com/AxMannessiez/PLTNM/assets/74686075/0b866654-80be-463b-9c24-423c5823c101">
+  <img width="600" alt="Step 1 - PLTNM" src="https://github.com/AxMannessiez/PLTNM/assets/74686075/dad5f199-056b-4c85-a34c-776e6acfe8b4">
+  <img width="200" alt="Step 1 - Mobile - PLTNM" src="https://github.com/AxMannessiez/PLTNM/assets/74686075/22c14ef0-c048-4c87-b24d-1a8af0f5cc9c">
 </div>
 
 <br>
